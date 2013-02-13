@@ -1,0 +1,245 @@
+<html>
+<head>
+	<title>test ui</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+
+	$(document).ready(function (){
+		$(".device a.button.input").on("click", function () {
+
+			$('#leftpanel').animate({'left':'-24%'}, 'easein');
+		});
+
+
+
+		// $(".device ").on("click", function () {
+
+		// 	$('#rightpanel').css('right', '-24%');
+		// });
+
+		$("#device_id_2 a.button.output").on("click", function () {
+
+			$('#rightpanel').animate({'right':'-24%'}, 'easein');
+			$('#feature_id_3').show();
+			$('#feature_id_4').hide();
+		});
+
+		$("#device_id_4 a.button.output").on("click", function () {
+
+			$('#rightpanel').animate({'right': '-24%'}, 'easein');
+			$('#feature_id_4').show();
+			$('#feature_id_3').hide();
+		});
+
+		$(".input .feature").on("click", function () {
+
+			$('#leftpanel').animate({'left': '0%'},'easein');
+		});
+
+		$(".output .feature").on("click", function () {
+
+			$('#rightpanel').animate({'right': '0%'},'easein');
+		});
+
+	});
+	</script>
+	<style type="text/css">
+
+	p{
+		margin: 0;
+	}
+
+	body{
+		margin: 0;
+	}
+
+	.container{
+		width: 100%;
+		overflow: hidden;
+		/*background: #CC9E61;*/
+	}
+
+	div.panel{
+		display: block;
+		height: 100%;
+	}
+
+	.inner, .outer {
+		border-radius: 12px;
+		float: left;
+	}
+
+	.inner {
+		width: 60%;
+		background: #E9F2F9;
+	}
+
+	.outer {
+		width: 40%;
+		background: #B2D1E5;
+	}
+
+	#leftpanel, #rightpanel{
+		/*background: yellow;*/
+		width: 40%;
+		position: fixed;
+		top: 0;
+		margin-bottom: 5px;
+		/*border: 5px solid #8ac8d4;*/
+		border-radius: 15px;
+		/*float: left;*/
+		padding: 5px;
+	}
+
+	#leftpanel {
+		left: -40%;
+
+	}
+
+	#rightpanel{
+		right: -40%;
+	}
+
+	div.device{
+		border: 5px #F9F9F9 solid;
+		border-radius: 15px;
+		height: 130px;
+		width: 130px;
+		background: #40B3DF;
+		color: #E9F2F9;
+		padding: 5px;
+		position: relative;
+		margin-bottom: 5px;
+	}
+
+	div.device .device-name {
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	div.device p{
+		margin-bottom: 5px;
+	}
+
+	.device .device-availability {
+	}
+
+	.device-availability .on, .device-availability .off{
+		width: 25px;
+		height: 15px;
+		border-radius: 5px;
+		font-size: 14px;
+		padding: 2px;
+
+	}
+
+
+	.device-availability .on{
+		background-color: #A8CB17;
+		color: white;
+	}
+
+	.device-availability .off{
+		background-color: #EEEEEE;
+		color: gray;		
+	}
+
+	.device a.button{
+		background-color: #A8CB17;
+		padding: 5px 10px;
+		position: absolute;
+		bottom: 5px;
+	}
+
+	.device a.button.input{
+		left: 5px;
+		border-bottom-left-radius: 10px;
+	}
+
+	.device a.button.output{
+		right: 5px;
+		border-bottom-right-radius: 10px;
+	}
+
+	.feature{
+		position: relative;
+		margin: 10px;
+		background: #98C73D;
+		height: 100px;
+		width: 100px;
+		float: left;
+		padding: 5px;
+		border-top-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		border:5px solid white;
+	}
+
+	.feature img{
+		max-width: 100px;
+		max-height: 80px;
+		color: white;
+	}
+
+
+	</style>
+</head>
+<body>
+	<div class="container" style=" height: 100%; width:100%; text-align: center;">
+		<div id="leftpanel" class="panel input" style="">
+			<div class="inner panel" ></div>
+			<div class="outer panel" >
+				<figure class="feature" id="feature_id_1">
+					<img src="img/voice.svg">
+					<figcaption>Speech</figcaption>
+				</figure>
+				<figure class="feature" id="feature_id_2">
+					<img src="img/hand.svg">
+					<figcaption>Gesture</figcaption>
+				</figure>
+			</div>
+		</div>
+		<div id="centerpanel" class="panel" style="width:17%; margin:0 auto;">
+			<div class="device" id="device_id_1">
+				<p class="device-name">Kinect</p>
+				<p class="device-description">Take input like speech, motion, etc</p>
+				<p class="device-availability">Availability: <span class="on">On</span></p>
+				<a class="button input">Input</a>
+			</div> 
+
+			<div class="device" id="device_id_2">
+				<p class="device-name">Projector 1</p>
+				<p class="device-description">Project visuals</p>
+				<p class="device-availability">Availability: <span class="on">On</span></p>
+				<a class="button output">Output</a>
+			</div> 
+
+			<div class="device" id="device_id_3">
+				<p class="device-name">Projector 2</p>
+				<p class="device-description">Project visuals</p>
+				<p class="device-availability">Availability: <span class="off">Off</span></p>
+			</div> 
+
+			<div class="device" id="device_id_4">
+				<p class="device-name" >Light</p>
+				<p class="device-description">Turn on/off</p>
+				<p class="device-availability">Availability: <span class="on">On</span></p>
+				<a class="button output">Output</a>
+			</div> 
+		</div>
+		<div id="rightpanel" class="panel output" style="">
+
+			<div class="outer panel" >
+				<figure class="feature" id="feature_id_3">
+					<img src="img/light.svg">
+					<figcaption>Light</figcaption>
+				</figure>
+				<figure class="feature" id="feature_id_4">
+					<img src="img/project.svg">
+					<figcaption>Project</figcaption>
+				</figure>
+			</div>
+			<div class="inner panel" ></div>
+		</div>
+	</div>
+</body>
+</html>
