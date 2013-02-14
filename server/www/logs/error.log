@@ -1,0 +1,9 @@
+[Wed Feb 13 15:50:24 2013] [error] [client 127.0.0.1] File does not exist: C:/Users/Craig/Documents/GitHub/arubi/server/www/favicon.ico
+[Wed Feb 13 15:50:25 2013] [error] [client 127.0.0.1] File does not exist: C:/Users/Craig/Documents/GitHub/arubi/server/www/favicon.ico
+[Wed Feb 13 15:50:34 2013] [error] [client 127.0.0.1] PHP Notice:  Undefined index: sender in C:\\Users\\Craig\\Documents\\GitHub\\arubi\\server\\www\\testconnection.php on line 2
+[Wed Feb 13 15:50:34 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Feb 13 15:50:34 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\Users\\Craig\\Documents\\GitHub\\arubi\\server\\www\\testconnection.php:0
+[Wed Feb 13 15:50:34 2013] [error] [client 127.0.0.1] PHP Notice:  Undefined index: arg in C:\\Users\\Craig\\Documents\\GitHub\\arubi\\server\\www\\testconnection.php on line 3
+[Wed Feb 13 15:50:34 2013] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Feb 13 15:50:34 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\Users\\Craig\\Documents\\GitHub\\arubi\\server\\www\\testconnection.php:0
+[Wed Feb 13 15:50:34 2013] [error] [client 127.0.0.1] File does not exist: C:/Users/Craig/Documents/GitHub/arubi/server/www/favicon.ico
