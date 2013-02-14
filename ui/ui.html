@@ -2,45 +2,12 @@
 <head>
 	<title>test ui</title>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript">
 
 	$(document).ready(function (){
-		$(".device a.button.input").on("click", function () {
-
-			$('#leftpanel').animate({'left':'-24%'}, 'easein');
-		});
-
-
-
-		// $(".device ").on("click", function () {
-
-		// 	$('#rightpanel').css('right', '-24%');
-		// });
-
-		$("#device_id_2 a.button.output").on("click", function () {
-
-			$('#rightpanel').animate({'right':'-24%'}, 'easein');
-			$('#feature_id_3').show();
-			$('#feature_id_4').hide();
-		});
-
-		$("#device_id_4 a.button.output").on("click", function () {
-
-			$('#rightpanel').animate({'right': '-24%'}, 'easein');
-			$('#feature_id_4').show();
-			$('#feature_id_3').hide();
-		});
-
-		$(".input .feature").on("click", function () {
-
-			$('#leftpanel').animate({'left': '0%'},'easein');
-		});
-
-		$(".output .feature").on("click", function () {
-
-			$('#rightpanel').animate({'right': '0%'},'easein');
-		});
-
+            getDevices();
+            
 	});
 	</script>
 	<style type="text/css">
@@ -198,7 +165,7 @@
 				</figure>
 			</div>
 		</div>
-		<div id="centerpanel" class="panel" style="width:17%; margin:0 auto;">
+		<div id="devicepanel" class="panel" style="width:17%; margin:0 auto;">
 			<div class="device" id="device_id_1">
 				<p class="device-name">Kinect</p>
 				<p class="device-description">Take input like speech, motion, etc</p>
