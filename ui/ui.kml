@@ -340,7 +340,7 @@
     
 							<balloonVisibility>1</balloonVisibility>
 							<Tracker>
-								<device>#bch</device>
+								<device>#framesimpleid</device>
 								<options>
 									<markerId>1</markerId> <!-- integer value (-1 means follow any marker of markerType) -->
 									<width>0.21</width> <!-- width of marker in meters -->
