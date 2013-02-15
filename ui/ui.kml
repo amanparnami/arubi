@@ -255,7 +255,7 @@
       
 								<script>
 									/*function hudElement(id) {};*/ //disable HUD'ing
-					        function handleVisibleChange() {
+					        /*function handleVisibleChange() {
 					            var placemark = KHARMA.getKMLElementById('tracker_kinect1');
 					            var tracker = placemark.geometry[0];
 					            placemark.visibility = tracker.visible;
@@ -265,7 +265,7 @@
 					        function tracker_kinect1_init() {
 					            $(document).bind('trackerChanged',function(event) {handleVisibleChange()});
 					            console.log('tracker_kinect1 initialized');
-					        }
+					        }*/
 
 								</script>
       
@@ -281,7 +281,7 @@
     
 							<balloonVisibility>1</balloonVisibility>
 							<Tracker>
-								<device>#framesimpleid</device>
+								<device>#kinect1id</device>
 								<options>
 									<markerId>0</markerId> <!-- integer value (-1 means follow any marker of markerType) -->
 									<width>0.21</width> <!-- width of marker in meters -->
@@ -340,7 +340,7 @@
     
 							<balloonVisibility>1</balloonVisibility>
 							<Tracker>
-								<device>#framesimpleid</device>
+								<device>#kinect2id</device>
 								<options>
 									<markerId>1</markerId> <!-- integer value (-1 means follow any marker of markerType) -->
 									<width>0.21</width> <!-- width of marker in meters -->
@@ -356,53 +356,6 @@
 							<styleUrl>#undecorated_style</styleUrl>
 						</Placemark>
 
-
-						<Placemark id="PM1">
-							<name>testPM</name>
-							<snippet>Example of setting balloon styling with CSS styles</snippet>
-							<description><![CDATA[
-
-								<style type="text/css">
-									div.mystyle
-									{
-									position:          absolute;
-									width:            200px;
-									height:            200px;
-									left:            -100px;
-									top:            -100px;
-
-									vertical-align:        bottom;
-									font-family:        sans-serif;
-									font-size:          10px;
-									text-align:          center;
-
-									background-color:      rgba(0, 255, 0, 0.5);
-									border-style:        solid;
-									border-width:        5px;
-									border-color:        rgb(0, 255, 0);      
-									color:            rgb(255, 0, 0);
-      
-									-webkit-border-radius:    40px;
-									}
-								</style>
-    
-								<div class="mystyle"><div style="position:absolute; top:50%;">Example using CSS styles</div></div>
-
-
-								]]>
-							</description>        
-							<balloonVisibility>1</balloonVisibility> <!-- make balloon visible -->
-							<Balloon>
-								<locationMode>relative</locationMode>
-								<location>
-									<latitude>0.0</latitude>
-									<longitude units="meters">-6.0</longitude> <!-- west of the user -->
-									<altitude>0.0</altitude>
-								</location>
-								<orientationMode>billboard</orientationMode>
-							</Balloon>
-							<styleUrl>#undecorated_style</styleUrl> <!-- reference to style element -->
-						</Placemark>  
     
 						<!-- KML document description -->
 						<name>Arubi.kml</name>
