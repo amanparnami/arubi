@@ -4,7 +4,7 @@ function ar_init(){
     var externalScriptArray = new Array(
             //"http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js",
             
-            "http://code.jquery.com/jquery-1.9.1.min.js",
+            "js/jquery-1.9.1.min.js",
             "js/app.js"
 	       ); 
 			
