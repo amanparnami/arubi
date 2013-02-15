@@ -254,7 +254,7 @@
 								</style>
       
 								<script>
-									function hudElement(id) {}; //disable HUD'ing
+									/*function hudElement(id) {};*/ //disable HUD'ing
 					        function handleVisibleChange() {
 					            var placemark = KHARMA.getKMLElementById('tracker_kinect1');
 					            var tracker = placemark.geometry[0];
@@ -262,7 +262,7 @@
 					            placemark.render();
 					            console.log("Set placemark visibility to:" + placemark.visibility);
 					        }
-					        function tracker_framesimple_init() {
+					        function tracker_kinect1_init() {
 					            $(document).bind('trackerChanged',function(event) {handleVisibleChange()});
 					            console.log('tracker_kinect1 initialized');
 					        }
@@ -312,7 +312,7 @@
 								</style>
       
 								<script>
-									function hudElement(id) {}; //disable HUD'ing
+									/*function hudElement(id) {};*/ //disable HUD'ing
 					        function handleVisibleChange() {
 					            var placemark = KHARMA.getKMLElementById('tracker_kinect2');
 					            var tracker = placemark.geometry[0];
@@ -320,7 +320,7 @@
 					            placemark.render();
 					            console.log("Set placemark visibility to:" + placemark.visibility);
 					        }
-					        function tracker_framesimple_init() {
+					        function tracker_kinect2_init() {
 					            $(document).bind('trackerChanged',function(event) {handleVisibleChange()});
 					            console.log('tracker_kinect2 initialized');
 					        }
