@@ -239,7 +239,7 @@
 						</ScreenOverlay>
    
          
-						<Placemark id="tracker_kinect1">
+						<Placemark id="tracker_kinectone">
 							<name>Tracker SimpleId Frame Map adfasdf</name>
 							<description><![CDATA[      
 								<style>
@@ -255,17 +255,17 @@
       
 								<script>
 									/*function hudElement(id) {};*/ //disable HUD'ing
-					        /*function handleVisibleChange() {
-					            var placemark = KHARMA.getKMLElementById('tracker_kinect1');
+					        function handleVisibleChange() {
+					            var placemark = KHARMA.getKMLElementById('tracker_kinectone');
 					            var tracker = placemark.geometry[0];
 					            placemark.visibility = tracker.visible;
 					            placemark.render();
 					            console.log("Set placemark visibility to:" + placemark.visibility);
 					        }
-					        function tracker_kinect1_init() {
+					        function tracker_kinectone_init() {
 					            $(document).bind('trackerChanged',function(event) {handleVisibleChange()});
 					            console.log('tracker_kinect1 initialized');
-					        }*/
+					        }
 
 								</script>
       
@@ -281,7 +281,7 @@
     
 							<balloonVisibility>1</balloonVisibility>
 							<Tracker>
-								<device>#kinect1id</device>
+								<device>#kinectoneid</device>
 								<options>
 									<markerId>0</markerId> <!-- integer value (-1 means follow any marker of markerType) -->
 									<width>0.21</width> <!-- width of marker in meters -->
@@ -297,7 +297,7 @@
 							<styleUrl>#undecorated_style</styleUrl>
 						</Placemark>
 
-						<Placemark id="tracker_kinect2">
+						<Placemark id="tracker_kinecttwo">
 							<name>Tracker Kinect2</name>
 							<description><![CDATA[      
 								<style>
@@ -314,13 +314,13 @@
 								<script>
 									/*function hudElement(id) {};*/ //disable HUD'ing
 					        function handleVisibleChange() {
-					            var placemark = KHARMA.getKMLElementById('tracker_kinect2');
+					            var placemark = KHARMA.getKMLElementById('tracker_kinecttwo');
 					            var tracker = placemark.geometry[0];
 					            placemark.visibility = tracker.visible;
 					            placemark.render();
 					            console.log("Set placemark visibility to:" + placemark.visibility);
 					        }
-					        function tracker_kinect2_init() {
+					        function tracker_kinect_init() {
 					            $(document).bind('trackerChanged',function(event) {handleVisibleChange()});
 					            console.log('tracker_kinect2 initialized');
 					        }
@@ -340,7 +340,7 @@
     
 							<balloonVisibility>1</balloonVisibility>
 							<Tracker>
-								<device>#kinect2id</device>
+								<device>#kinecttwoid</device>
 								<options>
 									<markerId>1</markerId> <!-- integer value (-1 means follow any marker of markerType) -->
 									<width>0.21</width> <!-- width of marker in meters -->
