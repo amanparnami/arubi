@@ -329,8 +329,7 @@
 						</Placemark>
 
 
-						<Placemark>
-							<id>PM1</id>
+						<Placemark id="PM1">
 							<name>testPM</name>
 							<snippet>Example of setting balloon styling with CSS styles</snippet>
 							<description><![CDATA[
