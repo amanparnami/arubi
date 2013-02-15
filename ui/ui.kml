@@ -251,7 +251,7 @@
       
 								<div id='testPM3' class='pm-container'> 
 									<div class='pm' style='text-aligh:center;'> 
-										<img src='http://placehold.it/1000x1000' width ='1000px' style='padding:10px;'/>
+										<img src='/img/1000x1000.gif' width ='1000px' style='padding:10px;'/>
 										<div style='color:white'>Kinect1</div>
 									</div>
 								</div>
@@ -326,7 +326,7 @@
 						</Placemark>  
     
 						<!-- KML document description -->
-						<name>DescriptionCSS.kml</name>
+						<name>Arubi.kml</name>
 						<Snippet>Example of a placemark balloon description with CSS styling</Snippet>
 						<description><![CDATA[
 							<p><b>Example of a placemark balloon description with CSS styling</b></p>
@@ -351,7 +351,7 @@
 																<Style id="document_style">
 																	<IconStyle>
 																		<Icon>
-																			<href>http://google-maps-icons.googlecode.com/files/administration.png</href>
+																			<href>/img/administration.png</href>
 																		</Icon>
 																	</IconStyle>
 																</Style>
