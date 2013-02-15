@@ -238,120 +238,45 @@
 							<styleUrl>#undecorated_style</styleUrl>
 						</ScreenOverlay>
    
-         
-						<Placemark id="tracker_kinectone">
-							<name>Tracker SimpleId Frame Map adfasdf</name>
-							<description><![CDATA[      
-								<style>
-									div.text
-									{
-									font-size:    50px;
-									font-weight:  bold;
-									color:      #000000;
-									text-align:    center;
-									vertical-align:  middle;
-									}
-								</style>
-      
-								<script>
-									/*function hudElement(id) {};*/ //disable HUD'ing
+						<Placemark id="tracker_framesimple">
+							<name>Tracker Frame SimpleId Example</name>
+							<description><![CDATA[
+					        <script language="text/javascript">
 					        function handleVisibleChange() {
-					            var placemark = KHARMA.getKMLElementById('tracker_kinectone');
+					            var placemark = KHARMA.getKMLElementById('tracker_framesimple');
 					            var tracker = placemark.geometry[0];
 					            placemark.visibility = tracker.visible;
 					            placemark.render();
 					            console.log("Set placemark visibility to:" + placemark.visibility);
 					        }
-					        function tracker_kinectone_init() {
+					        function tracker_framesimple_init() {
 					            $(document).bind('trackerChanged',function(event) {handleVisibleChange()});
-					            console.log('tracker_kinect1 initialized');
+					            console.log('tracker_framesimple initialized');
 					        }
-
-								</script>
-      
-								<div id='kinectMarker1' class='pm-container'> 
-									<div class='pm' style='text-align:center;'> 
-										<img src='img/1000x1000.gif' width ='1000px' style='padding:10px;'/>
-										<div class="text" style='color:white'>Kinect1</div>
-									</div>
-								</div>
-      
-								]]>
-							</description>
-    
-							<balloonVisibility>1</balloonVisibility>
-							<Tracker>
-								<device>#kinectoneid</device>
-								<options>
-									<markerId>0</markerId> <!-- integer value (-1 means follow any marker of markerType) -->
-									<width>0.21</width> <!-- width of marker in meters -->
-								</options>
-								<locationMode>relative</locationMode> <!-- default (ignore), relative (update location) -->
-								<orientationMode>relative</orientationMode> <!-- default (ignore), relative (update orientation) -->
-								<scale>
-									<x>0.022</x>
-									<y>0.022</y>
-									<z>0.022</z>
-								</scale>      
-							</Tracker>
-							<styleUrl>#undecorated_style</styleUrl>
-						</Placemark>
-
-						<Placemark id="tracker_kinecttwo">
-							<name>Tracker Kinect2</name>
-							<description><![CDATA[      
-								<style>
-									div.text
-									{
-									font-size:    50px;
-									font-weight:  bold;
-									color:      #000000;
-									text-align:    center;
-									vertical-align:  middle;
-									}
-								</style>
-      
-								<script>
-									/*function hudElement(id) {};*/ //disable HUD'ing
-					        function handleVisibleChange() {
-					            var placemark = KHARMA.getKMLElementById('tracker_kinecttwo');
-					            var tracker = placemark.geometry[0];
-					            placemark.visibility = tracker.visible;
-					            placemark.render();
-					            console.log("Set placemark visibility to:" + placemark.visibility);
-					        }
-					        function tracker_kinect_init() {
-					            $(document).bind('trackerChanged',function(event) {handleVisibleChange()});
-					            console.log('tracker_kinect2 initialized');
-					        }
+					        </script>
 									
-
-								</script>
-      
-								<div id='kinectMarker2' class='pm-container'> 
-									<div class='pm' style='text-align:center;'> 
-										<img src='img/1000x1000.gif' width ='1000px' style='padding:10px;'/>
-										<div class="text" style='color:white'>Kinect2</div>
+									<div id='kinectMarker1' class='pm-container'> 
+										<div class='pm' style='text-align:center;'> 
+											<img src='img/1000x1000.gif' width ='1000px' style='padding:10px;'/>
+											<div class="text" style='color:white'>Kinect1</div>
+										</div>
 									</div>
-								</div>
-      
-								]]>
+							]]>
 							</description>
-    
 							<balloonVisibility>1</balloonVisibility>
 							<Tracker>
-								<device>#kinecttwoid</device>
+								<device>#framesimpleid</device>
 								<options>
-									<markerId>1</markerId> <!-- integer value (-1 means follow any marker of markerType) -->
-									<width>0.21</width> <!-- width of marker in meters -->
+									<markerId>0</markerId> <!-- integer value (-1 means follow any marker of marker) -->
+									<width>0.07</width> <!-- width of marker in meters -->
 								</options>
 								<locationMode>relative</locationMode> <!-- default (ignore), relative (update location) -->
 								<orientationMode>relative</orientationMode> <!-- default (ignore), relative (update orientation) -->
 								<scale>
-									<x>0.022</x>
-									<y>0.022</y>
-									<z>0.022</z>
-								</scale>      
+									<x>0.07</x> <!-- test marker is 0.07 meters -->
+									<y>0.07</y>
+									<z>0.07</z>
+								</scale>
 							</Tracker>
 							<styleUrl>#undecorated_style</styleUrl>
 						</Placemark>
