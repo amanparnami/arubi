@@ -60,12 +60,12 @@
 
 					#leftpanel, #rightpanel{
 					/*background: yellow;*/
-					width: 40%;
+					width: 30%;
 					position: fixed;
 					top: 0;
 					margin-bottom: 5px;
 					/*border: 5px solid #8ac8d4;*/
-					border-radius: 15px;
+					border-radius: 10px;
 					/*float: left;*/
 					padding: 5px;
 					}
@@ -82,8 +82,8 @@
 					div.device{
 					border: 5px #F9F9F9 solid;
 					border-radius: 15px;
-					height: 130px;
-					width: 130px;
+					height: 20%;
+					width: 20%;
 					background: #40B3DF;
 					color: #E9F2F9;
 					padding: 5px;
@@ -92,7 +92,7 @@
 					}
 
 					div.device .device-name {
-					font-size: 16px;
+					font-size: 14px;
 					font-weight: bold;
 					}
 
@@ -107,7 +107,7 @@
 					width: 25px;
 					height: 15px;
 					border-radius: 5px;
-					font-size: 14px;
+					font-size: 12px;
 					padding: 2px;
 
 					}
@@ -250,9 +250,9 @@
 								</script>
       
 								<div id='testPM3' class='pm-container'> 
-									<div class='pm' style='text-aligh:center;'> 
+									<div class='pm' style='text-align:center;'> 
 										<img src='img/1000x1000.gif' width ='1000px' style='padding:10px;'/>
-										<div style='color:white'>Kinect1</div>
+										<div class="text" style='color:white'>Kinect1</div>
 									</div>
 								</div>
       
@@ -276,6 +276,59 @@
 							</Tracker>
 							<styleUrl>#undecorated_style</styleUrl>
 						</Placemark>
+
+						<Placemark>
+							<id>Kinect2</id>
+							<name>Tracker: Kinect2</name>
+							<description><![CDATA[      
+								<style>
+									div.text
+									{
+									font-size:    50px;
+									font-weight:  bold;
+									color:      #000000;
+									text-align:    center;
+									vertical-align:  middle;
+									}
+								</style>
+      
+								<script>
+									function hudElement(id) {}; //disable HUD'ing
+									$("#kinectMarker2").bind("touchstart", function () 
+									{
+									alert("touched");
+									});
+
+								</script>
+      
+								<div id='kinectMarker2' class='pm-container'> 
+									<div class='pm' style='text-align:center;'> 
+										<img src='img/1000x1000.gif' width ='1000px' style='padding:10px;'/>
+										<div class="text" style='color:white'>Kinect2</div>
+									</div>
+								</div>
+      
+								]]>
+							</description>
+    
+							<balloonVisibility>1</balloonVisibility>
+							<Tracker>
+								<device>#framesimpleid2</device>
+								<options>
+									<markerId>1</markerId> <!-- integer value (-1 means follow any marker of markerType) -->
+									<width>0.21</width> <!-- width of marker in meters -->
+								</options>
+								<locationMode>relative</locationMode> <!-- default (ignore), relative (update location) -->
+								<orientationMode>relative</orientationMode> <!-- default (ignore), relative (update orientation) -->
+								<scale>
+									<x>0.022</x>
+									<y>0.022</y>
+									<z>0.022</z>
+								</scale>      
+							</Tracker>
+							<styleUrl>#undecorated_style</styleUrl>
+						</Placemark>
+
 
 						<Placemark>
 							<id>PM1</id>
