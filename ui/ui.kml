@@ -239,7 +239,7 @@
 						</ScreenOverlay>
    
          
-						<Placemark id="description_javascript">
+						<Placemark id="tracker_kinect1">
 							<name>Tracker SimpleId Frame Map adfasdf</name>
 							<description><![CDATA[      
 								<style>
@@ -255,14 +255,21 @@
       
 								<script>
 									function hudElement(id) {}; //disable HUD'ing
-									$("#testPM3").bind("touchstart", function () 
-									{
-									alert("touched");
-									});
+					        function handleVisibleChange() {
+					            var placemark = KHARMA.getKMLElementById('tracker_kinect1');
+					            var tracker = placemark.geometry[0];
+					            placemark.visibility = tracker.visible;
+					            placemark.render();
+					            console.log("Set placemark visibility to:" + placemark.visibility);
+					        }
+					        function tracker_framesimple_init() {
+					            $(document).bind('trackerChanged',function(event) {handleVisibleChange()});
+					            console.log('tracker_kinect1 initialized');
+					        }
 
 								</script>
       
-								<div id='testPM3' class='pm-container'> 
+								<div id='kinectMarker1' class='pm-container'> 
 									<div class='pm' style='text-align:center;'> 
 										<img src='img/1000x1000.gif' width ='1000px' style='padding:10px;'/>
 										<div class="text" style='color:white'>Kinect1</div>
@@ -274,7 +281,7 @@
     
 							<balloonVisibility>1</balloonVisibility>
 							<Tracker>
-								<device>#framesimpleid</device>
+								<device>#kinect1</device>
 								<options>
 									<markerId>0</markerId> <!-- integer value (-1 means follow any marker of markerType) -->
 									<width>0.21</width> <!-- width of marker in meters -->
@@ -290,7 +297,7 @@
 							<styleUrl>#undecorated_style</styleUrl>
 						</Placemark>
 
-						<Placemark id="Kinect2">
+						<Placemark id="tracker_kinect2">
 							<name>Tracker Kinect2</name>
 							<description><![CDATA[      
 								<style>
@@ -306,10 +313,18 @@
       
 								<script>
 									function hudElement(id) {}; //disable HUD'ing
-									$("#kinectMarker2").bind("touchstart", function () 
-									{
-									alert("touched");
-									});
+					        function handleVisibleChange() {
+					            var placemark = KHARMA.getKMLElementById('tracker_kinect2');
+					            var tracker = placemark.geometry[0];
+					            placemark.visibility = tracker.visible;
+					            placemark.render();
+					            console.log("Set placemark visibility to:" + placemark.visibility);
+					        }
+					        function tracker_framesimple_init() {
+					            $(document).bind('trackerChanged',function(event) {handleVisibleChange()});
+					            console.log('tracker_kinect2 initialized');
+					        }
+									
 
 								</script>
       
@@ -325,7 +340,7 @@
     
 							<balloonVisibility>1</balloonVisibility>
 							<Tracker>
-								<device>#framesimpleid</device>
+								<device>#kinectMarker2</device>
 								<options>
 									<markerId>1</markerId> <!-- integer value (-1 means follow any marker of markerType) -->
 									<width>0.21</width> <!-- width of marker in meters -->
