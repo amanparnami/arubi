@@ -239,7 +239,7 @@
 						</ScreenOverlay>
    
 						<Placemark id="tracker_kinect_one">
-							<name>Tracker Frame SimpleId Example</name>
+							<name>Kinect1</name>
 							<description><![CDATA[
 					        <script language="text/javascript">
 					        function handleVisibleChange() {
@@ -265,7 +265,7 @@
 							</description>
 							<balloonVisibility>1</balloonVisibility>
 							<Tracker>
-								<device>#framesimpleid</device>
+								<device>#kinectoneid</device>
 								<options>
 									<markerId>0</markerId> <!-- integer value (-1 means follow any marker of marker) -->
 									<width>0.022</width> <!-- width of marker in meters -->
