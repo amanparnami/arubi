@@ -265,7 +265,7 @@
 							</description>
 							<balloonVisibility>1</balloonVisibility>
 							<Tracker>
-								<device>#kinectoneid</device>
+								<device>#framesimpleid</device>
 								<options>
 									<markerId>0</markerId> <!-- integer value (-1 means follow any marker of marker) -->
 									<width>0.022</width> <!-- width of marker in meters -->
