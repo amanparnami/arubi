@@ -29,7 +29,7 @@ $(document).ready(function () {
 function createPlacemark(){
     var placemarkJSON = [{
         balloonVisibility : 1,
-        description : "<div id='testPM2' class='pm-container'> <div class='pm' style='text-aligh:center;'> <img src='/img/200x200.gif' width ='200px' style='padding:10px;'/><div style='color:white'>Kinect1</div></div></div>", 
+        description : "<div id='testPM2' class='pm-container'> <div class='pm' style='text-aligh:center;'> <img src='img/200x200.gif' width ='200px' style='padding:10px;'/><div style='color:white'>Kinect1</div></div></div>", 
         iconVisibility: "0",
         id : 'PM2',
         labelVisibility : "0",

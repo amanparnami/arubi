@@ -251,7 +251,7 @@
       
 								<div id='testPM3' class='pm-container'> 
 									<div class='pm' style='text-aligh:center;'> 
-										<img src='/img/1000x1000.gif' width ='1000px' style='padding:10px;'/>
+										<img src='img/1000x1000.gif' width ='1000px' style='padding:10px;'/>
 										<div style='color:white'>Kinect1</div>
 									</div>
 								</div>
@@ -351,7 +351,7 @@
 																<Style id="document_style">
 																	<IconStyle>
 																		<Icon>
-																			<href>/img/administration.png</href>
+																			<href>img/administration.png</href>
 																		</Icon>
 																	</IconStyle>
 																</Style>
