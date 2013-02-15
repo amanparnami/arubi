@@ -277,9 +277,8 @@
 							<styleUrl>#undecorated_style</styleUrl>
 						</Placemark>
 
-						<Placemark>
-							<id>Kinect2</id>
-							<name>Tracker: Kinect2</name>
+						<Placemark id="Kinect2">
+							<name>Tracker Kinect2</name>
 							<description><![CDATA[      
 								<style>
 									div.text
@@ -313,7 +312,7 @@
     
 							<balloonVisibility>1</balloonVisibility>
 							<Tracker>
-								<device>#framesimpleid2</device>
+								<device>#framesimpleid</device>
 								<options>
 									<markerId>1</markerId> <!-- integer value (-1 means follow any marker of markerType) -->
 									<width>0.21</width> <!-- width of marker in meters -->
