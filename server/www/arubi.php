@@ -14,9 +14,11 @@ if($sender == "kinect")
 }
 else if($sender == "arduino")
 {
-	$ourFileHandle = fopen($ourFileName, 'r') or die("can't open file");
-	$contents = fread($ourFileHandle, filesize($ourFileName));
-	echo $contents;
+
+	echo "Got It!!";
+	// $ourFileHandle = fopen($ourFileName, 'r') or die("can't open file");
+	// $contents = fread($ourFileHandle, filesize($ourFileName));
+	// echo $contents;
 }
 //echo "Got it!!";
 ?>
