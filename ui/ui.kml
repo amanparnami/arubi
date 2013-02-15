@@ -242,7 +242,7 @@
 							<name>Tracker Frame SimpleId Example</name>
 							<description><![CDATA[
 					        <script language="text/javascript">
-					        /*function handleVisibleChange() {
+					        function handleVisibleChange() {
 					            var placemark = KHARMA.getKMLElementById('tracker_framesimple');
 					            var tracker = placemark.geometry[0];
 					            placemark.visibility = tracker.visible;
@@ -252,7 +252,7 @@
 					        function tracker_framesimple_init() {
 					            $(document).bind('trackerChanged',function(event) {handleVisibleChange()});
 					            console.log('tracker_framesimple initialized');
-					        }*/
+					        }
 					        </script>
 									
 									<div id='kinectMarker1' class='pm-container'> 
