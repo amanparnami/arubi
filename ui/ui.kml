@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 	<Document>
-
+		<!--
+		TODO updated by Aman on 2/15/13
+		- Make Placemark creation and deletion dynamic (hint: app.js)
+		- Make Placemark interactive (hint: support touch)
+		- Make device info boxes resize to fit the iPad screen
+		- [Bug] leftpanel, rightpanel not showing up
+		-- probably interaction w/ Input, Output buttons is not working
+		- [Bug] argon_channel_icon not appearing correctly
+		- Visualize a rule
+		- Connect input and output usng svg
+		-- for now just tapping on output after input should be good
+		- Update rule information in database
+		-- talk to PhP connection
+		-->
 		<Style id="undecorated_style"> 
 			<BalloonStyle>
 				<displayMode>undecorated</displayMode> <!-- no styling applied to balloon -->
