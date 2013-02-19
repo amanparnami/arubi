@@ -1,317 +1,323 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
-	<Document>
-		<!--
-		TODO updated by Aman on 2/15/13
-		- Make Placemark creation and deletion dynamic (hint: app.js)
-		- Make Placemark interactive (hint: support touch)
-		- Make device info boxes resize to fit the iPad screen
-		- [Bug] leftpanel, rightpanel not showing up
-		** probably interaction w/ Input, Output buttons is not working
-		- [Bug] argon_channel_icon not appearing correctly
-		- Visualize a rule
-		- Connect input and output usng svg
-		** for now just tapping on output after input should be good
-		- Update rule information in database
-		** talk to PhP connection
-		-->
-		<Style id="undecorated_style"> 
-			<BalloonStyle>
-				<displayMode>undecorated</displayMode> <!-- no styling applied to balloon -->
-			</BalloonStyle>
-		</Style>
+    <Document>
+        <!--
+      		TODO updated by Aman on 2/15/13
+      		- Make Placemark creation and deletion dynamic (hint: app.js)
+      		- Make Placemark interactive (hint: support touch)
+      		- [fixed] Make device info boxes resize to fit the iPad screen
+      		- [fixed][Bug] leftpanel, rightpanel not showing up
+      		**[fixed] probably interaction w/ Input, Output buttons is not working
+      		- [fixed][Bug] argon_channel_icon not appearing correctly
+      		- Visualize a rule
+      		- Connect input and output usng svg
+      		** for now just tapping on output after input should be good
+      		- Update rule information in database
+      		** talk to PhP connection
+                - Change font size to be displayed properly on screen
+      		-->
+        <Style id="undecorated_style"> 
+            <BalloonStyle>
+                <displayMode>undecorated</displayMode> <!-- no styling applied to balloon -->
+            </BalloonStyle>
+        </Style>
 
-		<ScreenOverlay>
-			<name>Overlay HTML</name>
-			<description><![CDATA[
-        
-				<script type="text/javascript"> 
+        <ScreenOverlay>
+            <name>Overlay HTML</name>
+            <description><![CDATA[
+<meta name="format-detection" content="telephone=no"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"> 
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
 
-					var script = document.createElement('script'); 
-					script.src = 'js/loader.js'; 
-					script.type = 'text/javascript'; 
-					script.onload = function(){ar_init();};
-					document.body.appendChild(script);  
+<script type="text/javascript"> 
+
+    var script = document.createElement('script'); 
+    script.src = 'js/loader.js'; 
+    script.type = 'text/javascript'; 
+    script.onload = function(){ar_init();};
+    document.body.appendChild(script);  
                 
-				</script>
-            
-				<style type="text/css">
+</script>
 
-					p{
-					margin: 0;
-					}
+<style type="text/css">
 
-					body{
-					margin: 0;
-					}
+    p{
+        margin: 0;
+    }
 
-					.container{
-					width: 100%;
-					overflow: hidden;
-					/*background: #CC9E61;*/
-					}
+    body{
+        margin: 0;
+    }
 
-					div.panel{
-					display: block;
-					height: 100%;
-					}
+    .container{
+        width: 100%;
+        overflow: hidden;
+        /*background: #CC9E61;*/
+    }
 
-					.inner, .outer {
-					border-radius: 12px;
-					float: left;
-					}
+    div.panel{
+        display: block;
+        height: 100%;
+    }
 
-					.inner {
-					width: 60%;
-					background: #E9F2F9;
-					}
+    .inner, .outer {
+        border-radius: 12px;
+        float: left;
+    }
 
-					.outer {
-					width: 40%;
-					background: #B2D1E5;
-					}
+    .inner {
+        width: 60%;
+        background: #E9F2F9;
+    }
 
-					#leftpanel, #rightpanel{
-					/*background: yellow;*/
-					width: 30%;
-					position: fixed;
-					top: 0;
-					margin-bottom: 5px;
-					/*border: 5px solid #8ac8d4;*/
-					border-radius: 10px;
-					/*float: left;*/
-					padding: 5px;
-					}
+    .outer {
+        width: 40%;
+        background: #B2D1E5;
+    }
 
-					#leftpanel {
-					left: -40%;
+    #leftpanel, #rightpanel{
+        /*background: yellow;*/
+        width: 40%;
+        position: fixed;
+        top: 0;
+        margin-bottom: 5px;
+        /*border: 5px solid #8ac8d4;*/
+        border-radius: 15px;
+        /*float: left;*/
+        padding: 5px;
+    }
 
-					}
+    #leftpanel {
+        left: -40%;
 
-					#rightpanel{
-					right: -40%;
-					}
+    }
 
-					div.device{
-					border: 5px #F9F9F9 solid;
-					border-radius: 15px;
-					height: 20%;
-					width: 20%;
-					background: #40B3DF;
-					color: #E9F2F9;
-					padding: 5px;
-					position: relative;
-					margin-bottom: 5px;
-					}
+    #rightpanel{
+        right: -40%;
+    }
 
-					div.device .device-name {
-					font-size: 14px;
-					font-weight: bold;
-					}
+    div.device{
+        border: 5px #F9F9F9 solid;
+        border-radius: 15px;
+        height: 130px;
+        width: 130px;
+        background: #40B3DF;
+        color: #E9F2F9;
+        padding: 5px;
+        position: relative;
+        margin-bottom: 5px;
+    }
 
-					div.device p{
-					margin-bottom: 5px;
-					}
+    div.device .device-name {
+        font-size: 16px;
+        font-weight: bold;
+    }
 
-					.device .device-availability {
-					}
+    div.device p{
+        margin-bottom: 5px;
+    }
 
-					.device-availability .on, .device-availability .off{
-					width: 25px;
-					height: 15px;
-					border-radius: 5px;
-					font-size: 12px;
-					padding: 2px;
+    .device .device-availability {
+    }
 
-					}
+    .device-availability .on, .device-availability .off{
+        width: 25px;
+        height: 15px;
+        border-radius: 5px;
+        font-size: 14px;
+        padding: 2px;
+
+    }
 
 
-					.device-availability .on{
-					background-color: #A8CB17;
-					color: white;
-					}
+    .device-availability .on{
+        background-color: #A8CB17;
+        color: white;
+    }
 
-					.device-availability .off{
-					background-color: #EEEEEE;
-					color: gray;		
-					}
+    .device-availability .off{
+        background-color: #EEEEEE;
+        color: gray;		
+    }
 
-					.device a.button{
-					background-color: #A8CB17;
-					padding: 5px 10px;
-					position: absolute;
-					bottom: 5px;
-					}
+    .device a.button{
+        background-color: #A8CB17;
+        padding: 5px 10px;
+        position: absolute;
+        bottom: 5px;
+    }
 
-					.device a.button.input{
-					left: 5px;
-					border-bottom-left-radius: 10px;
-					}
+    .device a.button.input{
+        left: 5px;
+        border-bottom-left-radius: 10px;
+    }
 
-					.device a.button.output{
-					right: 5px;
-					border-bottom-right-radius: 10px;
-					}
+    .device a.button.output{
+        right: 5px;
+        border-bottom-right-radius: 10px;
+    }
 
-					.feature{
-					position: relative;
-					margin: 10px;
-					background: #98C73D;
-					height: 100px;
-					width: 100px;
-					float: left;
-					padding: 5px;
-					border-top-left-radius: 10px;
-					border-bottom-right-radius: 10px;
-					border:5px solid white;
-					}
+    .feature{
+        position: relative;
+        margin: 10px;
+        background: #98C73D;
+        height: 100px;
+        width: 100px;
+        float: left;
+        padding: 5px;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border:5px solid white;
+    }
 
-					.feature img{
-					max-width: 100px;
-					max-height: 80px;
-					color: white;
-					}
+    .feature img{
+        max-width: 100px;
+        max-height: 80px;
+        color: white;
+    }
+</style>
 
-				</style>
-                
-                
-				<div class="container" style=" height: 100%; width:100%; text-align: center;">
-					<div id="leftpanel" class="panel input" style="">
-						<div class="inner panel" ></div>
-						<div class="outer panel" >
-							<figure class="feature" id="feature_id_1">
-								<img src="img/voice.svg">
-									<figcaption>Speech</figcaption>
-								</figure>
-								<figure class="feature" id="feature_id_2">
-									<img src="img/hand.svg">
-										<figcaption>Gesture</figcaption>
-									</figure>
-								</div>
-							</div>
-							<div id="devicepanel" class="panel" style="width:17%; margin:0 auto;">
-								<div class="device" id="device_id_1">
-									<p class="device-name">Kinect</p>
-									<p class="device-description">Take input like speech, motion, etc</p>
-									<p class="device-availability">Availability: <span class="on">On</span></p>
-									<a class="button input">Input</a>
-								</div> 
+<div class="container" style=" height: 100%; width:100%; text-align: center;">
+    <div id="leftpanel" class="panel input" style="">
+        <div class="inner panel" ></div>
+        <div class="outer panel" >
+            <figure class="feature" id="feature_id_1">
+                <img src="img/voice.svg">
+                <figcaption>Speech</figcaption>
+            </figure>
+            <figure class="feature" id="feature_id_2">
+                <img src="img/hand.svg">
+                <figcaption>Gesture</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div id="devicepanel" class="panel" style="width:17%; margin:0 auto;">
+        <div class="device" id="device_id_1">
+            <p class="device-name">Kinect</p>
+            <p class="device-description">Take input like speech, motion, etc</p>
+            <p class="device-availability">Availability: <span class="on">On</span></p>
+            <a class="button input">Input</a>
+        </div> 
 
-								<div class="device" id="device_id_2">
-									<p class="device-name">Projector 1</p>
-									<p class="device-description">Project visuals</p>
-									<p class="device-availability">Availability: <span class="on">On</span></p>
-									<a class="button output">Output</a>
-								</div> 
+        <div class="device" id="device_id_2">
+            <p class="device-name">Projector 1</p>
+            <p class="device-description">Project visuals</p>
+            <p class="device-availability">Availability: <span class="on">On</span></p>
+            <a class="button output">Output</a>
+        </div> 
 
-								<div class="device" id="device_id_3">
-									<p class="device-name">Projector 2</p>
-									<p class="device-description">Project visuals</p>
-									<p class="device-availability">Availability: <span class="off">Off</span></p>
-								</div> 
+        <div class="device" id="device_id_3">
+            <p class="device-name">Projector 2</p>
+            <p class="device-description">Project visuals</p>
+            <p class="device-availability">Availability: <span class="off">Off</span></p>
+        </div> 
 
-								<div class="device" id="device_id_4">
-									<p class="device-name" >Light</p>
-									<p class="device-description">Turn on/off</p>
-									<p class="device-availability">Availability: <span class="on">On</span></p>
-									<a class="button output">Output</a>
-								</div> 
-							</div>
-							<div id="rightpanel" class="panel output" style="">
+        <div class="device" id="device_id_4">
+            <p class="device-name" >Light</p>
+            <p class="device-description">Turn on/off</p>
+            <p class="device-availability">Availability: <span class="on">On</span></p>
+            <a class="button output">Output</a>
+        </div> 
+    </div>
+    <div id="rightpanel" class="panel output" style="">
 
-								<div class="outer panel" >
-									<figure class="feature" id="feature_id_3">
-										<img src="img/light.svg">
-											<figcaption>Light</figcaption>
-										</figure>
-										<figure class="feature" id="feature_id_4">
-											<img src="img/project.svg">
-												<figcaption>Project</figcaption>
-											</figure>
-										</div>
-										<div class="inner panel" ></div>
-									</div>
-								</div>
+        <div class="outer panel" >
+            <figure class="feature" id="feature_id_3">
+                <img src="img/light.svg">
+                <figcaption>Light</figcaption>
+            </figure>
+            <figure class="feature" id="feature_id_4">
+                <img src="img/project.svg">
+                <figcaption>Project</figcaption>
+            </figure>
+        </div>
+        <div class="inner panel" ></div>
+    </div>
+</div>
 								]]>
-							</description>
-							<screenXY x="0.0" y="0" xunits="fraction" yunits="pixels"/>
-							<styleUrl>#undecorated_style</styleUrl>
-						</ScreenOverlay>
+            </description>
+            <screenXY x="0.0" y="100" xunits="fraction" yunits="pixels"/>
+            <styleUrl>#undecorated_style</styleUrl>
+        </ScreenOverlay>
    
-						<Placemark id="tracker_kinect_one">
-							<name>Kinect1</name>
-							<description><![CDATA[
-					        <script language="text/javascript">
-					        function handleVisibleChange() {
-					            var placemark = KHARMA.getKMLElementById('tracker_kinect_one');
-					            var tracker = placemark.geometry[0];
-					            placemark.visibility = tracker.visible;
-					            placemark.render();
-					            console.log("Set placemark visibility to:" + placemark.visibility);
-					        }
-					        function tracker_kinect_one_init() {
-					            $(document).bind('trackerChanged',function(event) {handleVisibleChange()});
-					            console.log('tracker_framesimple initialized');
-					        }
-					        </script>
-									
-									<div id='kinectMarker1' class='pm-container'> 
-										<div class='pm' style='text-align:center;'> 
-											<img src='img/1000x1000.gif' width ='1000px' style='padding:10px;'/>
-											<div class="text" style='color:white'>Kinect1</div>
-										</div>
-									</div>
-							]]>
-							</description>
-							<balloonVisibility>1</balloonVisibility>
-							<Tracker>
-								<device>#framesimpleid</device>
-								<options>
-									<markerId>0</markerId> <!-- integer value (-1 means follow any marker of marker) -->
-									<width>0.022</width> <!-- width of marker in meters -->
-								</options>
-								<locationMode>relative</locationMode> <!-- default (ignore), relative (update location) -->
-								<orientationMode>relative</orientationMode> <!-- default (ignore), relative (update orientation) -->
-								<scale>
-									<x>0.022</x> <!-- test marker is 0.07 meters -->
-									<y>0.022</y>
-									<z>0.022</z>
-								</scale>
-							</Tracker>
-							<styleUrl>#undecorated_style</styleUrl>
-						</Placemark>
+        <Placemark id="tracker_kinect_one">
+            <name>Kinect1</name>
+            <description><![CDATA[
+                        <script language="text/javascript">
+                        function handleVisibleChange() {
+                            var placemark = KHARMA.getKMLElementById('tracker_kinect_one');
+                            var tracker = placemark.geometry[0];
+                            placemark.visibility = tracker.visible;
+                            placemark.render();
+                            //console.log("Set placemark visibility to:" + placemark.visibility);
+                        }
+                        
+                        function tracker_kinect_one_init() {
+                            //$(document).bind('trackerChanged',function(event) {handleVisibleChange()});
+                            //console.log('tracker_framesimple initialized');
+                            window.setInterval(handleVisibleChange, 3000);
+                        }
+                        </script>
+
+                                                <div id='kinectMarker1' class='pm-container'> 
+                                                        <div class='pm' style='text-align:center;'> 
+                                                                <img src='img/1000x1000.gif' width ='100px' style='padding:10px;'/>
+                                                                <div class="text" style='color:white'>Kinect1</div>
+                                                        </div>
+                                                </div>
+                                ]]>
+            </description>
+            <balloonVisibility>1</balloonVisibility>
+            <Tracker>
+                <device>#framesimpleid</device>
+                <options>
+                    <markerId>0</markerId>  integer value (-1 means follow any marker of marker) 
+                    <width>0.022</width>  width of marker in meters 
+                </options>
+                <locationMode>relative</locationMode>  default (ignore), relative (update location) 
+                <orientationMode>relative</orientationMode>  default (ignore), relative (update orientation) 
+                <scale>
+                    <x>0.022</x>  test marker is 0.07 meters 
+                    <y>0.022</y>
+                    <z>0.022</z>
+                </scale>
+            </Tracker>
+            <styleUrl>#undecorated_style</styleUrl>
+        </Placemark>
 
     
-						<!-- KML document description -->
-						<name>Arubi.kml</name>
-						<Snippet>Example of a placemark balloon description with CSS styling</Snippet>
-						<description><![CDATA[
-							<p><b>Example of a placemark balloon description with CSS styling</b></p>
-							<p>
-								<b>notes:</b>
-								<ul>
-									<li> CSS can be used to set the description balloon styling
-										<li> setting displayMode to "undecorated" removes any default styling
-											<li> the styling should move content up and left for proper centering
-												<ul>
-													<li> default HTML styling flows to the right and down from the origin
-														<li> use CSS "left" and "top" attributes to shift "absolute" positioned elements
-															<li> child elements of absolute positioned elements do not respect "vertical-align"
-																<li> use the "top" attribute on a child element to set vertical alignment
-																</ul>
-																<li> all CSS in each channel shares the same namespace
-																	<li> the placemark description balloon should appear to the west of the user 
-																	</ul>
-																	]]>
-																</description>          
-																<styleUrl>#document_style</styleUrl>    
-																<Style id="document_style">
-																	<IconStyle>
-																		<Icon>
-																			<href>img/argon_channel_icon.png</href>
-																		</Icon>
-																	</IconStyle>
-																</Style>
-															</Document>        
-														</kml>
-														​
+        <!-- KML document description -->
+        <name>Arubi.kml</name>
+        <Snippet>Example of a placemark balloon description with CSS styling</Snippet>
+        <description><![CDATA[
+                    <p><b>Example of a placemark balloon description with CSS styling</b></p>
+                    <p>
+                    <b>notes:</b>
+                    <ul>
+                    <li> CSS can be used to set the description balloon styling
+                    <li> setting displayMode to "undecorated" removes any default styling
+                    <li> the styling should move content up and left for proper centering
+                    <ul>
+                    <li> default HTML styling flows to the right and down from the origin
+                    <li> use CSS "left" and "top" attributes to shift "absolute" positioned elements
+                    <li> child elements of absolute positioned elements do not respect "vertical-align"
+                    <li> use the "top" attribute on a child element to set vertical alignment
+                    </ul>
+                    <li> all CSS in each channel shares the same namespace
+                    <li> the placemark description balloon should appear to the west of the user 
+                    </ul>
+                    ]]>
+        </description>          
+        <styleUrl>#document_style</styleUrl>    
+        <Style id="document_style">
+            <IconStyle>
+                <Icon>
+                    <href>img/argon_channel_icon.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+    </Document>        
+</kml>
+​

@@ -22,8 +22,8 @@ $(document).ready(function () {
     //	
     //	createPlacemark();
     //var feature = document.getElementById(kmlObj.id);
-
-
+    getDevices();
+    createPlacemark();
     });
 
 function createPlacemark(){
@@ -83,6 +83,57 @@ function createPlacemark(){
 
 }
 
+function createTracker(){
+    var placemarkJSON = [{
+        balloonVisibility : 1,
+        description : "<script language='text/javascript'>"
+                        +"function handleVisibleChange() {"
+                            +"var placemark = KHARMA.getKMLElementById('tracker_kinect_one');"
+                            +"var tracker = placemark.geometry[0];"
+                            +"placemark.visibility = tracker.visible;"
+                            +"placemark.render();"
+                        +"}"
+                        +"function tracker_kinect_one_init() {"
+                            +"window.setInterval(handleVisibleChange, 3000);"
+                        +"}"
+                        +"</script>"
+                                                +"<div id='kinectMarker1' class='pm-container'> "
+                                                        +"<div class='pm' style='text-align:center;'> "
+                                                                +"<img src='img/1000x1000.gif' width ='100px' style='padding:10px;'/>"
+                                                                +"<div class='text' style='color:white'>Kinect1</div>"
+                                                        +"</div>"
+                                                +"</div>", 
+        iconVisibility: "0",
+        id : 'PM2',
+        labelVisibility : "0",
+        name : "testTracker",
+        type : "placemark",
+        visibility : "1",
+        styleUrl : "#undecorated_style",
+       
+
+         Tracker: [{
+            device: "#framesimpleid",
+            options: {
+                    markerId: 0,
+                    width: 0.21
+            },
+            locationMode: "relative",
+            orientationMode: "relative",
+            scale: [{
+                    x: 0.022,
+                    y: 0.022,
+                    z: 0.022
+            }],
+         }],
+    }];
+
+    var placemark = new KMLPlacemark(placemarkJSON);
+
+    alert("placemark created");
+}
+
+
 //Functions for data access
 
 //Get the information for all devices
@@ -96,7 +147,6 @@ function getDevices(){
         success: function (devices) {//name return data as devices
             devicesHtml = '';
             $(devices).each(function(i) {
-
                 device = devices[i];
                 console.log(device.name);
                 
@@ -121,7 +171,8 @@ function getDevices(){
 }
 
 function bindDevices () {
-    $(".device a.button.input").on("click", function () {
+    $(".device a.button.input").on("click touchstart", function () {
+        alert("test ");
 
         $('#leftpanel').animate({
             'left':'-24%'
@@ -130,12 +181,12 @@ function bindDevices () {
 
 
 
-    // $(".device ").on("click", function () {
+    // $(".device ").on("click touchstart", function () {
 
     // 	$('#rightpanel').css('right', '-24%');
     // });
 
-    $("#device_id_2 a.button.output").on("click", function () {
+    $("#device_id_2 a.button.output").on("click touchstart", function () {
 
         $('#rightpanel').animate({
             'right':'-24%'
@@ -144,7 +195,7 @@ function bindDevices () {
         $('#feature_id_4').hide();
     });
 
-    $("#device_id_4 a.button.output").on("click", function () {
+    $("#device_id_4 a.button.output").on("click touchstart", function () {
 
         $('#rightpanel').animate({
             'right': '-24%'
@@ -153,14 +204,14 @@ function bindDevices () {
         $('#feature_id_3').hide();
     });
 
-    $(".input .feature").on("click", function () {
+    $(".input .feature").on("click touchstart", function () {
 
         $('#leftpanel').animate({
             'left': '0%'
         },'easein');
     });
 
-    $(".output .feature").on("click", function () {
+    $(".output .feature").on("click touchstart", function () {
 
         $('#rightpanel').animate({
             'right': '0%'
