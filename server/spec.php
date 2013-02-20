@@ -4,8 +4,9 @@ include 'db_helper.php';
 header("Content-type: application/json");
 
 switch ($_GET["f"]) {
-    case "getFeatureById":getFeatureById($_GET["id"]);break;
-    case "getFeatureListByDeviceId":getFeatureListByDeviceId($_GET["deviceId"]);break;
+    case "getInputSpecById":getInputSpecById($_GET["id"]);break;
+    case "getOutputSpecById":getOutputSpecById($_GET["id"]);break;
+    case "getSpecListByFeatureId":getSpecListByFeatureId($_GET["feature_id"]);break;
 
         break;
 
@@ -13,10 +14,20 @@ switch ($_GET["f"]) {
         break;
 }
 
-function getFeatureById($id) {
+function getInputSpecById($id) {
     $dbQuery = sprintf("SELECT * 
-                        FROM feature
-                        WHERE feature.id = '$id'
+                        FROM input
+                        WHERE input.id = '$id'
+                        LIMIT 0 , 30");
+    $result = getDBResultRecord($dbQuery);
+
+    echo json_encode($result);
+}
+
+function getOutputSpecById($id) {
+    $dbQuery = sprintf("SELECT * 
+                        FROM output
+                        WHERE output.id = '$id'
                         LIMIT 0 , 30");
     $result = getDBResultRecord($dbQuery);
 
