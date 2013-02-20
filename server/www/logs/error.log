@@ -82,3 +82,6 @@
 [Fri Feb 15 16:51:37 2013] [error] [client 127.0.0.1] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\\Users\\Craig\\Documents\\GitHub\\arubi\\server\\www\\arubi.php on line 29
 [Fri Feb 15 16:51:37 2013] [error] [client 127.0.0.1] PHP Stack trace:
 [Fri Feb 15 16:51:37 2013] [error] [client 127.0.0.1] PHP   1. {main}() C:\\Users\\Craig\\Documents\\GitHub\\arubi\\server\\www\\arubi.php:0
+[Wed Feb 20 12:46:47 2013] [error] [client 192.168.1.2] File does not exist: C:/Users/Craig/Documents/GitHub/arubi/ui/css/UI.css
+[Wed Feb 20 12:47:01 2013] [error] [client 192.168.1.2] File does not exist: C:/Users/Craig/Documents/GitHub/arubi/ui/css/UI.css
+[Wed Feb 20 12:50:46 2013] [error] [client 192.168.1.2] File does not exist: C:/Users/Craig/Documents/GitHub/arubi/ui/css/UI.css
