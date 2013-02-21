@@ -4,7 +4,8 @@
         <!--
       		TODO updated by Aman on 2/15/13
       		- Make Placemark creation and deletion dynamic (hint: app.js)
-      		- Make Placemark interactive (hint: support touch)
+        - Show and hide device placemark based on marker detected
+      		- [fixed] Make Placemark interactive (hint: support touch)
       		- [fixed] Make device info boxes resize to fit the iPad screen
       		- [fixed][Bug] leftpanel, rightpanel not showing up
       		**[fixed] probably interaction w/ Input, Output buttons is not working
@@ -14,7 +15,8 @@
       		** for now just tapping on output after input should be good
       		- Update rule information in database
       		** talk to PhP connection
-                - Change font size to be displayed properly on screen
+        - [fixed] Change font size to be displayed properly on screen
+        - Add range overlay for knect
       		-->
         <Style id="undecorated_style"> 
             <BalloonStyle>
@@ -97,26 +99,28 @@
     #rightpanel{
         right: -40%;
     }
-
+                
     div.device{
         border: 5px #F9F9F9 solid;
         border-radius: 15px;
-        height: 130px;
-        width: 130px;
+        height: 150px;
+        width: 150px;
         background: #40B3DF;
         color: #E9F2F9;
         padding: 5px;
         position: relative;
         margin-bottom: 5px;
+        margin-top: 250px;
     }
 
     div.device .device-name {
-        font-size: 16px;
+        font-size: 0.8em;
         font-weight: bold;
     }
 
     div.device p{
         margin-bottom: 5px;
+        font-size: 0.6em;
     }
 
     .device .device-availability {
@@ -126,7 +130,7 @@
         width: 25px;
         height: 15px;
         border-radius: 5px;
-        font-size: 14px;
+        font-size: 0.6em;
         padding: 2px;
 
     }
@@ -147,6 +151,7 @@
         padding: 5px 10px;
         position: absolute;
         bottom: 5px;
+        font-size: 0.6em;
     }
 
     .device a.button.input{
@@ -170,6 +175,7 @@
         border-top-left-radius: 10px;
         border-bottom-right-radius: 10px;
         border:5px solid white;
+        font-size: 0.6em;
     }
 
     .feature img{
@@ -194,32 +200,7 @@
         </div>
     </div>
     <div id="devicepanel" class="panel" style="width:17%; margin:0 auto;">
-        <div class="device" id="device_id_1">
-            <p class="device-name">Kinect</p>
-            <p class="device-description">Take input like speech, motion, etc</p>
-            <p class="device-availability">Availability: <span class="on">On</span></p>
-            <a class="button input">Input</a>
-        </div> 
 
-        <div class="device" id="device_id_2">
-            <p class="device-name">Projector 1</p>
-            <p class="device-description">Project visuals</p>
-            <p class="device-availability">Availability: <span class="on">On</span></p>
-            <a class="button output">Output</a>
-        </div> 
-
-        <div class="device" id="device_id_3">
-            <p class="device-name">Projector 2</p>
-            <p class="device-description">Project visuals</p>
-            <p class="device-availability">Availability: <span class="off">Off</span></p>
-        </div> 
-
-        <div class="device" id="device_id_4">
-            <p class="device-name" >Light</p>
-            <p class="device-description">Turn on/off</p>
-            <p class="device-availability">Availability: <span class="on">On</span></p>
-            <a class="button output">Output</a>
-        </div> 
     </div>
     <div id="rightpanel" class="panel output" style="">
 
@@ -248,6 +229,7 @@
                         <script language="text/javascript">
                         function handleVisibleChange() {
                             var placemark = KHARMA.getKMLElementById('tracker_kinect_one');
+                            //if (placemark.visibility == true) alert("true");
                             var tracker = placemark.geometry[0];
                             placemark.visibility = tracker.visible;
                             placemark.render();
@@ -255,26 +237,22 @@
                         }
                         
                         function tracker_kinect_one_init() {
+                            //alert("detected");
                             //$(document).bind('trackerChanged',function(event) {handleVisibleChange()});
                             //console.log('tracker_framesimple initialized');
                             window.setInterval(handleVisibleChange, 3000);
                         }
                         </script>
 
-                                                <div id='kinectMarker1' class='pm-container'> 
-                                                        <div class='pm' style='text-align:center;'> 
-                                                                <img src='img/1000x1000.gif' width ='100px' style='padding:10px;'/>
-                                                                <div class="text" style='color:white'>Kinect1</div>
-                                                        </div>
-                                                </div>
-                                ]]>
+
+                        ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
             <Tracker>
                 <device>#framesimpleid</device>
                 <options>
-                    <markerId>0</markerId>  integer value (-1 means follow any marker of marker) 
-                    <width>0.022</width>  width of marker in meters 
+                    <markerId>100</markerId>  integer value (-1 means follow any marker of marker) 
+                    <width>0.02</width>  width of marker in meters 
                 </options>
                 <locationMode>relative</locationMode>  default (ignore), relative (update location) 
                 <orientationMode>relative</orientationMode>  default (ignore), relative (update orientation) 
@@ -282,6 +260,243 @@
                     <x>0.022</x>  test marker is 0.07 meters 
                     <y>0.022</y>
                     <z>0.022</z>
+                </scale>
+            </Tracker>
+            <styleUrl>#undecorated_style</styleUrl>
+        </Placemark>
+
+        <Placemark id="tracker_0">
+            <name>Tracker Frame SimpleId Example</name>
+            <description><![CDATA[
+        <script language="text/javascript">
+            function doTrackerAtIndex0(){
+                
+            var placemark = KHARMA.getKMLElementById('tracker_0');
+            var tracker = placemark.geometry[0];
+            if(placemark.visibility == true) $("#device_id_0").show();
+            else $("#device_id_0").hide();
+            placemark.visibility = tracker.visible;
+            placemark.render();
+            }
+                
+            function tracker_0_init(){
+                window.setInterval(doTrackerAtIndex0, 1000);
+            }
+        </script>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            ]]>
+            </description>
+            <balloonVisibility>1</balloonVisibility>
+            <Tracker>
+                <device>#framesimpleid</device>
+                <options>
+                    <markerId>0</markerId> <!-- integer value (-1 means follow any marker of marker) -->
+                    <width>0.07</width> <!-- width of marker in meters -->
+                </options>
+                <locationMode>relative</locationMode> <!-- default (ignore), relative (update location) -->
+                <orientationMode>relative</orientationMode> <!-- default (ignore), relative (update orientation) -->
+                <scale>
+                    <x>0.07</x> <!-- test marker is 0.07 meters -->
+                    <y>0.07</y>
+                    <z>0.07</z>
+                </scale>
+            </Tracker>
+            <styleUrl>#undecorated_style</styleUrl>
+        </Placemark>
+        
+                <Placemark id="tracker_1">
+            <name>Tracker Frame SimpleId Example</name>
+            <description><![CDATA[
+        <script language="text/javascript">
+            function doTrackerAtIndex1(){
+                
+            var placemark = KHARMA.getKMLElementById('tracker_1');
+            var tracker = placemark.geometry[0];
+            if(placemark.visibility == true) $("#device_id_1").show();
+            else $("#device_id_1").hide();
+            placemark.visibility = tracker.visible;
+            placemark.render();
+            }
+                
+            function tracker_1_init(){
+                window.setInterval(doTrackerAtIndex1, 1000);
+            }
+        </script>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            ]]>
+            </description>
+            <balloonVisibility>1</balloonVisibility>
+            <Tracker>
+                <device>#framesimpleid</device>
+                <options>
+                    <markerId>1</markerId> <!-- integer value (-1 means follow any marker of marker) -->
+                    <width>0.07</width> <!-- width of marker in meters -->
+                </options>
+                <locationMode>relative</locationMode> <!-- default (ignore), relative (update location) -->
+                <orientationMode>relative</orientationMode> <!-- default (ignore), relative (update orientation) -->
+                <scale>
+                    <x>0.07</x> <!-- test marker is 0.07 meters -->
+                    <y>0.07</y>
+                    <z>0.07</z>
+                </scale>
+            </Tracker>
+            <styleUrl>#undecorated_style</styleUrl>
+        </Placemark>
+        
+                <Placemark id="tracker_2">
+            <name>Tracker Frame SimpleId Example</name>
+            <description><![CDATA[
+        <script language="text/javascript">
+            function doTrackerAtIndex2(){
+                
+            var placemark = KHARMA.getKMLElementById('tracker_2');
+            var tracker = placemark.geometry[0];
+            if(placemark.visibility == true) $("#device_id_2").show();
+            else $("#device_id_2").hide();
+            placemark.visibility = tracker.visible;
+            placemark.render();
+            }
+                
+            function tracker_2_init(){
+                window.setInterval(doTrackerAtIndex2, 1000);
+            }
+        </script>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            ]]>
+            </description>
+            <balloonVisibility>1</balloonVisibility>
+            <Tracker>
+                <device>#framesimpleid</device>
+                <options>
+                    <markerId>2</markerId> <!-- integer value (-1 means follow any marker of marker) -->
+                    <width>0.07</width> <!-- width of marker in meters -->
+                </options>
+                <locationMode>relative</locationMode> <!-- default (ignore), relative (update location) -->
+                <orientationMode>relative</orientationMode> <!-- default (ignore), relative (update orientation) -->
+                <scale>
+                    <x>0.07</x> <!-- test marker is 0.07 meters -->
+                    <y>0.07</y>
+                    <z>0.07</z>
+                </scale>
+            </Tracker>
+            <styleUrl>#undecorated_style</styleUrl>
+        </Placemark>
+        
+                <Placemark id="tracker_3">
+            <name>Tracker Frame SimpleId Example</name>
+            <description><![CDATA[
+        <script language="text/javascript">
+                
+            function doTrackerAtIndex3(){
+                
+            var placemark = KHARMA.getKMLElementById('tracker_3');
+            var tracker = placemark.geometry[0];
+            if(placemark.visibility == true) $("#device_id_3").show();
+            else $("#device_id_3").hide();
+            placemark.visibility = tracker.visible;
+            placemark.render();
+            }
+                
+            function tracker_3_init(){
+                window.setInterval(doTrackerAtIndex3, 1000);
+            }
+        </script>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            ]]>
+            </description>
+            <balloonVisibility>1</balloonVisibility>
+            <Tracker>
+                <device>#framesimpleid</device>
+                <options>
+                    <markerId>3</markerId> <!-- integer value (-1 means follow any marker of marker) -->
+                    <width>0.07</width> <!-- width of marker in meters -->
+                </options>
+                <locationMode>relative</locationMode> <!-- default (ignore), relative (update location) -->
+                <orientationMode>relative</orientationMode> <!-- default (ignore), relative (update orientation) -->
+                <scale>
+                    <x>0.07</x> <!-- test marker is 0.07 meters -->
+                    <y>0.07</y>
+                    <z>0.07</z>
+                </scale>
+            </Tracker>
+            <styleUrl>#undecorated_style</styleUrl>
+        </Placemark>
+        
+                        <Placemark id="tracker_4">
+            <name>Tracker Frame SimpleId Example</name>
+            <description><![CDATA[
+        <script language="text/javascript">
+                
+            function doTrackerAtIndex4(){
+                
+            var placemark = KHARMA.getKMLElementById('tracker_4');
+            var tracker = placemark.geometry[0];
+            if(placemark.visibility == true) $("#device_id_4").show();
+            else $("#device_id_4").hide();
+            placemark.visibility = tracker.visible;
+            placemark.render();
+            }
+                
+            function tracker_4_init(){
+                window.setInterval(doTrackerAtIndex4, 1000);
+            }
+        </script>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            ]]>
+            </description>
+            <balloonVisibility>1</balloonVisibility>
+            <Tracker>
+                <device>#framesimpleid</device>
+                <options>
+                    <markerId>4</markerId> <!-- integer value (-1 means follow any marker of marker) -->
+                    <width>0.07</width> <!-- width of marker in meters -->
+                </options>
+                <locationMode>relative</locationMode> <!-- default (ignore), relative (update location) -->
+                <orientationMode>relative</orientationMode> <!-- default (ignore), relative (update orientation) -->
+                <scale>
+                    <x>0.07</x> <!-- test marker is 0.07 meters -->
+                    <y>0.07</y>
+                    <z>0.07</z>
+                </scale>
+            </Tracker>
+            <styleUrl>#undecorated_style</styleUrl>
+        </Placemark>
+        
+        <Placemark id="tracker_framesimple">
+            <name>Tracker Frame SimpleId Example</name>
+            <description><![CDATA[
+        <script language="text/javascript">
+        function handleVisibleChange() {
+            var placemark = KHARMA.getKMLElementById('tracker_framesimple');
+            var tracker = placemark.geometry[0];
+            if(placemark.visibility == true) $("#device_id_1").show();
+            else $("#device_id_1").hide();
+            placemark.visibility = tracker.visible;
+            placemark.render();
+        }
+        
+        function tracker_framesimple_init() {
+            //$(document).bind('trackerChanged',function(event) {handleVisibleChange()});
+            window.setInterval(handleVisibleChange, 1000);
+            console.log('tracker_framesimple initialized');
+        }
+        </script>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            ]]>
+            </description>
+            <balloonVisibility>1</balloonVisibility>
+            <Tracker>
+                <device>#framesimpleid</device>
+                <options>
+                    <markerId>12</markerId> <!-- integer value (-1 means follow any marker of marker) -->
+                    <width>0.07</width> <!-- width of marker in meters -->
+                </options>
+                <locationMode>relative</locationMode> <!-- default (ignore), relative (update location) -->
+                <orientationMode>relative</orientationMode> <!-- default (ignore), relative (update orientation) -->
+                <scale>
+                    <x>0.07</x> <!-- test marker is 0.07 meters -->
+                    <y>0.07</y>
+                    <z>0.07</z>
                 </scale>
             </Tracker>
             <styleUrl>#undecorated_style</styleUrl>

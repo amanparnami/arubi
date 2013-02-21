@@ -21,17 +21,19 @@ $(document).ready(function () {
     //
     //	
     //	createPlacemark();
-    //var feature = document.getElementById(kmlObj.id);
+    //var feature = document.getElementById(kmlObj.id);     
     getDevices();
-    createPlacemark();
-    });
+    
+    //window.setInterval(doTrackers(), 1000);
+    //createPlacemark();
+});
 
 function createPlacemark(){
-    var placemarkJSON = [{
-        balloonVisibility : 1,
-        description : "<div id='testPM2' class='pm-container'> <div class='pm' style='text-align:center;'> <img src='img/200x200.gif' width ='200px' style='padding:10px;'/><div style='color:white'>Kinect1</div></div></div>", 
-        iconVisibility: "0",
-        id : 'PM2',
+	var placemarkJSON = {
+		balloonVisibility : 1,
+		description : "<div id='testPM2' class='pm-container'> <div class='pm' style='text-aligh:center;'> <img src='http://placehold.it/200x200' width ='200px' style='padding:10px;'/><div style='color:white'>Some Title</div></div></div>", 
+		iconVisibility: "0",
+		id : 'PM2',
         labelVisibility : "0",
         name : "testPM2",
         type : "placemark",
@@ -51,34 +53,46 @@ function createPlacemark(){
             },
             orientationMode : "billboard",
             locationMode: "relative",
-
-            // tracker: {
-            // 	device: "#framesimpleid",
-            // 	options: {
-            // 		markerId: 0,
-            // 		width: 0.21
-            // 	},
-            // 	locationMode: "relative",
-            // 	orientationMode: "relative",
-            // 	scale: {
-            // 		x: 0.022,
-            // 		y: 0.022,
-            // 		z: 0.022
-            // 	},
-            // },
-
             type : "balloon"
         }]
-    }];
+	};
+        
+        var trackerJSON = {
+	balloonVisibility : 1,
+	description : '<div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>',
+	iconVisibility: "0",
+	id : 'PM2',
+        labelVisibility : "0",
+        name : "testPM2",
+        type : "placemark",
+        visibility : "1",
+        styleUrl : "#undecorated_style",
+        geometry : [{ 
+            altitudeMode : "clampToGround",
+            id : "PM1Geo",
+            location : {    
+                altitude : 1.0,
+                id : "location_relative",
+                latitude : 6.0,
+                latitude_units : "meters",
+                longitude_units : "meters",
+                longitude : 0,
+                type : "location"
+            },
+            orientationMode : "billboard",
+            locationMode: "relative",
+            type : "balloon"
+        }]
+	};
 
-    var placemark = new KMLPlacemark(placemarkJSON);
+	var placemark = new KMLPlacemark(placemarkJSON);
 
-    $('#testPM2').bind('touchstart',function (event) 
-    {
-        event.stopPropagation(); 
-        alert('touched new');
-    }
-    );
+	$('#testPM2').on('touchend',function (event) 
+            {
+                event.stopPropagation(); 
+                alert('touched new');
+            }
+	);
 
 
 }
@@ -145,6 +159,7 @@ function getDevices(){
             "f":"getDevices" //set parameter to be passed in
         },
         success: function (devices) {//name return data as devices
+            //alert("success");
             devicesHtml = '';
             $(devices).each(function(i) {
                 device = devices[i];
@@ -164,10 +179,43 @@ function getDevices(){
             //return data;
             $("#devicepanel").html(devicesHtml);
             bindDevices();
+            //$("#devicepanel").hide();
+            hideDevices();
+            
         }
         
     });
-    return -1;
+}
+
+function doTrackers(){
+    $(".device").each(function (i){
+        var placemark = KHARMA.getKMLElementById('tracker_'+i);
+        var tracker = placemark.geometry[0];
+        if(placemark.visibility == true) $('#device_id_' + i).show();
+        else $('#device_id_' + i).hide();
+        
+        placemark.visibility = tracker.visible;
+        placemark.render();
+    });
+}
+
+function doTrackerAtIndex(i){
+    //alert("index is "+i);
+    var placemark = KHARMA.getKMLElementById('tracker_'+i);
+    var tracker = placemark.geometry[0];
+    if(placemark.visibility == true) $('#device_id_' + i).show();
+    else $('#device_id_' + i).hide();
+        
+    placemark.visibility = tracker.visible;
+    placemark.render();
+    
+}
+
+function hideDevices(){
+    $(".device").each(function (){
+        $(this).hide();
+    });
+    
 }
 
 function bindDevices () {

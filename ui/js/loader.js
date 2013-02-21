@@ -36,12 +36,9 @@ function insertScriptTagIntoDOM(url, onloadHandler)
 	        
 function initialize(){
 
-    motherOfAllOverlays = document.getElementById("myScreenOverlay").parentNode;
-    motherOfAllOverlays.style.position = "fixed";	
-
 
 }
 
 function loaded() {
-
+    
 }
