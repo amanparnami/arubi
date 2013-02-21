@@ -96,7 +96,7 @@ void loop()
 void lightsOn()
 {  
   digitalWrite(pinOff, LOW); 
-  delay(100);
+  delay(200);
   digitalWrite(pinOn, HIGH);
   delay(200);
   digitalWrite(pinOn, LOW);
@@ -106,7 +106,7 @@ void lightsOn()
 void lightsOff()
 {
   digitalWrite(pinOn, LOW); 
-  delay(100);
+  delay(200);
   digitalWrite(pinOff, HIGH);
   delay(200);
   digitalWrite(pinOff, LOW);
