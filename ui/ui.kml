@@ -2,13 +2,13 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
     <Document>
         <!--
-      		TODO updated by Aman on 2/15/13
+      		TODO updated by Aman on 2/20/13
       		- Make Placemark creation and deletion dynamic (hint: app.js)
         - Show and hide device placemark based on marker detected
       		- [fixed] Make Placemark interactive (hint: support touch)
       		- [fixed] Make device info boxes resize to fit the iPad screen
       		- [fixed][Bug] leftpanel, rightpanel not showing up
-      		**[fixed] probably interaction w/ Input, Output buttons is not working
+      		**[not][fixed] probably interaction w/ Input, Output buttons is not working
       		- [fixed][Bug] argon_channel_icon not appearing correctly
       		- Visualize a rule
       		- Connect input and output usng svg

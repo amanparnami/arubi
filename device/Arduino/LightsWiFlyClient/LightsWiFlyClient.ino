@@ -1,9 +1,9 @@
-#include <SPI.h>
-#include <WiFly.h>
+#include "SPI.h"
+#include "WiFly.h"
 
 #include "Credentials.h"
 
-WiFlyClient client("192.168.1.4", 80);
+Client client("192.168.1.4", 80);
 
 int pinOn = 3;
 int pinOff = 2;
@@ -48,13 +48,13 @@ void loop()
     timeLastUpdated = millis();
     if (client.connect()) 
     {
-      Serial.println("connected");
-      client.println("GET /testconnection.php?sender=arduino&arg=0 HTTP/1.0");
+//      Serial.println("connected");
+      client.println("GET /server/www/arubi.php?sender=arduino&arg=0 HTTP/1.0");
       client.println();
       String mainStr = "";
       String str = "";
-        
-    delay(2000);
+
+      delay(2000);
       while (client.connected()) 
       {
         if(client.available())
@@ -64,6 +64,7 @@ void loop()
           {
             mainStr += str + "\n";
             str = "";
+            //            Serial.println(str);
             if(str.indexOf("light") != -1)
               break;
           }
@@ -73,10 +74,12 @@ void loop()
           } 
         }
       }
-      if(str == "lights on" && !lightOn)
-        lightOn();
-      else if(str == "lights off" && lightOn)
-        lightOff();
+
+      Serial.println(str);
+      if(str == "lightsOn")
+        lightsOn();
+      else if(str == "lightsOff")
+        lightsOff();
     } 
     else {
       Serial.println("connection failed");
@@ -91,14 +94,21 @@ void loop()
 
 // turn the lights on
 void lightsOn()
-{
-  digitalWrite(pinOn, HIGH); 
+{  
   digitalWrite(pinOff, LOW); 
+  delay(200);
+  digitalWrite(pinOn, HIGH);
+  delay(200);
+  digitalWrite(pinOn, LOW);
 }
 
 // turn the lights off
 void lightsOff()
 {
   digitalWrite(pinOn, LOW); 
+  delay(200);
   digitalWrite(pinOff, HIGH);
+  delay(200);
+  digitalWrite(pinOff, LOW);
 }
+
