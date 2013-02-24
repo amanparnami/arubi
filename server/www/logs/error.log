@@ -122,3 +122,9 @@
 [Sun Feb 24 12:06:07 2013] [error] [client 127.0.0.1] client denied by server configuration: C:/Apache2, referer: http://localhost/ui/
 [Sun Feb 24 12:06:07 2013] [error] [client 127.0.0.1] client denied by server configuration: C:/Apache2, referer: http://localhost/ui/
 [Sun Feb 24 12:06:07 2013] [error] [client 127.0.0.1] File does not exist: C:/Users/Craig/Documents/GitHub/arubi/favicon.ico
+[Sun Feb 24 12:08:14 2013] [error] [client 127.0.0.1] client denied by server configuration: C:/Apache2, referer: http://localhost/ui/
+[Sun Feb 24 12:08:14 2013] [error] [client 127.0.0.1] client denied by server configuration: C:/Apache2, referer: http://localhost/ui/
+[Sun Feb 24 12:08:14 2013] [error] [client 127.0.0.1] client denied by server configuration: C:/Apache2, referer: http://localhost/ui/
+[Sun Feb 24 12:08:14 2013] [error] [client 127.0.0.1] client denied by server configuration: C:/Apache2, referer: http://localhost/ui/
+[Sun Feb 24 12:08:14 2013] [error] [client 127.0.0.1] client denied by server configuration: C:/Apache2, referer: http://localhost/ui/
+[Sun Feb 24 12:08:14 2013] [error] [client 127.0.0.1] File does not exist: C:/Users/Craig/Documents/GitHub/arubi/favicon.ico
