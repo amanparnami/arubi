@@ -1,3 +1,4 @@
 /nbproject/private/
-/server/logs/
+/server/www/logs/
+*.log
 *.DS_STORE
