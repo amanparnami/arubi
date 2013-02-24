@@ -339,7 +339,7 @@
             console.log('tracker_framesimple initialized');
         }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px background-color: #ffffff;"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
