@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+
+  <Style id="undecorated_style">
+    <BalloonStyle>
+      <displayMode>undecorated</displayMode>  <!-- kml:displayModeEnum -->
+    </BalloonStyle>
+  </Style>
+   
+   
+  <ScreenOverlay>
+    <name>Overlay HTML</name>
+    <description><![CDATA[
+        
+            <script type="text/javascript">
+            
+            function myOverlayFunction() {
+                var div = document.getElementById('javascripttest_div');
+                div.innerHTML = 'Button pressed';
+                console.log('changed data');
+            }
+        
+            var myPlacemarkJSON = {   
+                balloonVisibility : "1",
+                description : "<div class='pms'><div class='placemarker' style='text-align:center;'><img src='"+photoURL+"' width ='200px' style='padding:10px;'/><div style='color:white'>"+buildingName+"</div></div></div>",
+                iconVisibility : "1",
+                id : "TestPMS",
+                labelVisibility : "0",
+                name : "someTestname",
+                type : "placemark",
+                visibility : "1",
+                styleUrl : "#undecorated_style",
+                geometry : [{ 
+                    altitudeMode : "clampToGround",
+                    id : "someBalloonId",
+                    location : {    
+                        altitude : "0.0",
+                        id : "location_relative",
+                        latitude : "6.0",
+                        latitude_units : "meters",
+                        longitude_units : "meters",
+                        longitude : "0.0",
+                        type : "location"
+                    },
+                    orientation : {
+                        heading : "-90.0",
+                        tilt : "0.0",
+                        roll : "0.0"
+                    },
+                    locationMode : "relative",
+                    type : "balloon"
+                }]
+            };
+            // using Argon javascript api to create placemarks dynamically
+            var myPlacemark = new KMLPlacemark(myPlacemarkJSON);
+            //KHARMA.createKMLObject(myPlacemark);
+            </script>
+            
+            <style type="text/css">
+                div.overlaystyle
+                {
+                    width: 320px;
+                    height: 50px;
+                    font-family: sans-serif;
+                    font-size: 14px;
+            
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-width: 2px;
+                    border-color: rgba(255, 255, 255, 1.0);
+                
+                    color: rgba(255, 255, 255, 1);
+                    text-align: left;
+                    position: absolute;
+                }
+            </style>
+            <div class="overlaystyle">
+            <form name="input" action="javascript:myOverlayFunction();" method="get">
+            <div>Overlay HTML</div>
+            <input type="submit" value="Button"/>
+            <div id="javascripttest_div">Press button to test</div>
+            </form>
+            </div>]]>
+    </description>
+    <screenXY x="0.0" y="480" xunits="fraction" yunits="pixels"/>
+    <styleUrl>#undecorated_style</styleUrl>
+  </ScreenOverlay>
+
+  <!-- KML document description -->
+  <name>OverlayHTML.kml</name>
+  <Snippet>Example of placing a ScreenOverlay HTML on the screen</Snippet>
+  <description><![CDATA[
+    <p><b>Example of placing a ScreenOverlay HTML on the screen</b></p>
+    <p>
+    <b>notes:</b>
+    <ul>
+    <li> the KARML extension allows the display of HTML content in screen overlays
+    <li> the KARML extension adds "undecorated" to the displayMode element
+    <li> setting styleUrl to an undecorated BalloonStyle overrides the Icon image
+    <li> pressing the button changes the screen text
+    </ul>
+    ]]>
+  </description>          
+  <styleUrl>#document_style</styleUrl>    
+  <Style id="document_style">
+    <IconStyle>
+      <Icon>
+        <href>http://google-maps-icons.googlecode.com/files/administration.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+</Document>
+</kml>
+​
