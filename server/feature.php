@@ -8,6 +8,10 @@ header("Content-type: application/json");
 switch ($_GET["f"]) {
     case "getFeatureById":getFeatureById($_GET["id"]);break;
     case "getFeatureListByDeviceId":getFeatureListByDeviceId($_GET["deviceId"]);break;
+    case "getInputFeaturesByDeviceId":getInputFeaturesByDeviceId($_GET["deviceId"]);break;
+    case "getOutputFeaturesByDeviceId":getOutputFeaturesByDeviceId($_GET["deviceId"]);break;
+        
+
     default:
         break;
 }
