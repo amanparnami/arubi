@@ -46,7 +46,7 @@
 <div class="container" style=" height: 100%; width:100%; text-align: center;">
     <div id="leftpanel" class="panel input" style="">
         <div class="inner panel" ></div>
-        <div class="outer panel" >
+        <div id="inputpanel" class="outer panel" >
             <figure class="feature" id="feature_id_1">
                 <img src="img/voice.svg">
                 <figcaption>Speech</figcaption>
@@ -62,7 +62,7 @@
     </div>
     <div id="rightpanel" class="panel output" style="">
 
-        <div class="outer panel" >
+        <div id="outputpanel" class="outer panel" >
             <figure class="feature" id="feature_id_3">
                 <img src="img/light.svg">
                 <figcaption>Light</figcaption>
