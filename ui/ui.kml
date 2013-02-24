@@ -8,7 +8,7 @@
       		- [fixed] Make Placemark interactive (hint: support touch)
       		- [fixed] Make device info boxes resize to fit the iPad screen
       		- [fixed][Bug] leftpanel, rightpanel not showing up
-      		**[not][fixed] probably interaction w/ Input, Output buttons is not working
+      		**[fixed] probably interaction w/ Input, Output buttons is not working
       		- [fixed][Bug] argon_channel_icon not appearing correctly
       		- Visualize a rule
       		- Connect input and output usng svg
@@ -16,7 +16,7 @@
       		- Update rule information in database
       		** talk to PhP connection
         - [fixed] Change font size to be displayed properly on screen
-        - Add range overlay for knect
+        - Add range overlay for kinect
       		-->
         <Style id="undecorated_style"> 
             <BalloonStyle>
@@ -283,7 +283,7 @@
                 window.setInterval(doTrackerAtIndex0, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -322,7 +322,7 @@
                 window.setInterval(doTrackerAtIndex1, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -361,7 +361,7 @@
                 window.setInterval(doTrackerAtIndex2, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -401,7 +401,7 @@
                 window.setInterval(doTrackerAtIndex3, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -441,7 +441,7 @@
                 window.setInterval(doTrackerAtIndex4, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -481,7 +481,7 @@
             console.log('tracker_framesimple initialized');
         }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
