@@ -5,11 +5,11 @@ $(document).ready(function () {
 });
 
 function createPlacemark(){
-	var placemarkJSON = {
-		balloonVisibility : 1,
-		description : "<div id='testPM2' class='pm-container'> <div class='pm' style='text-aligh:center;'> <img src='http://placehold.it/200x200' width ='200px' style='padding:10px;'/><div style='color:white'>Some Title</div></div></div>", 
-		iconVisibility: "0",
-		id : 'PM2',
+    var placemarkJSON = {
+        balloonVisibility : 1,
+        description : "<div id='testPM2' class='pm-container'> <div class='pm' style='text-aligh:center;'> <img src='http://placehold.it/200x200' width ='200px' style='padding:10px;'/><div style='color:white'>Some Title</div></div></div>", 
+        iconVisibility: "0",
+        id : 'PM2',
         labelVisibility : "0",
         name : "testPM2",
         type : "placemark",
@@ -31,13 +31,13 @@ function createPlacemark(){
             locationMode: "relative",
             type : "balloon"
         }]
-	};
+    };
         
-        var trackerJSON = {
-	balloonVisibility : 1,
-	description : '<div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>',
-	iconVisibility: "0",
-	id : 'PM2',
+    var trackerJSON = {
+        balloonVisibility : 1,
+        description : '<div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>',
+        iconVisibility: "0",
+        id : 'PM2',
         labelVisibility : "0",
         name : "testPM2",
         type : "placemark",
@@ -59,16 +59,16 @@ function createPlacemark(){
             locationMode: "relative",
             type : "balloon"
         }]
-	};
+    };
 
-	var placemark = new KMLPlacemark(placemarkJSON);
+    var placemark = new KMLPlacemark(placemarkJSON);
 
-	$('#testPM2').on('touchend',function (event) 
-            {
-                event.stopPropagation(); 
-                alert('touched new');
-            }
-	);
+    $('#testPM2').on('touchend',function (event) 
+    {
+        event.stopPropagation(); 
+        alert('touched new');
+    }
+    );
 
 
 }
@@ -77,22 +77,22 @@ function createTracker(){
     var placemarkJSON = [{
         balloonVisibility : 1,
         description : "<script language='text/javascript'>"
-                        +"function handleVisibleChange() {"
-                            +"var placemark = KHARMA.getKMLElementById('tracker_kinect_one');"
-                            +"var tracker = placemark.geometry[0];"
-                            +"placemark.visibility = tracker.visible;"
-                            +"placemark.render();"
-                        +"}"
-                        +"function tracker_kinect_one_init() {"
-                            +"window.setInterval(handleVisibleChange, 3000);"
-                        +"}"
-                        +"</script>"
-                                                +"<div id='kinectMarker1' class='pm-container'> "
-                                                        +"<div class='pm' style='text-align:center;'> "
-                                                                +"<img src='img/1000x1000.gif' width ='100px' style='padding:10px;'/>"
-                                                                +"<div class='text' style='color:white'>Kinect1</div>"
-                                                        +"</div>"
-                                                +"</div>", 
+        +"function handleVisibleChange() {"
+        +"var placemark = KHARMA.getKMLElementById('tracker_kinect_one');"
+        +"var tracker = placemark.geometry[0];"
+        +"placemark.visibility = tracker.visible;"
+        +"placemark.render();"
+        +"}"
+        +"function tracker_kinect_one_init() {"
+        +"window.setInterval(handleVisibleChange, 3000);"
+        +"}"
+        +"</script>"
+        +"<div id='kinectMarker1' class='pm-container'> "
+        +"<div class='pm' style='text-align:center;'> "
+        +"<img src='img/1000x1000.gif' width ='100px' style='padding:10px;'/>"
+        +"<div class='text' style='color:white'>Kinect1</div>"
+        +"</div>"
+        +"</div>", 
         iconVisibility: "0",
         id : 'PM2',
         labelVisibility : "0",
@@ -102,20 +102,20 @@ function createTracker(){
         styleUrl : "#undecorated_style",
        
 
-         Tracker: [{
+        Tracker: [{
             device: "#framesimpleid",
             options: {
-                    markerId: 0,
-                    width: 0.21
+                markerId: 0,
+                width: 0.21
             },
             locationMode: "relative",
             orientationMode: "relative",
             scale: [{
-                    x: 0.022,
-                    y: 0.022,
-                    z: 0.022
+                x: 0.022,
+                y: 0.022,
+                z: 0.022
             }],
-         }],
+        }],
     }];
 
     var placemark = new KMLPlacemark(placemarkJSON);
@@ -141,7 +141,7 @@ function getDevices(){
                 device = devices[i];
                 console.log(device.name);
                 
-                devicesHtml += '<div class="device" id="device_id_'+device.id+'">';
+                devicesHtml += '<div class="device" id="device_id_'+device.id+'" data-device-id="'+device.id+'">';
                 devicesHtml +=   '<p class="device-name">'+device.name+'</p>';
                 devicesHtml +=   '<p class="device-description">'+device.description+'</p>';
                 devicesHtml +=   '<p class="device-availability">Availability: '
@@ -155,12 +155,74 @@ function getDevices(){
             //return data;
             $("#devicepanel").html(devicesHtml);
             bindDevices();
-            //$("#devicepanel").hide();
-            //hideDevices();
+        //$("#devicepanel").hide();
+        hideDevices();
             
         }
         
     });
+}
+
+function getInputFeatures(deviceId){
+    $.ajax({
+        url: "../server/feature.php",//set url for php to be called
+        type:"GET",
+        data:{
+            "f":"getInputFeaturesByDeviceId",
+            "deviceId" : deviceId
+        //set parameter to be passed in
+        },
+        success: function (features) {//name return data as features
+            //alert("success");
+            var featuresHtml = '';
+            $(features).each(function(i) {
+                var feature = features[i];
+                console.log(feature.title);
+                
+                featuresHtml += '<figure class="feature" id="feature_id_'+feature.id+'">';
+                featuresHtml +=   '<img src="'+feature.icon_url+'">';
+                featuresHtml +=   '<figcaption>'+feature.title+'</figcaption>';
+                featuresHtml += '</figure> ';
+                 console.log(feature);
+            });
+            //return data;
+            console.log(featuresHtml);
+            $(".input .featurepanel").html(featuresHtml);
+        }
+        
+    });
+    
+}
+
+function getOutputFeatures(deviceId){
+    $.ajax({
+        url: "../server/feature.php",//set url for php to be called
+        type:"GET",
+        data:{
+            "f":"getOutputFeaturesByDeviceId",
+            "deviceId" : deviceId
+        //set parameter to be passed in
+        },
+        success: function (features) {//name return data as features
+            //alert("success");
+            var featuresHtml = '';
+            $(features).each(function(i) {
+                var feature = features[i];
+                console.log(feature.title);
+                
+                featuresHtml += '<figure class="feature" id="feature_id_'+feature.id+'">';
+                featuresHtml +=   '<img src="'+feature.icon_url+'">';
+                featuresHtml +=   '<figcaption>'+feature.title+'</figcaption>';
+                featuresHtml += '</figure> ';
+                 console.log(feature);
+            });
+            //return data;
+            console.log(featuresHtml);
+            $(".output .featurepanel").html(featuresHtml);
+        }
+        
+    });
+    
 }
 
 function doTrackers(){
@@ -200,13 +262,31 @@ function showDevices(){
     
 }
 function bindDevices () {
-    $(".device a.button.input").on("click touchstart", function () {
-        alert("test ");
+    
+    $("#devicepanel .device .input.button").each(function (){
+        $(this).on("touchend click", function () {
+            var deviceId = $(this).parent(".device").attr("data-device-id");
+            console.log(deviceId);
+            getInputFeatures(deviceId);
 
-        $('#leftpanel').animate({
-            'left':'-24%'
-        }, 'easein');
+            $('#leftpanel').animate({
+                'left':'-24%'
+            }, 'easein');
+        })
     });
+    
+    $("#devicepanel .device .output.button").each(function (){
+        $(this).on("touchend click", function () {
+            var deviceId = $(this).parent(".device").attr("data-device-id");
+            console.log(deviceId);
+            getOutputFeatures(deviceId);
+
+            $('#rightpanel').animate({
+                'right':'-24%'
+            }, 'easein');
+        })
+    });
+
 
 
 
@@ -215,32 +295,17 @@ function bindDevices () {
     // 	$('#rightpanel').css('right', '-24%');
     // });
 
-    $("#device_id_2 a.button.output").on("click touchstart", function () {
 
-        $('#rightpanel').animate({
-            'right':'-24%'
-        }, 'easein');
-        $('#feature_id_3').show();
-        $('#feature_id_4').hide();
-    });
 
-    $("#device_id_4 a.button.output").on("click touchstart", function () {
 
-        $('#rightpanel').animate({
-            'right': '-24%'
-        }, 'easein');
-        $('#feature_id_4').show();
-        $('#feature_id_3').hide();
-    });
-
-    $(".input .feature").on("click touchstart", function () {
-
+    $(".input .featurepanel").on("click touchend",".feature", function () {
+        //alert("afd");
         $('#leftpanel').animate({
             'left': '0%'
         },'easein');
     });
 
-    $(".output .feature").on("click touchstart", function () {
+    $(".output .featurepanel").on("click touchend",".feature", function () {
 
         $('#rightpanel').animate({
             'right': '0%'

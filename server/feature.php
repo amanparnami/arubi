@@ -42,7 +42,7 @@ function getFeatureListByDeviceId($deviceId) {
 }
 
 function getInputFeaturesByDeviceId($deviceId) {
-    $dbQuery = sprintf("SELECT feature 
+    $dbQuery = sprintf("SELECT * 
                         FROM feature WHERE device_id = '$deviceId' AND io_type = 1
                         ");
     //echo $dbQuery;
@@ -56,8 +56,8 @@ function getInputFeaturesByDeviceId($deviceId) {
 }
 
 function getOutputFeaturesByDeviceId($deviceId) {
-    $dbQuery = sprintf("SELECT feature 
-                        FROM feature WHERE device_id = '$deviceId' AND io_type = 1
+    $dbQuery = sprintf("SELECT * 
+                        FROM feature WHERE device_id = '$deviceId' AND io_type = 0
                         ");
     //echo $dbQuery;
     
