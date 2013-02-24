@@ -8,7 +8,7 @@ header("Content-type: application/json");
 switch ($_GET["f"]) {
     case "getFeatureById":getFeatureById($_GET["id"]);break;
     case "getFeatureListByDeviceId":getFeatureListByDeviceId($_GET["deviceId"]);break;
-
+    case "getInputFeaturesByDeviceId":getInputFeaturesByDeviceId($_GET["deviceId"]);break;
         break;
 
     default:
@@ -40,6 +40,32 @@ function getFeatureListByDeviceId($deviceId) {
     echo json_encode($result);
 }
 
+function getInputFeaturesByDeviceId($deviceId) {
+    $dbQuery = sprintf("SELECT feature 
+                        FROM feature WHERE device_id = '$deviceId' AND io_type = 1
+                        ");
+    //echo $dbQuery;
+    
+    $result = getDBResultsArray($dbQuery);
+    
+    //$result = getDBResultRecord($dbQuery);
 
+
+    echo json_encode($result);
+}
+
+function getOutputFeaturesByDeviceId($deviceId) {
+    $dbQuery = sprintf("SELECT feature 
+                        FROM feature WHERE device_id = '$deviceId' AND io_type = 1
+                        ");
+    //echo $dbQuery;
+    
+    $result = getDBResultsArray($dbQuery);
+    
+    //$result = getDBResultRecord($dbQuery);
+
+
+    echo json_encode($result);
+}
 
 ?>
