@@ -12,6 +12,15 @@ body{
     /*background: #CC9E61;*/
 }
 
+div.placemark_overlay {
+	position: absolute; 
+	width: 100px; 
+	height: 100px; 
+	left: -50px; 
+	top: -50px; 
+	background: #ffffff;
+}
+
 div.panel{
     display: block;
     height: 100%;

@@ -339,7 +339,7 @@
             console.log('tracker_framesimple initialized');
         }
         </script>
-            <div style="position: absolute; width: 100px; min-height: 100px; left: -50px; top: -50px background-color: #ffffff;"></div>
+            <div class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
