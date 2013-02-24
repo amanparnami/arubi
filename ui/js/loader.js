@@ -12,7 +12,7 @@ function ar_init(){
     linktag = document.createElement("link");
     linktag.setAttribute("rel", "stylesheet");
     linktag.setAttribute("type", "text/css");
-    linktag.setAttribute("href", "css/UI.css");
+    linktag.setAttribute("href", "css/styles.css");
     headTag.appendChild(linktag);
 
     loadExternalScripts(externalScriptArray);	  
