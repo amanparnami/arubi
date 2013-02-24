@@ -4,7 +4,7 @@
         <!--
       		TODO updated by Aman on 2/20/13
       		- Make Placemark creation and deletion dynamic (hint: app.js)
-        - Show and hide device placemark based on marker detected
+                - [fixed]Show and hide device placemark based on marker detected
       		- [fixed] Make Placemark interactive (hint: support touch)
       		- [fixed] Make device info boxes resize to fit the iPad screen
       		- [fixed][Bug] leftpanel, rightpanel not showing up
@@ -15,8 +15,8 @@
       		** for now just tapping on output after input should be good
       		- Update rule information in database
       		** talk to PhP connection
-        - [fixed] Change font size to be displayed properly on screen
-        - Add range overlay for knect
+                - [fixed] Change font size to be displayed properly on screen
+                - Add range overlay for knect
       		-->
         <Style id="undecorated_style"> 
             <BalloonStyle>
