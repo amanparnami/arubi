@@ -81,48 +81,6 @@
             <styleUrl>#undecorated_style</styleUrl>
         </ScreenOverlay>
    
-        <Placemark id="tracker_kinect_one">
-            <name>Kinect1</name>
-            <description><![CDATA[
-                        <script language="text/javascript">
-                        function handleVisibleChange() {
-                            var placemark = KHARMA.getKMLElementById('tracker_kinect_one');
-                            //if (placemark.visibility == true) alert("true");
-                            var tracker = placemark.geometry[0];
-                            placemark.visibility = tracker.visible;
-                            placemark.render();
-                            //console.log("Set placemark visibility to:" + placemark.visibility);
-                        }
-                        
-                        function tracker_kinect_one_init() {
-                            //alert("detected");
-                            //$(document).bind('trackerChanged',function(event) {handleVisibleChange()});
-                            //console.log('tracker_framesimple initialized');
-                            window.setInterval(handleVisibleChange, 3000);
-                        }
-                        </script>
-
-
-                        ]]>
-            </description>
-            <balloonVisibility>1</balloonVisibility>
-            <Tracker>
-                <device>#framesimpleid</device>
-                <options>
-                    <markerId>100</markerId>
-                    <width>0.02</width>
-                </options>
-                <locationMode>relative</locationMode>
-                <orientationMode>relative</orientationMode>
-                <scale>
-                    <x>0.022</x>
-                    <y>0.022</y>
-                    <z>0.022</z>
-                </scale>
-            </Tracker>
-            <styleUrl>#undecorated_style</styleUrl>
-        </Placemark>
-
         <Placemark id="tracker_0">
             <name>Tracker Frame SimpleId Example</name>
             <description><![CDATA[
@@ -141,7 +99,7 @@
                 window.setInterval(doTrackerAtIndex0, 1000);
             }
         </script>
-            <div class="placemark_overlay"></div>
+            <div id="placemark_overlay_0" class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -180,7 +138,7 @@
                 window.setInterval(doTrackerAtIndex1, 1000);
             }
         </script>
-            <div class="placemark_overlay"></div>
+            <div id="placemark_overlay_1" class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -219,7 +177,7 @@
                 window.setInterval(doTrackerAtIndex2, 1000);
             }
         </script>
-            <div class="placemark_overlay"></div>
+            <div id="placemark_overlay_2" class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -259,7 +217,7 @@
                 window.setInterval(doTrackerAtIndex3, 1000);
             }
         </script>
-            <div class="placemark_overlay"></div>
+            <div id="placemark_overlay_3" class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -299,7 +257,7 @@
                 window.setInterval(doTrackerAtIndex4, 1000);
             }
         </script>
-            <div class="placemark_overlay"></div>
+            <div id="placemark_overlay_4" class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -320,26 +278,25 @@
             <styleUrl>#undecorated_style</styleUrl>
         </Placemark>
         
-        <Placemark id="tracker_framesimple">
+        <Placemark id="tracker_12">
             <name>Tracker Frame SimpleId Example</name>
             <description><![CDATA[
         <script language="text/javascript">
-        function handleVisibleChange() {
-            var placemark = KHARMA.getKMLElementById('tracker_framesimple');
+        function doTrackerAtIndex12() {
+            var placemark = KHARMA.getKMLElementById('tracker_12');
             var tracker = placemark.geometry[0];
-            if(placemark.visibility == true) $("#device_id_1").show();
-            else $("#device_id_1").hide();
+            if(placemark.visibility == true) $("#device_id_12").show();
+            else $("#device_id_12").hide();
             placemark.visibility = tracker.visible;
             placemark.render();
         }
         
         function tracker_framesimple_init() {
-            //$(document).bind('trackerChanged',function(event) {handleVisibleChange()});
-            window.setInterval(handleVisibleChange, 1000);
-            console.log('tracker_framesimple initialized');
+            //$(document).bind('trackerChanged',function(event) {doTrackerAtIndex12()});
+            window.setInterval(doTrackerAtIndex12, 1000);
         }
         </script>
-            <div class="placemark_overlay"></div>
+            <div id="placemark_overlay_12" class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
