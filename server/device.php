@@ -8,9 +8,6 @@ switch ($_GET["f"]) {
     case "getDeviceById":getDeviceById($_GET["id"]);break;
     case "getDeviceList":getDeviceList();break;
     case "getDevices":getDevices();break;
-
-        break;
-
     default:
         break;
 }

@@ -8,9 +8,6 @@ switch ($_GET["f"]) {
     case "getOutputSpecById":getOutputSpecById($_GET["id"]);break;
     case "getInputSpecListByFeatureId":getInputSpecListByFeatureId($_GET["feature_id"]);break;
     case "getOutputSpecListByFeatureId":getOutputSpecListByFeatureId($_GET["feature_id"]);break;
-
-        break;
-
     default:
         break;
 }
