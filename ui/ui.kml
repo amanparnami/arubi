@@ -141,7 +141,7 @@
                 window.setInterval(doTrackerAtIndex0, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
+            <div class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -180,7 +180,7 @@
                 window.setInterval(doTrackerAtIndex1, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
+            <div class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -219,7 +219,7 @@
                 window.setInterval(doTrackerAtIndex2, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
+            <div class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -259,7 +259,7 @@
                 window.setInterval(doTrackerAtIndex3, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
+            <div class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -299,7 +299,7 @@
                 window.setInterval(doTrackerAtIndex4, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
+            <div class="placemark_overlay"></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
