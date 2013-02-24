@@ -2,3 +2,4 @@
 *.DS_STORE
 ./server/www/logs
 /nbproject/private/
+server\www\logs
