@@ -1,31 +1,7 @@
 $(document).ready(function () {
-    //alert("device ready");
 
-    //	for(kmlObjId in KHARMA.dom.elements){
-    //		var kmlObj = KHARMA.dom.elements[kmlObjId];
-    //		
-    //		var feature = document.getElementById(kmlObj.id);
-    //
-    //		if(feature && kmlObj.name == "testPM2") {
-    //			//alert('found');
-    //			$(feature).bind('touchstart', function (event){
-    //
-    //				event.stopPropagation();
-    //				alert('touched');
-    //
-    //			});			
-    //
-    //		}
-    //
-    //	}
-    //
-    //	
-    //	createPlacemark();
-    //var feature = document.getElementById(kmlObj.id);     
     getDevices();
-    
-    //window.setInterval(doTrackers(), 1000);
-    //createPlacemark();
+
 });
 
 function createPlacemark(){
@@ -180,7 +156,7 @@ function getDevices(){
             $("#devicepanel").html(devicesHtml);
             bindDevices();
             //$("#devicepanel").hide();
-            hideDevices();
+            //hideDevices();
             
         }
         
@@ -217,7 +193,12 @@ function hideDevices(){
     });
     
 }
-
+function showDevices(){
+    $(".device").each(function (){
+        $(this).show();
+    });
+    
+}
 function bindDevices () {
     $(".device a.button.input").on("click touchstart", function () {
         alert("test ");

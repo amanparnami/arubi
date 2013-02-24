@@ -8,15 +8,15 @@
       		- [fixed] Make Placemark interactive (hint: support touch)
       		- [fixed] Make device info boxes resize to fit the iPad screen
       		- [fixed][Bug] leftpanel, rightpanel not showing up
-      		**[not][fixed] probably interaction w/ Input, Output buttons is not working
+      		**[fixed] probably interaction w/ Input, Output buttons is not working
       		- [fixed][Bug] argon_channel_icon not appearing correctly
       		- Visualize a rule
       		- Connect input and output usng svg
       		** for now just tapping on output after input should be good
       		- Update rule information in database
       		** talk to PhP connection
-                - [fixed] Change font size to be displayed properly on screen
-                - Add range overlay for knect
+        - [fixed] Change font size to be displayed properly on screen
+        - Add range overlay for kinect
       		-->
         <Style id="undecorated_style"> 
             <BalloonStyle>
@@ -42,148 +42,6 @@
     document.body.appendChild(script);  
                 
 </script>
-
-<style type="text/css">
-
-    p{
-        margin: 0;
-    }
-
-    body{
-        margin: 0;
-    }
-
-    .container{
-        width: 100%;
-        overflow: hidden;
-        /*background: #CC9E61;*/
-    }
-
-    div.panel{
-        display: block;
-        height: 100%;
-    }
-
-    .inner, .outer {
-        border-radius: 12px;
-        float: left;
-    }
-
-    .inner {
-        width: 60%;
-        background: #E9F2F9;
-    }
-
-    .outer {
-        width: 40%;
-        background: #B2D1E5;
-    }
-
-    #leftpanel, #rightpanel{
-        /*background: yellow;*/
-        width: 40%;
-        position: fixed;
-        top: 0;
-        margin-bottom: 5px;
-        /*border: 5px solid #8ac8d4;*/
-        border-radius: 15px;
-        /*float: left;*/
-        padding: 5px;
-    }
-
-    #leftpanel {
-        left: -40%;
-
-    }
-
-    #rightpanel{
-        right: -40%;
-    }
-                
-    div.device{
-        border: 5px #F9F9F9 solid;
-        border-radius: 15px;
-        height: 150px;
-        width: 150px;
-        background: #40B3DF;
-        color: #E9F2F9;
-        padding: 5px;
-        position: relative;
-        margin-bottom: 5px;
-        margin-top: 250px;
-    }
-
-    div.device .device-name {
-        font-size: 0.8em;
-        font-weight: bold;
-    }
-
-    div.device p{
-        margin-bottom: 5px;
-        font-size: 0.6em;
-    }
-
-    .device .device-availability {
-    }
-
-    .device-availability .on, .device-availability .off{
-        width: 25px;
-        height: 15px;
-        border-radius: 5px;
-        font-size: 0.6em;
-        padding: 2px;
-
-    }
-
-
-    .device-availability .on{
-        background-color: #A8CB17;
-        color: white;
-    }
-
-    .device-availability .off{
-        background-color: #EEEEEE;
-        color: gray;		
-    }
-
-    .device a.button{
-        background-color: #A8CB17;
-        padding: 5px 10px;
-        position: absolute;
-        bottom: 5px;
-        font-size: 0.6em;
-    }
-
-    .device a.button.input{
-        left: 5px;
-        border-bottom-left-radius: 10px;
-    }
-
-    .device a.button.output{
-        right: 5px;
-        border-bottom-right-radius: 10px;
-    }
-
-    .feature{
-        position: relative;
-        margin: 10px;
-        background: #98C73D;
-        height: 100px;
-        width: 100px;
-        float: left;
-        padding: 5px;
-        border-top-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        border:5px solid white;
-        font-size: 0.6em;
-    }
-
-    .feature img{
-        max-width: 100px;
-        max-height: 80px;
-        color: white;
-    }
-</style>
 
 <div class="container" style=" height: 100%; width:100%; text-align: center;">
     <div id="leftpanel" class="panel input" style="">
@@ -251,13 +109,13 @@
             <Tracker>
                 <device>#framesimpleid</device>
                 <options>
-                    <markerId>100</markerId>  integer value (-1 means follow any marker of marker) 
-                    <width>0.02</width>  width of marker in meters 
+                    <markerId>100</markerId>
+                    <width>0.02</width>
                 </options>
-                <locationMode>relative</locationMode>  default (ignore), relative (update location) 
-                <orientationMode>relative</orientationMode>  default (ignore), relative (update orientation) 
+                <locationMode>relative</locationMode>
+                <orientationMode>relative</orientationMode>
                 <scale>
-                    <x>0.022</x>  test marker is 0.07 meters 
+                    <x>0.022</x>
                     <y>0.022</y>
                     <z>0.022</z>
                 </scale>
@@ -283,7 +141,7 @@
                 window.setInterval(doTrackerAtIndex0, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -322,7 +180,7 @@
                 window.setInterval(doTrackerAtIndex1, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -361,7 +219,7 @@
                 window.setInterval(doTrackerAtIndex2, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -401,7 +259,7 @@
                 window.setInterval(doTrackerAtIndex3, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -441,7 +299,7 @@
                 window.setInterval(doTrackerAtIndex4, 1000);
             }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
@@ -481,7 +339,7 @@
             console.log('tracker_framesimple initialized');
         }
         </script>
-            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="http://argonapps.gatech.edu/examples/FrameMarkerThin_005.png"/></div>
+            <div style="position: absolute; width: 100px; height: 100px; left: -50px; top: -50px"><img width="100px" height="100px" src="img/placeholder_100X100.png"/></div>
             ]]>
             </description>
             <balloonVisibility>1</balloonVisibility>
