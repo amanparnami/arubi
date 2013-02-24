@@ -1,4 +1,4 @@
-/nbproject/private/
-/server/www/logs/
 *.log
 *.DS_STORE
+/nbproject/private/
+/server/www/logs/
