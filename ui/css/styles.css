@@ -13,12 +13,12 @@ body{
 }
 
 div.placemark_overlay {
-	position: absolute; 
-	width: 100px; 
-	height: 100px; 
-	left: -50px; 
-	top: -50px; 
-	background: #ffffff;
+    position: absolute; 
+    width: 100px; 
+    height: 100px; 
+    left: -50px; 
+    top: -50px; 
+    background: #ffffff;
 }
 
 div.panel{
@@ -61,7 +61,7 @@ div.panel{
 #rightpanel{
     right: -40%;
 }
-                
+
 div.device{
     border: 5px #F9F9F9 solid;
     border-radius: 15px;
@@ -130,8 +130,8 @@ div.device p{
     position: relative;
     margin: 10px;
     background: #98C73D;
-    height: 100px;
-    width: 100px;
+    height: 110px;
+    width: 110px;
     float: left;
     padding: 5px;
     border-top-left-radius: 10px;
@@ -145,3 +145,45 @@ div.device p{
     max-height: 80px;
     color: white;
 }
+.spec{
+    position: relative;
+    display: block;
+    /*height: 60px;*/
+    font-size: 0.6em;
+    padding: 10px;
+    margin: 15px;
+    border: 1px solid white;
+    border-radius: 15px;
+    background: rgba(255, 255, 255,0.6);
+    box-shadow: 0px 0px 5px #000;
+}
+
+            .spec{
+                position: relative;
+                display: block;
+                height: 20px;
+                padding: 10px;
+                margin: 15px;
+                border: 1px solid white;
+                border-radius: 15px;
+                background: rgba(255, 255, 255,0.6);
+                box-shadow: 0px 0px 5px #000;
+            }
+            
+            .selectedpanel{
+                width: 40%;
+                height: 220px;
+                background: #E9F2F9;
+                border-radius: 20px;
+                padding: 15px;
+                margin: 10px;
+
+            }
+            
+            .selectedpanel .device{
+                float: left;
+            }
+            
+            .selectedpanel .feature{
+                float: right;
+            }
