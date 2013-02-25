@@ -6,8 +6,8 @@ header("Content-type: application/json");
 switch ($_GET["f"]) {
     case "getInputSpecById":getInputSpecById($_GET["id"]);break;
     case "getOutputSpecById":getOutputSpecById($_GET["id"]);break;
-    case "getInputSpecListByFeatureId":getInputSpecListByFeatureId($_GET["feature_id"]);break;
-    case "getOutputSpecListByFeatureId":getOutputSpecListByFeatureId($_GET["feature_id"]);break;
+    case "getInputSpecsByFeatureId":getInputSpecsByFeatureId($_GET["featureId"]);break;
+    case "getOutputSpecsByFeatureId":getOutputSpecsByFeatureId($_GET["featureId"]);break;
     default:
         break;
 }
@@ -33,11 +33,10 @@ function getOutputSpecById($id) {
 }
 
 
-function getInputSpecListByFeatureId($featureId) {
+function getInputSpecsByFeatureId($featureId) {
     $dbQuery = sprintf("SELECT * 
                         FROM input
-                        INNER JOIN feature ON input.feature_id = feature.id
-                        AND feature.id = '$featureId'
+                        WHERE feature_id = '$featureId'
                         LIMIT 0 , 100
                         ");
     //echo $dbQuery;
@@ -50,11 +49,10 @@ function getInputSpecListByFeatureId($featureId) {
     echo json_encode($result);
 }
 
-function getOutputSpecListByFeatureId($featureId) {
+function getOutputSpecsByFeatureId($featureId) {
     $dbQuery = sprintf("SELECT * 
                         FROM output
-                        INNER JOIN feature ON output.feature_id = feature.id
-                        AND feature.id = '$featureId'
+                        WHERE feature_id = '$featureId'
                         LIMIT 0 , 100   
                         ");
     //echo $dbQuery;
