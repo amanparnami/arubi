@@ -158,18 +158,7 @@ div.device p{
     box-shadow: 0px 0px 5px #000;
 }
 
-            .spec{
-                position: relative;
-                display: block;
-                height: 20px;
-                padding: 10px;
-                margin: 15px;
-                border: 1px solid white;
-                border-radius: 15px;
-                background: rgba(255, 255, 255,0.6);
-                box-shadow: 0px 0px 5px #000;
-            }
-            
+
             .selectedpanel{
                 width: 40%;
                 height: 220px;

@@ -1,0 +1,48 @@
+/* 
+    Document   : ui2
+    Created on : Mar 10, 2013, 10:44:26 AM
+    Author     : haozheli
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body{
+    width: 800px;
+}
+
+.container{
+    width: 800px;
+    height: 100%;
+    background: rgba(230,230,230,0.4);
+    text-align: center;
+    position: absolute;
+    
+    overflow: hidden;
+    z-index: 1200;
+}
+
+.page{
+    border-radius: 20px;
+    border: 5px solid #333;
+    width: 780px;
+    height: 780px;
+    position: absolute;
+    margin: 10px;
+/*    margin-left: 5%;
+    margin-right: 5%;*/
+    
+    display: block;
+    /*z-index: 1200;*/
+}
+
+#page1{
+    /*left: 0px;*/
+}
+
+#page2{
+    /*left: 800px;*/
+}
