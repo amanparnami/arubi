@@ -8,5 +8,16 @@ function sampleTransition() {
 	//$(".input").show();
 	// 2. Move the selection box to the left side
 	// 3. Show the compact widget hinged to left
-	$("#box").attr("src","img/mockups/Kinect_Pinned.svg");
+  $('.input').animate({
+    opacity: 'show',
+  }, 1000, function() {
+    // Animation complete.
+  });
+	
+  $('#box').animate({
+    attr: ("src", 'img/mockups/Kinect_Pinned.svg'),
+  }, 1000, function() {
+    // Animation complete.
+  });
+	//$("#box").attr("src","img/mockups/Kinect_Pinned.svg");
 }
