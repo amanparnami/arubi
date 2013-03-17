@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Argon Basic AR Web App</title>
+    <link rel="apple-touch-icon" href="assets/sample_icon_57x57.png" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <meta name="arenabled"/>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    
+    <script src="../js/app.js" type="text/javascript"></script>
+    
+    <!--include js file for onscreen logger-->
+    <script src="../js/jslog.js"></script>
+
+    
+    
+    <script>
+
+ 
+
+         document.addEventListener("AR.ArgonReadyEvent", app.onArgonReady);
+
+
+         $(document).ready(function () {
+
+            JSLOG.init();
+
+            console.log("test logging");
+            console.log("test logging");
+            console.log("test logging");
+            console.log("test logging");
+            console.log("test logging");
+
+
+
+            setInterval(function(){
+
+                app._isVisible();
+            },3000);
+        });
+
+
+         </script>
+     </head>
+     <body>
+        <script src="http://argon.gatech.edu/argon_o.js"></script>
+        <div style="position: fixed; top: 0px; height: 500px;width: 100%; z-index:1200;" id="logcontainer"></div>
+
+
+    </body>
+
+
+    </html>            

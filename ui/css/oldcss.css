@@ -12,15 +12,6 @@ body{
     /*background: #CC9E61;*/
 }
 
-div.placemark_overlay {
-    position: absolute; 
-    width: 100px; 
-    height: 100px; 
-    left: -50px; 
-    top: -50px; 
-    background: #ffffff;
-}
-
 div.panel{
     display: block;
     height: 100%;
@@ -65,24 +56,22 @@ div.panel{
 div.device{
     border: 5px #F9F9F9 solid;
     border-radius: 15px;
-    height: 150px;
-    width: 150px;
+    height: 130px;
+    width: 130px;
     background: #40B3DF;
     color: #E9F2F9;
     padding: 5px;
     position: relative;
     margin-bottom: 5px;
-    margin-top: 250px;
 }
 
 div.device .device-name {
-    font-size: 0.8em;
+    font-size: 16px;
     font-weight: bold;
 }
 
 div.device p{
     margin-bottom: 5px;
-    font-size: 0.6em;
 }
 
 .device .device-availability {
@@ -92,7 +81,7 @@ div.device p{
     width: 25px;
     height: 15px;
     border-radius: 5px;
-    font-size: 0.6em;
+    font-size: 14px;
     padding: 2px;
 
 }
@@ -113,7 +102,6 @@ div.device p{
     padding: 5px 10px;
     position: absolute;
     bottom: 5px;
-    font-size: 0.6em;
 }
 
 .device a.button.input{
@@ -130,14 +118,13 @@ div.device p{
     position: relative;
     margin: 10px;
     background: #98C73D;
-    height: 110px;
-    width: 110px;
+    height: 100px;
+    width: 100px;
     float: left;
     padding: 5px;
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border:5px solid white;
-    font-size: 0.6em;
 }
 
 .feature img{
@@ -145,11 +132,11 @@ div.device p{
     max-height: 80px;
     color: white;
 }
+
 .spec{
     position: relative;
     display: block;
-    /*height: 60px;*/
-    font-size: 0.6em;
+    height: 20px;
     padding: 10px;
     margin: 15px;
     border: 1px solid white;
@@ -157,7 +144,6 @@ div.device p{
     background: rgba(255, 255, 255,0.6);
     box-shadow: 0px 0px 5px #000;
 }
-
 
 .selectedpanel{
     width: 40%;

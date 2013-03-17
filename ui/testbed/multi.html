@@ -22,6 +22,15 @@
     
     //-->
     <title>Multi Marker Demo</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/logger.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (){
+//            Logger.show();
+            log("logger started");
+        });
+    </script>
+    
     <script>
     
         var app = {
@@ -118,6 +127,9 @@
                 
                 if (trackedObject24 != null)
                 {
+
+
+//                    log("object 24 detected");
                     var obj3d;
                     obj3d = trackedObject24.threeObject3D;   
                     trackedObject24.label.innerText = app._getTransformString(obj3d);
@@ -125,6 +137,7 @@
                 
                 if (trackedObject25 != null)
                 {
+//                    log("object 25 detected");
                     var to24;
                     var to25;
                     
@@ -157,10 +170,11 @@
           
             onArgonReady: function() {
                 
-                trackedObject24 = app._createLabeledMarker(13, "green");
-                trackedObject25 = app._createLabeledMarker(6, "blue");
-                trackedObject26 = app._createLabeledMarker(7, "red");
-                
+                trackedObject24 = app._createLabeledMarker(2, "green");
+                trackedObject25 = app._createLabeledMarker(3, "blue");
+                trackedObject26 = app._createLabeledMarker(4, "red");
+//                                                    log(JSON.stringify(trackedObject24));
+//                                                    alert(JSON.stringify(trackedObject24));
                 /********************************************************
                  *  Hooking into the render loop
                  * 
@@ -177,5 +191,6 @@
     </head>
     <body>
         <script src="http://argon.gatech.edu/argon_o.js"></script>
+        <!--<div style="height: 300px; width: 100%; background: white; position: absolute; top: 500px; z-index: 1200;" id="loggercontainer"></div>-->
     </body>
 </html>
