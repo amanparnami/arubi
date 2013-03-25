@@ -21,3 +21,4 @@ function sampleTransition() {
   });
 	//$("#box").attr("src","img/mockups/Kinect_Pinned.svg");
 }
+
