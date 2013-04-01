@@ -69,16 +69,50 @@
 			<g class="popup-dialog">
 				<!-- path fill="#F1F1F1" d="M392.535,59.702H130.507c-2.883-33.447-30.929-59.7-65.123-59.7C29.273,0.001,0,29.275,0,65.386
 				c0,35.826,28.818,64.906,64.536,65.363v95.177l-10.715,59.703l59.911-21.6h278.803V59.702z"/>-->
-				<rect x="84.277" y="64.507" fill="#F1F1F1" width="380" height="200"/>
-				<circle fill="#F1F1F1" cx="84.277" cy="64.507" r="60"/>
+				<rect x="84.277" y="64.507" fill="#F1F1F1" width="380" height="200">
+					<animate id="first" attributeType="CSS"
+					                 attributeName="visibility"
+					                 to="hidden"
+					                 dur="2s"
+					                 begin="2s"
+													 fill="freeze"
+					                  />
+				</rect>
+				<circle fill="#F1F1F1" cx="84.277" cy="64.507" r="60">
+					<animateTransform attributeType="XML"
+					                 attributeName="transform"
+													 type="translate"
+					                 to="-30"
+					                 dur="2s"
+					                 begin="first.end"
+													 fill="freeze"
+					                  />
+					
+				</circle>
+				
 			</g>
 			<g class="device-name">
 				<text transform="matrix(1 0 0 1 199.1562 95.146)" fill="#989898" font-family="'Roboto-Bold'" font-size="24">KINECT</text>
+				<animate attributeType="CSS"
+				                 attributeName="visibility"
+				                 to="hidden"
+				                 dur="6s"
+				                 begin="2s"
+												 fill="freeze"
+				                  />
 			</g>
 			<g class="device-status">
 				<circle  fill="#99CC00" cx="84.277" cy="64.507" r="37.912"/>
+				<animateTransform attributeType="XML"
+				                 attributeName="transform"
+												 type="translate"
+				                 to="-30"
+				                 dur="2s"
+				                 begin="first.end"
+												 fill="freeze"
+				                  />
 			</g>
-			<g class="device-icon">
+			<g class="device-icon" transform="translate(20)">
 				<path d="M18.513,63.811c0.179,2.291,1.475,12.703,10.335,17.559c-0.091-0.223-0.141-0.471-0.141-0.733v-8.919
 				c0-1.184,0.922-2.355,2.099-2.669l75.679-20.278c0.074-0.019,0.146-0.022,0.218-0.034l-11.616-4.123L18.994,63.229l9.161,5.693
 				l-0.396,0.637L18.513,63.811z"/>
@@ -92,6 +126,14 @@
 				<polygon points="61.86,74.063 53.823,78.161 56.948,80.645 66.276,74.079 66.276,72.879 		"/>
 				<polygon points="63.412,76.479 57.225,80.833 69.598,77.517 81.971,74.202 75.786,73.163 72.644,72.634 72.644,72.342 
 				81.971,74.014 76.48,71.844 72.644,71.688 72.644,71.173 66.553,72.804 66.553,74.266 		"/>
+				<animateTransform attributeType="XML"
+				                 attributeName="transform"
+												 type="translate"
+				                 to="-30"
+				                 dur="2s"
+				                 begin="first.end"
+												 fill="freeze"
+				                  />
 			</g>
 			<g class="feature-list">
 				<g class="feature">
@@ -129,6 +171,13 @@
 					</g>
 					<text class="feature-text" transform="matrix(1 0 0 1 211.959 230.0249)" fill="#222222" font-family="'Roboto-Regular'" font-size="18">Say something...</text>
 				</g>
+				<animate attributeType="CSS"
+				                 attributeName="visibility"
+				                 to="hidden"
+				                 dur="6s"
+				                 begin="2s"
+												 fill="freeze"
+				                  />
 			</g>
 			<rect class="category-indicator input" x="64.286" y="131.967" fill="#AA66CC" width="12" height="93.242"/>
 		</g>
