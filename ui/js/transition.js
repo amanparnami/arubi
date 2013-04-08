@@ -22,3 +22,14 @@ function sampleTransition() {
 	//$("#box").attr("src","img/mockups/Kinect_Pinned.svg");
 }
 
+$(document).ready(function() {
+	$.get({
+		url: "ui/kinect.xml",
+		dataType: "xml",
+		success: function (svg) {
+					$(".device-icon").append(svg);
+		}
+	}
+	);
+
+});

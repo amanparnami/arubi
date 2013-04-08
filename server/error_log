@@ -1,0 +1,1 @@
+[04-Apr-2013 12:22:43 America/Chicago] PHP Warning:  fread() [<a href='function.fread'>function.fread</a>]: Length parameter must be greater than 0 in /home2/crondev/public_html/amanparnami.com/arubi/get.php on line 6
