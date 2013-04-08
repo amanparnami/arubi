@@ -23,11 +23,12 @@ function sampleTransition() {
 }
 
 $(document).ready(function() {
-	$.get({
-		url: "ui/kinect.xml",
+	$.ajax({
+		url: "kinect.xml",
 		dataType: "xml",
 		success: function (svg) {
 					$(".device-icon").append(svg);
+					$("body").html($("body").html());
 		}
 	}
 	);
