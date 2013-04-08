@@ -31,6 +31,6 @@ void setup()
 
 void loop() 
 {
-  irsend.sendNEC(buttonDown,38);
+  irsend.sendNEC(powerOn,38);
   delay(1000);
 }
