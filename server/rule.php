@@ -1,6 +1,4 @@
 <?php
-
-
 include 'db_helper.php';
 
 header("Content-type: application/json");
