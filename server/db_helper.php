@@ -70,7 +70,7 @@ function getDBResultInserted($dbQuery,$id){
 	if($dbResults){
 		return array($id=>mysql_insert_id());
 	}else{
-		$GLOBALS["_PLATFORM"]->sandboxHeader('HTTP/1.1 500 Internal Server Error');
+		//$GLOBALS["_PLATFORM"]->sandboxHeader('HTTP/1.1 500 Internal Server Error');
 		die(mysql_error());
 	}
 }
