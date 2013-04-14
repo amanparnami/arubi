@@ -7,13 +7,16 @@ header("Content-type: application/json");
 switch($_GET["f"])
 {
 	case "setRule": 
-		setRule($_GET["inputId"], $_GET["outputId"], $_GET["programmer"], $_GET["user"], $_GET["location"]);
+		setRule($_GET["inputId"], $_GET["outputId"], $_GET["programmer"], $_GET["user"], $_GET["loc_id"]);
 		break;
 	case "setRuleStatus":
 		setRuleStatus($_GET["ruleId"], $_GET["status"]);
 		break;
 	case "getRules":
 		getRules();
+		break;
+	case "getRule":
+		getRule($_GET["ruleId"]);
 		break;
 	default:
 		break;
@@ -39,6 +42,14 @@ function setRuleStatus($rId, $status)
 function getRules()
 {
 	$dbQuery = sprintf("SELECT * FROM rule");
+    $result = getDBResultRecord($dbQuery);
+
+    echo json_encode($result);
+}
+
+function getRule($rId) 
+{
+	$dbQuery = sprintf("SELECT rule FROM rule WHERE id=$rId");
     $result = getDBResultRecord($dbQuery);
 
     echo json_encode($result);

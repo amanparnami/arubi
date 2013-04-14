@@ -263,3 +263,58 @@ function bindDeviceFeatures () {
 
     
 }
+
+function getRules () {
+	//1) Fetch rules from database based on criteria
+  $.ajax({
+      url: "../server/rule.php",
+      type: "GET",
+      data: {
+          "f": "getRules",
+      }, success: function(rules) {
+      	//2) Display rules in the UI
+      });	
+}
+
+function setRule(inputId, outputId, programmerId, userId, loc_id) {
+	//By default: programmer = 1, user = 1
+  $.ajax({
+      url: "../server/rule.php",
+      type: "GET",
+      data: {
+          "f": "setRule",
+					"inputId": inputId,
+					"outputId": outputId,
+					"programmer": programmerId,
+					"user": userId,
+					"loc_id": loc_id,
+      }, success: function(rules) {
+      	//Fetch the ruleId and set it in UI
+      });	
+}
+
+function setRuleStatus(ruleId, status) {
+  $.ajax({
+      url: "../server/rule.php",
+      type: "GET",
+      data: {
+          "f": "setRuleStatus",
+					"ruleId":ruleId,
+					"status":status,
+      }, success: function(rules) {
+      	//Hide the UI corresponding to the rule
+      });	
+}
+
+function getRule (ruleId) {
+	//1) Fetch rules from database based on criteria
+  $.ajax({
+      url: "../server/rule.php",
+      type: "GET",
+      data: {
+          "f": "getRule",
+					"ruleId": ruleId,
+      }, success: function(rule) {
+      	//2) Display rule in the UI
+      });	
+}
