@@ -57,8 +57,9 @@ function getRule($rId)
         JOIN `feature`AS inf
         JOIN `device` AS ind
         WHERE r.input_id = i.id AND i.feature_id = inf.id AND inf.device_id = ind.id");
-    $result = getDBResultRecord($dbInputQuery);
+    $resultI = getDBResultRecord($dbInputQuery);
+		$resultO = getDBResultRecord($dbInputQuery);
 
-    echo json_encode($result);
+    echo json_encode($resultI)+'\n'+json_encode($resultO);
 }
 ?>
