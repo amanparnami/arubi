@@ -56,9 +56,9 @@ function getRule($rId)
 	JOIN `output` AS i 
         JOIN `feature`AS inf
         JOIN `device` AS ind
-        WHERE r.input_id = i.id AND i.feature_id = inf.id AND inf.device_id = ind.id");
+        WHERE r.output_id = i.id AND i.feature_id = inf.id AND inf.device_id = ind.id");
     $resultI = getDBResultRecord($dbInputQuery);
-		$resultO = getDBResultRecord($dbInputQuery);
+		$resultO = getDBResultRecord($dbOutputQuery);
 
     echo json_encode($resultI)+'\n'+json_encode($resultO);
 }
