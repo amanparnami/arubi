@@ -10,7 +10,7 @@ switch ($_GET["f"]) {
     case "getFeatureListByDeviceId":getFeatureListByDeviceId($_GET["deviceId"]);break;
     case "getInputFeaturesByDeviceId":getInputFeaturesByDeviceId($_GET["deviceId"]);break;
     case "getOutputFeaturesByDeviceId":getOutputFeaturesByDeviceId($_GET["deviceId"]);break;
-        
+    case "getFeaturesByDeviceId":getFeaturesByDeviceId($_GET["deviceId"]);break;
 
     default:
         break;
@@ -63,8 +63,16 @@ function getOutputFeaturesByDeviceId($deviceId) {
     
     $result = getDBResultsArray($dbQuery);
     
-    //$result = getDBResultRecord($dbQuery);
 
+    echo json_encode($result);
+}
+
+function getFeaturesByDeviceId($deviceId){
+    $dbQuery = sprintf("SELECT * 
+                        FROM feature WHERE device_id = '$deviceId'
+                        ");
+    
+    $result = getDBResultsArray($dbQuery);
 
     echo json_encode($result);
 }
