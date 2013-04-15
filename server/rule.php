@@ -47,8 +47,17 @@ function getRules()
 
 function getRule($rId) 
 {
-	$dbQuery = sprintf("SELECT rule FROM rule WHERE id=$rId");
-    $result = getDBResultRecord($dbQuery);
+	$dbInputQuery = sprintf("SELECT r.*, i.icon_url AS spec_icon_url, i.description AS spec_description, inf.title AS feature_title, inf.description AS feature_description, inf.icon_url AS feature_icon_url, ind.name AS device_name, ind.icon_url AS device_icon_url FROM `rule` AS r 
+	JOIN `input` AS i 
+        JOIN `feature`AS inf
+        JOIN `device` AS ind
+        WHERE r.input_id = i.id AND i.feature_id = inf.id AND inf.device_id = ind.id");
+	$dbOutputQuery = sprintf("SELECT r.*, i.icon_url AS spec_icon_url, i.description AS spec_description, inf.title AS feature_title, inf.description AS feature_description, inf.icon_url AS feature_icon_url, ind.name AS device_name, ind.icon_url AS device_icon_url FROM `rule` AS r 
+	JOIN `output` AS i 
+        JOIN `feature`AS inf
+        JOIN `device` AS ind
+        WHERE r.input_id = i.id AND i.feature_id = inf.id AND inf.device_id = ind.id");
+    $result = getDBResultRecord($dbInputQuery);
 
     echo json_encode($result);
 }
