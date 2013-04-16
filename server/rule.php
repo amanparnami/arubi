@@ -27,6 +27,8 @@ function setRule($in, $out, $programmer, $user, $loc)
 						VALUES ($in, $out, $programmer, $user, $loc, 1)");
 	$result = getDBResultInserted($dbQuery, 'ruleId');
 	
+	logMsg('rule', $result['ruleId'], 'insert', 'new rule created');
+	
 	echo json_encode($result);
 }
 
@@ -47,19 +49,22 @@ function getRules()
 
 function getRule($rId) 
 {
-	$dbInputQuery = sprintf("SELECT r.*, i.icon_url AS spec_icon_url, i.description AS spec_description, inf.title AS feature_title, inf.description AS feature_description, inf.icon_url AS feature_icon_url, ind.name AS device_name, ind.icon_url AS device_icon_url FROM `rule` AS r 
+	$dbInputQuery = sprintf("SELECT r.*, i.icon_url AS input_spec_icon_url, i.description AS input_spec_description, inf.title AS input_feature_title, inf.description AS input_feature_description, inf.icon_url AS input_feature_icon_url, ind.name AS input_device_name, ind.icon_url AS input_device_icon_url FROM `rule` AS r 
 	JOIN `input` AS i 
         JOIN `feature`AS inf
         JOIN `device` AS ind
         WHERE r.input_id = i.id AND i.feature_id = inf.id AND inf.device_id = ind.id");
-	$dbOutputQuery = sprintf("SELECT r.*, i.icon_url AS spec_icon_url, i.description AS spec_description, inf.title AS feature_title, inf.description AS feature_description, inf.icon_url AS feature_icon_url, ind.name AS device_name, ind.icon_url AS device_icon_url FROM `rule` AS r 
-	JOIN `output` AS i 
+	$dbOutputQuery = sprintf("SELECT r.*, o.icon_url AS output_spec_icon_url, o.description AS output_spec_description, inf.title AS output_feature_title, inf.description AS output_feature_description, inf.icon_url AS output_feature_icon_url, ind.name AS output_device_name, ind.icon_url AS output_device_icon_url FROM `rule` AS r 
+	JOIN `output` AS o 
         JOIN `feature`AS inf
         JOIN `device` AS ind
-        WHERE r.output_id = i.id AND i.feature_id = inf.id AND inf.device_id = ind.id");
+        WHERE r.output_id = o.id AND o.feature_id = inf.id AND inf.device_id = ind.id");
     $resultI = getDBResultRecord($dbInputQuery);
-		$resultO = getDBResultRecord($dbOutputQuery);
+	$resultO = getDBResultRecord($dbOutputQuery);
 
-    echo json_encode($resultI)+'\n'+json_encode($resultO);
+	$returnval = json_encode(array_merge($resultI,$resultO));
+	logMsg("rule", $rId, "fetch", "fetching rule info");
+	//$returnval = json_encode($resultO);
+    echo $returnval;
 }
 ?>

@@ -74,4 +74,10 @@ function getDBResultInserted($dbQuery,$id){
 		die(mysql_error());
 	}
 }
+
+function logMsg($source_name, $source_id, $event_type, $description) 
+{
+	$dbQuery = sprintf("INSERT INTO log (source_name, source_id, event_type, description) VALUES ('".$source_name."', $source_id, '".$event_type."', '".mysql_real_escape_string($description)."')");
+	$result = getDBResultInserted($dbQuery, 'logId');
+}
 ?>
