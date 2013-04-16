@@ -1,5 +1,6 @@
 <?php
-include '../../db_helper.php';
+include 'db_helper.php';
+header("Content-type: application/json");
 
 $device = $_GET["device"];
 $feature = $_GET["feature"];
@@ -21,35 +22,40 @@ $ourFileName = "testFile.txt";
 //screenUp
 //screenDown
 $inPresentationMode = 0;
-$deviceId = getIdFromString("device", $device);
-$featureId = getIdFromString("feature", $feature);
-$inputId = getIdFromString("spec", $spec);
 
 function getIdFromString($type, $str) {
 	switch($type)
 	{
 		case "device":
-			$dbQuery = sprintf("SELECT id FROM device WHERE name="+ucfirst($str));
+			$tempStr = ucfirst($str);
+			$dbQuery = sprintf("SELECT id FROM device WHERE name ='$tempStr'");
 			$result = getDBResultRecord($dbQuery);
-			$deviceId = $result["id"];
+			return $result['id'];
 		break;
 		case "feature":
-			$dbQuery = sprintf("SELECT id FROM feature WHERE type=$str");
+			$dbQuery = sprintf("SELECT id FROM feature WHERE type = '$str'");
 			$result = getDBResultRecord($dbQuery);
-			$featureId = $result["id"];
+			return $result['id'];
+			
 		break;
 		case "spec":
 		//ASSUMPTION spec is input type
-			$dbQuery = sprintf("SELECT id FROM input WHERE value=$str");
+			$dbQuery = sprintf("SELECT id FROM input WHERE value = '$str'");
 			$result = getDBResultRecord($dbQuery);
-			$specId = $result["id"];
+			return $result['id'];
+			
 		break;
 	}
 }
 
+$deviceId = getIdFromString("device", $device);
+$featureId = getIdFromString("feature", $feature);
+$inputId = getIdFromString("spec", $spec);
+
 //ASSUMPTION a spec cannot occur in multiple rules
 function getRuleIdFromSpecId($specId)
 {
+	
 	$dbQuery = sprintf("SELECT id FROM rule WHERE input_id = $specId");
 	$result = getDBResultRecord($dbQuery);
 	echo json_encode($result);
