@@ -56,7 +56,7 @@ namespace KinectModule
             //serialPort1 = new System.IO.Ports.SerialPort("COM6");
             //serialPort1.BaudRate = 9600;
 
-            HttpUpdateIp(ipAddress);
+           // HttpUpdateIp(ipAddress);
         }
 
         public string LocalIPAddress()

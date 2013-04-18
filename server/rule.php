@@ -16,6 +16,9 @@ switch($_GET["f"])
 	case "getRule":
 		getRule($_GET["ruleId"]);
 		break;
+	case "updateRule": 
+		updateRule($_GET["ruleId"], $_GET["inputId"], $_GET["outputId"]);
+		break;
 	default:
 		break;
 }
@@ -66,5 +69,11 @@ function getRule($rId)
 	logMsg("rule", $rId, "fetch", "fetching rule info");
 	//$returnval = json_encode($resultO);
     echo $returnval;
+}
+
+function updateRule($rId, $in, $out) {
+	$dbQuery = sprintf("UPDATE rule SET input_id = $in, output_id = $out WHERE id = $rId");
+	$result = getDBResultAffected($dbQuery);
+	echo json_encode($result);
 }
 ?>

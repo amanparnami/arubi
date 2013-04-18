@@ -22,7 +22,7 @@ function updateIpAddress($deviceId, $ipAddress)
        $dbQuery = sprintf("UPDATE device SET ipaddress = '$ipAddress' WHERE id = $deviceId");
        $result = getDBResultAffected($dbQuery, 'id', 'ipaddress');
        logMsg('device', $deviceId, 'update', 'ip address updated');
-       echo json_encode($result);
+       //echo "h";
 }
 
 function updateAvailability($deviceId, $availability)
@@ -30,7 +30,7 @@ function updateAvailability($deviceId, $availability)
        $dbQuery = sprintf("UPDATE device SET available = $availability WHERE id = $deviceId");
        $result = getDBResultAffected($dbQuery, 'id', 'available');
        logMsg('device', $deviceId, 'update', 'availability info changed');
-       echo json_encode($result);
+       echo "hi";
 }
 
 ?>
