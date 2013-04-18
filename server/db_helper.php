@@ -60,7 +60,7 @@ function getDBResultAffected($dbQuery){
 	if($dbResults){
 		return array('rowsAffected'=>mysql_affected_rows());
 	}else{
-		$GLOBALS["_PLATFORM"]->sandboxHeader('HTTP/1.1 500 Internal Server Error');
+		//$GLOBALS["_PLATFORM"]->sandboxHeader('HTTP/1.1 500 Internal Server Error');
 		die(mysql_error());
 	}
 }

@@ -5,45 +5,31 @@ header("Content-type: application/json");
 //http://localhost/server/updateDeviceInfo.php?f=updateIP&device=&ip=192.168.1.2
 
 $deviceId = $_GET["id"];
-
-
 switch($_GET["f"])
 {
 	case "updateIP":
-	$ipAddress = $_GET["ip"]
+	$ipAddress = $_GET["ip"];
 	updateIpAddress($deviceId, $ipAddress);
 	break;
 	case "updateAvailability":
-	$availability = $_GET["available"]
+	$availability = $_GET["available"];
 	updateAvailability($deviceId, $availability);
 	break;
 }
 
-
-
 function updateIpAddress($deviceId, $ipAddress)
 {
-       $dbQuery = sprintf("UPDATE device SET
-                                               (ipaddress)
-                                               VALUES ($ipAddress)
-                                               WHERE 
-                                               (id = $deviceId)
-                                       ");
+       $dbQuery = sprintf("UPDATE device SET ipaddress = '$ipAddress' WHERE id = $deviceId");
        $result = getDBResultAffected($dbQuery, 'id', 'ipaddress');
-       //logMsg('rule', $result['ruleId'], 'insert', 'new rule created');
-       //echo json_encode($result);
+       logMsg('device', $deviceId, 'update', 'ip address updated');
+       echo json_encode($result);
 }
 
 function updateAvailability($deviceId, $availability)
 {
-       $dbQuery = sprintf("UPDATE device SET
-                                               (available)
-                                               VALUES ($availability)
-                                               WHERE 
-                                               (id = $deviceId)
-                                       ");
+       $dbQuery = sprintf("UPDATE device SET available = $availability WHERE id = $deviceId");
        $result = getDBResultAffected($dbQuery, 'id', 'available');
-       //logMsg('rule', $result['ruleId'], 'insert', 'new rule created');
+       logMsg('device', $deviceId, 'update', 'availability info changed');
        echo json_encode($result);
 }
 
