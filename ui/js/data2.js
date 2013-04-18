@@ -91,7 +91,7 @@ function getDevices() {
             $(".device-container").html(devicesHtml);
 
                         //Bind click handlers for features
-            $(".feature");
+//            $(".feature");
 
 
             bindDeviceFeatures();
@@ -137,17 +137,10 @@ function getFeatures(deviceId) {
                         featureHtml += '</div>';
                         featureHtml += '<span class="feature-title">' + feature.title + '</span>';
                     featureHtml += '</div>';
-                    
-                    
                             
-                    $('.device[data-id=' + feature.device_id + '] .feature-list').append(featureHtml);
-                    
+                    $('.device[data-id=' + feature.device_id + '] .feature-list').append(featureHtml);   
                 }
-
             });
-            
-
-
         }
     });
 
@@ -217,6 +210,8 @@ function getOutputFeatures(deviceId) {
 
 //Get all information for specs
 function getInputSpec(featureId, deviceId) {
+    console.log("get input spec for device @" + deviceId);
+    
     moveDeviceCircleToInput(deviceId);
     
     $.ajax({
@@ -231,48 +226,43 @@ function getInputSpec(featureId, deviceId) {
                 var spec = specs[i];
                 
                 //console.log(specs);
-                specsHTML += '<div class="spec">';
+                specsHTML += '<div class="spec" data-id="'+spec.id+'">';
                 specsHTML +=     '<div class="spec-icon">';
                 specsHTML +=         '<img src="'+spec.icon_url+'">';
                 specsHTML +=     '</div>';
                 specsHTML +=     '<div class="spec-title">'+spec.description+'</div>';
                 specsHTML += '</div>';
                 
-//                var spec = specs[i];
-//                //console.log(spec);
-//                specsHTML += '<a class="spec" data-spec-id="' + spec.id + '">';
-//                specsHTML += spec.description;
-//                specsHTML += '</a>';
-
             });
-            $(".input.spec-list").html(specsHTML);
+            
+            $(".input.spec-list").html(specsHTML).show();
+            
+            $(".input.spec-list").on("click touchend", ".spec", function (){
+                var img =  $(this).children(".spec-icon").children("img");
+                var imgUrl = $(img).attr("src");
+                console.log("url is:"+ imgUrl);
+                
+                $(this).parents(".spec-list").hide();
+                
+                var deviceCircleSpecIcon = "";
+                deviceCircleSpecIcon += '<div class="device-circle-spec-icon input">';
+                deviceCircleSpecIcon += '<img src="'+imgUrl+'">';
+                deviceCircleSpecIcon += '</div>';
+                
+                $('.device[data-id="'+deviceId+'"] ').children('.device-circle').append(deviceCircleSpecIcon);
+                               
+                var specId = $(this).attr("data-id");
+                console.log(specId);
+                setSpecsForRule("input", specId);
+            });
+            
 
         }
     });
 }
 
 function getOutputSpec(featureId, deviceId) {
-//    $.ajax({
-//        url: "../server/spec.php",
-//        type: "GET",
-//        data: {
-//            "f": "getOutputSpecsByFeatureId",
-//            "featureId": featureId
-//        }, success: function(specs) {
-//            var specsHTML = "";
-//            $(specs).each(function(i) {
-//                //console.log(specs);
-//                var spec = specs[i];
-//                //console.log(spec);
-//                specsHTML += '<a class="spec" data-spec-id="' + spec.id + '">';
-//                specsHTML += spec.description;
-//                specsHTML += '</a>';
-//
-//            });
-//            $(".output .specpanel").html(specsHTML);
-//
-//        }
-//    });
+    console.log("get output spec for device @" + deviceId);
     
     moveDeviceCircleToOutput(deviceId);
     
@@ -288,133 +278,45 @@ function getOutputSpec(featureId, deviceId) {
                 var spec = specs[i];
                 
                 //console.log(specs);
-                specsHTML += '<div class="spec">';
+                specsHTML += '<div class="spec" data-id="'+spec.id+'">';
                 specsHTML +=     '<div class="spec-icon">';
                 specsHTML +=         '<img src="'+spec.icon_url+'">';
                 specsHTML +=     '</div>';
                 specsHTML +=     '<div class="spec-title">'+spec.description+'</div>';
                 specsHTML += '</div>';
-
             });
-            $(".output.spec-list").html(specsHTML);
+            
+            $(".output.spec-list").html(specsHTML).show()
+            
+            $(".output.spec-list").on("click touchend", ".spec", function (){
+                
+                var img =  $(this).children(".spec-icon").children("img");
+                var imgUrl = $(img).attr("src");
+                console.log("url is:"+ imgUrl);
+                
+                $(this).parents(".spec-list").hide();
+                
+                var deviceCircleSpecIcon = "";
+                deviceCircleSpecIcon += '<div class="device-circle-spec-icon output">';
+                deviceCircleSpecIcon += '<img src="'+imgUrl+'">';
+                deviceCircleSpecIcon += '</div>';
+                
+                $('.device[data-id="'+deviceId+'"] ').children('.device-circle').append(deviceCircleSpecIcon);
+                
+                var specId = $(this).attr("data-id");
+                console.log(specId);
+                setSpecsForRule("output", specId);
+                
+            });;
 
         }
     });
 }
 
-function bindDeviceFeatures() {
-    
-    //Bind click handlers for features
-    $(".device .feature-list").on("click touchend", ".feature", function (){
-//        console.log($(this).);
-        var featureIoType = $(this).attr("data-io-type");
-        var featureId = $(this).attr("data-id");
-        
-        var deviceId = $(this).parents(".device").attr("data-id");
-        console.log(deviceId);
-        
-        if(featureIoType == "1") getInputSpec(featureId, deviceId);
-        else if(featureIoType == "0") getOutputSpec(featureId, deviceId);
-        
-    });
-
-
-//    $("#devicepanel .device .input.button").each(function() {
-//        $(this).on("touchend click", function() {
-//            var deviceId = $(this).parent(".device").attr("data-device-id");
-//            console.log("device #" + deviceId + ": input button touched");
-//            getInputFeatures(deviceId);
-//
-//            $('#leftpanel').animate({
-//                'left': '-24%'
-//            }, 'easein');
-//        })
-//    });
-//
-//    $("#devicepanel .device .output.button").each(function() {
-//        $(this).on("touchend click", function() {
-//            var deviceId = $(this).parent(".device").attr("data-device-id");
-//            console.log("device #" + deviceId + ": output button touched");
-//            getOutputFeatures(deviceId);
-//
-//            $('#rightpanel').animate({
-//                'right': '-24%'
-//            }, 'easein');
-//        })
-//    });
-//
-//
-//    $(".input .featurepanel").on("click touchend", ".feature", function() {
-//        getInputSpec($(this).attr('data-feature-id'));
-//
-//        $('#leftpanel').animate({
-//            'left': '0%'
-//        }, 'easein');
-//    });
-//
-//    $(".output .featurepanel").on("click touchend", ".feature", function() {
-//        getOutputSpec($(this).attr('data-feature-id'));
-//        $('#rightpanel').animate({
-//            'right': '0%'
-//        }, 'easein');
-//    });
-
-
-}
-
-function moveDeviceCircleToInput(deviceId){
+function pinDeviceCircle(deviceId){
     deviceElement = $('.device[data-id="'+deviceId+'"] ');
-    $(deviceElement).children('.device-popup').animate({opacity: "0"},500).hide();
-    $(deviceElement).children('.device-circle').animate({left: "-=400"}, 500).one("click touchend", function (){
-        console.log("circle clicked after moving to side");
-        
-        $(deviceElement).children('.device-popup').show().animate({opacity: "1"},500);
-        $(deviceElement).children('.device-circle').animate({left: "+=400"}, 500);
-        
-    });
-    
+//    $(deviceElement).children('.device-circle')
 }
-
-function showDeviceBack(){
-    
-}
-
-function moveDeviceCircleToOutput(deviceId){
-    deviceElement = $('.device[data-id="'+deviceId+'"] ');
-    $(deviceElement).children('.device-popup').animate({opacity: "0"},500, function (){$(this).hide();});
-    $(deviceElement).children('.device-circle').animate({left: "+=400", top: "-=200"}, 500).one("click touchend", function () {
-        console.log("circle clicked after moving to side");
-        
-        $(deviceElement).children('.device-popup').show().animate({opacity: "1"},500);
-        $(deviceElement).children('.device-circle').animate({left: "-=400", top: "+=200"}, 500);
-    });
-}
-
-
-//Functions for binding
-function hideDevices() {
-    $(".device").each(function() {
-        $(this).hide();
-    });
-
-}
-function showDevices() {
-    $(".device").each(function() {
-        $(this).show();
-    });
-
-}
-
-function showDevice(deviceId) {
-//    console.log("showing device#"+deviceId);
-    $(".device[data-device-id=" + deviceId + "]").show();
-}
-
-function hideDevice(deviceId) {
-//    console.log("hiding device#"+deviceId);
-    $(".device[data-device-id=" + deviceId + "]").hide();
-}
-
 
 function getRules() {
     //1) Fetch rules from database based on criteria
@@ -430,6 +332,8 @@ function getRules() {
 }
 
 function setRule(inputId, outputId, programmerId, userId, loc_id) {
+    $("svg.rule-connection").animate({opacity: 1}, 500);
+//    $("svg.rule-connection").animate({opacity: 1}, 500);
     //By default: programmer = 1, user = 1
     $.ajax({
         url: "../server/rule.php",
@@ -443,6 +347,8 @@ function setRule(inputId, outputId, programmerId, userId, loc_id) {
             "loc_id": loc_id,
         }, success: function(rules) {
             //Fetch the ruleId and set it in UI
+            
+
         }
     });
 }

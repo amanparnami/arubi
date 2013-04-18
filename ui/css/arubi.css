@@ -23,7 +23,6 @@ div.panel {
     position: absolute;
 }
 
-
 .device-container{
     text-align: center;
 }
@@ -34,10 +33,10 @@ div.panel {
     width: 400px;
     height: 100%;
     margin: 0 auto;
-    
-    left: 500px;
+
+    left: 400px;
     top: 300px;
-        
+
 }
 
 .device{
@@ -45,6 +44,8 @@ div.panel {
     /*float: left;*/
     position: absolute;
     min-height: 300px;
+
+    z-index: 1100;
 }
 
 /*for device circle*/
@@ -55,9 +56,11 @@ div.panel {
     height: 150px;
 
     text-align: left;
-    
+
     top: -80px;
     left: -80px;
+
+    z-index: 1101;
 }
 
 .device-circle.state1 .device-circle-background{
@@ -76,7 +79,7 @@ div.panel {
     width: 200px;
     height: 150px;
     position: absolute;
-       
+
 }
 
 .device-circle-icon{
@@ -104,10 +107,36 @@ div.panel {
     left: -8px;
 }
 
+.device-circle-spec-icon{
+    z-index: 1101;
+    position: absolute;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    padding: 20px;
+}
+
+.device-circle-spec-icon.input{
+    left: 120px;
+}
+
+.device-circle-spec-icon.output{
+    left: -50px;
+}
+
+.device-circle-spec-icon img{
+    height: 80px;
+    width: 80px;
+    margin: -25px 0 0 -25px;
+}
+
+/*For device popup*/
+
 .device-popup{
-/*    position: absolute;
-    margin-left: 60px;
-    margin-top: 100px;*/
+    /*    position: absolute;
+        margin-left: 60px;
+        margin-top: 100px;*/
     /*width: 100%;*/
     /*height: 800px;*/
 
@@ -139,15 +168,15 @@ div.panel {
 }
 
 .feature:hover{
-/*    background-color: rgba(255,255,255,0.8);
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.3);*/
+    /*    background-color: rgba(255,255,255,0.8);
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.3);*/
 }
 
 .feature-icon{
     display: inline-block;
     width: 50px;
     height: 50px;
-        margin-right: 10px;
+    margin-right: 10px;
 
 }
 
@@ -176,24 +205,25 @@ span.feature-title{
 
     float: left;
 
+    font-size: 0.8em;
     /*padding-bottom: 10px;*/
 }
 
 .spec-list.input{
-    margin: 100px 0 0 10px;
-    left: 0;
-    top: 0;
-}
-
-.spec-list.output{
-    margin: 100px 10px 0 0;
-    right: 0;
-    top: 0;
+    margin: 0px 0 0 10px;
+    left: 50px;
+    top: 180px;
     
     position: absolute;
 }
 
+.spec-list.output{
+    margin: 0px 10px 0 0;
+    right: 50px;
+    top: 180px;
 
+    position: absolute;
+}
 
 .spec-list-title{
     font-size: 1.6em;
@@ -212,8 +242,10 @@ span.feature-title{
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 1px 1px 2px rgba(10, 10, 10, 0.05);
-/*
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);*/
+
+    z-index: 1100;
+    /*
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);*/
 }
 
 .spec-icon{
@@ -224,11 +256,46 @@ span.feature-title{
 
 .spec-icon img{
     border-radius: 5px 0px 0 5px;
-        height: 50px;
+    height: 50px;
     width: 50px;
 }
 
 .spec-title{
     position: relative;
     top: 10px;
+}
+
+/*for rules*/
+.rule-connection{
+    opacity: 0;
+}
+
+.control-container{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    bottom: 10px;
+}
+
+.control{
+    width: 200px;
+    height: 50px;
+    background: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+    float: left;
+    
+    margin-left: 50px;
+    
+    padding-top: 20px;
+}
+
+
+/*For development*/
+.device[data-id="1"]{
+    z-index: 1103;
+}
+
+.device[data-id="5"]{
+    z-index: 1102;
 }
