@@ -1,0 +1,234 @@
+p{
+    margin: 0;
+}
+
+body{
+    margin: 0;
+    font-family: 'Roboto';
+    color: black!important;
+}
+
+.container{
+    width: 100%;
+    overflow: hidden;
+    /*background: #CC9E61;*/
+}
+
+div.panel {
+    height: 100%;
+    width: 20px;							
+}
+
+#box {
+    position: absolute;
+}
+
+
+.device-container{
+    text-align: center;
+}
+
+.device-container{
+    position: absolute;
+
+    width: 400px;
+    height: 100%;
+    margin: 0 auto;
+    
+    left: 500px;
+    top: 300px;
+        
+}
+
+.device{
+    /*margin-top: 80px;*/
+    /*float: left;*/
+    position: absolute;
+    min-height: 300px;
+}
+
+/*for device circle*/
+.device-circle{
+    position: absolute;
+
+    width: 200px;
+    height: 150px;
+
+    text-align: left;
+    
+    top: -80px;
+    left: -80px;
+}
+
+.device-circle.state1 .device-circle-background{
+    background-image: url(../img/toptip1.svg);
+}
+
+.device-circle.state2 .device-circle-background{
+    background-image: url(../img/toptip2.svg);
+}
+
+.device-circle.state3 .device-circle-background{
+    background-image: url(../img/toptip3.svg);
+}
+
+.device-circle-background{
+    width: 200px;
+    height: 150px;
+    position: absolute;
+       
+}
+
+.device-circle-icon{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    border-radius: 50%;
+}
+
+.device-circle-icon.on{
+    background-color: #99cc00;
+}
+
+.device-circle-icon.off{
+    background-color: #ff4444;
+}
+
+.device-circle-icon img{
+    width: 100px;
+    height: 100px;
+    top: -5px;
+    position: relative;
+    left: -8px;
+}
+
+.device-popup{
+/*    position: absolute;
+    margin-left: 60px;
+    margin-top: 100px;*/
+    /*width: 100%;*/
+    /*height: 800px;*/
+
+    background-color: #f1f1f1;
+    width: 350px;
+}
+
+.device-title{
+    font-size: 2em;
+    margin: 5px;
+
+    color: #989898;
+}
+
+.feature-list{
+    padding: 15px;
+}
+
+.feature{
+    /*width: 300px;*/
+    /*border: 5px solid #fff;*/
+    border-radius: 5px;
+    /*box-shadow: 0 0 10px #fff;*/
+    margin-top: 15px;
+    /*margin: 20px;*/
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow:0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.feature:hover{
+/*    background-color: rgba(255,255,255,0.8);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.3);*/
+}
+
+.feature-icon{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+        margin-right: 10px;
+
+}
+
+.feature-icon img{
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 15px;
+}
+
+
+
+span.feature-title{
+    margin-top: -10px;
+    font-size: 1.5em;
+
+    position: relative;
+    top: -10px;
+    /*float: left;*/
+}
+
+.spec-list{
+
+    width: 200px;
+    background: #f1f1f1;
+
+    float: left;
+
+    /*padding-bottom: 10px;*/
+}
+
+.spec-list.input{
+    margin: 100px 0 0 10px;
+    left: 0;
+    top: 0;
+}
+
+.spec-list.output{
+    margin: 100px 10px 0 0;
+    right: 0;
+    top: 0;
+    
+    position: absolute;
+}
+
+
+
+.spec-list-title{
+    font-size: 1.6em;
+    margin: 5px;
+
+    color: #989898; 
+}
+
+
+.spec{
+    display: block;
+    height: 50px;
+    /*padding: 10px;*/
+    margin: 10px;
+    display: block;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 1px 1px 2px rgba(10, 10, 10, 0.05);
+/*
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);*/
+}
+
+.spec-icon{
+    float: left;
+    height: 50px;
+    width: 50px;
+}
+
+.spec-icon img{
+    border-radius: 5px 0px 0 5px;
+        height: 50px;
+    width: 50px;
+}
+
+.spec-title{
+    position: relative;
+    top: 10px;
+}

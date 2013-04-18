@@ -273,7 +273,8 @@ function getRules () {
           "f": "getRules",
       }, success: function(rules) {
       	//2) Display rules in the UI
-      });	
+      }
+    });	
 }
 
 function setRule(inputId, outputId, programmerId, userId, loc_id) {
@@ -290,7 +291,8 @@ function setRule(inputId, outputId, programmerId, userId, loc_id) {
 					"loc_id": loc_id,
       }, success: function(rules) {
       	//Fetch the ruleId and set it in UI
-      });	
+      }
+    });	
 }
 
 function setRuleStatus(ruleId, status) {
@@ -303,7 +305,8 @@ function setRuleStatus(ruleId, status) {
 					"status":status,
       }, success: function(rules) {
       	//Hide the UI corresponding to the rule
-      });	
+      }
+    });	
 }
 
 function getRule (ruleId) {
@@ -316,5 +319,6 @@ function getRule (ruleId) {
 					"ruleId": ruleId,
       }, success: function(rule) {
       	//2) Display rule in the UI
-      });	
+      }
+    });	
 }

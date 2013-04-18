@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Argon Basic AR Web App</title>
+        <link rel="apple-touch-icon" href="assets/sample_icon_57x57.png" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+        <meta name="arenabled"/>
+        <script src="js/jquery-1.9.1.min.js"></script>
+
+        <!--Functions for data access and interaction-->
+        <script src="js/data2.js" type="text/javascript"></script>
+
+        <!--Include code to fake click events with touch-->
+        <script src="js/touchtoclick.js" type="text/javascript"></script>
+
+        <!--Include code for argon-->
+        <script src="js/app2.js" type="text/javascript"></script>
+
+        <!--include js file for onscreen logger-->
+        <script src="js/jslog.js"></script>
+
+        <link href="css/arubi.css" rel="stylesheet" type="text/css">
+        <!--2248x1024-->
+
+        <script>
+            //Initialize argon
+//            document.addEventListener("AR.ArgonReadyEvent", app.onArgonReady);
+
+
+            $(document).ready(function() {
+                //Init logger
+//                JSLOG.init();
+
+                console.log("test logging");
+
+                getDevices();
+
+                setInterval(function() {
+                    //check device availability
+//                    app._checkVisibleDevices();
+
+//                console.log("window dimension:" + window.innerHeight + " , "+ window.innerWidth);
+                }, 3000);
+            });
+
+
+        </script>
+    </head>
+    <body>
+        <script src="http://argon.gatech.edu/argon_o.js"></script>
+        <!--<div style="position: fixed; top: 0px; height: 500px;width: 100%; z-index:1200;" id="logcontainer"></div>-->
+
+        <div class="container" style=" height: 100%; width:100%; text-align: center;">
+
+            <div id="clickme">
+                Click here
+            </div>
+            <div class="input spec-list">
+
+<!--                <div class="spec">
+                    <div class="spec-icon">
+                        <img src="http://placehold.it/50x50">
+                    </div>
+                    <div class="spec-title">spec 1</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-icon">
+                        <img src="http://placehold.it/50x50">
+                    </div>
+                    <div class="spec-title">
+                        spec 2
+                    </div>
+                </div>
+                <div class="spec">
+                    <div class="spec-icon">
+                        <img src="http://placehold.it/50x50">
+                    </div>
+                    <div class="spec-title">
+                        spec 3
+                    </div>
+
+                </div>
+                <div class="spec">
+                    <div class="spec-icon">
+                        <img src="http://placehold.it/50x50">
+                    </div>
+                    <div class="spec-title">
+                        spec 4
+                    </div>
+                </div>
+                <div style="clear: both"></div>-->
+
+            </div>
+
+            <div class="device-container">
+                <div class="device">
+                    <div class="device-popup">
+                        <div class="device-title">
+                            Kinect
+                        </div>
+
+                        <div class="feature-list">
+                            <div class="feature">
+                                <div class="feature-icon">
+                                    <img src="http://placehold.it/50x50" alt=""/>
+                                </div>
+                                <span class="feature-title">Make a gesture...</span>
+                            </div>
+
+                            <div class="feature">
+
+                                <div class="feature-icon">
+                                    <img src="http://placehold.it/50x50" alt=""/>
+                                </div>
+                                <span class="feature-title">Say something...</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="device-circle state1">
+                        <div class="device-circle-background">
+
+
+                        </div>
+                        <div class="device-circle-icon on">
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="output spec-list">
+
+            </div>
+
+        </div>
+
+
+
+    </body>
+
+
+</html>            

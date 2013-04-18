@@ -1,136 +1,217 @@
 <html>
-<head>
-	<title>test ui</title>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="js/transition.js"></script>
-	<script type="text/javascript">
+    <head>
+        <title>test ui</title>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/transition.js"></script>
+        <script type="text/javascript">
 
-		$(document).ready(function() {
-							
-			$('.input').hide();
-							
-			$('#clickme').click(function() {
-				$('#box').animate({
-					left: '-=480',
-					height: '-=180'
-				}, 500, function() {
-					// Animation complete.
-					sampleTransition();
-				});
-			});
-							
+            $(document).ready(function() {
 
-		});
-	</script>
-	<style type="text/css">
+//                $('.input').hide();
 
-		p{
-			margin: 0;
-		}
+                $('#clickme').click(function() {
+                    $('#box').animate({
+                        left: '-=480',
+                        height: '-=180'
+                    }, 500, function() {
+                        // Animation complete.
+//                        sampleTransition();
+                    });
+                });
 
-		body{
-			margin: 0;
-		}
 
-		.container{
-			width: 100%;
-			overflow: hidden;
-			/*background: #CC9E61;*/
-		}
-						
-		div.panel {
-			height: 100%;
-			width: 20px;							
-		}
-						
-		.input {
-			background: #AA66CC;
-			position: absolute;
-			left: 0;
-			top: 0;
-		}
-						
-		#box {
-			position: absolute;
-		}
-						
-	</style>
-</head>
-<body>
-	<div class="container" style=" height: 100%; width:100%; text-align: center;">
-		<div class="panel input"></div>
-		<div id="clickme">
-			Click here
-		</div>
-		<div>
-		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-		width="392.535px" height="285.63px" viewBox="0 0 392.535 285.63" enable-background="new 0 0 392.535 285.63"
-		xml:space="preserve">
-		<g id="kinect">
-			<g class="popup-dialog">
-				<!-- path fill="#F1F1F1" d="M392.535,59.702H130.507c-2.883-33.447-30.929-59.7-65.123-59.7C29.273,0.001,0,29.275,0,65.386
-				c0,35.826,28.818,64.906,64.536,65.363v95.177l-10.715,59.703l59.911-21.6h278.803V59.702z"/>-->
-				<rect x="84.277" y="64.507" fill="#F1F1F1" width="380" height="200">
-				</rect>
-				<circle fill="#F1F1F1" cx="84.277" cy="64.507" r="60">
-				</circle>
-				
-			</g>
-			<g class="device-name">
-				<text transform="matrix(1 0 0 1 199.1562 95.146)" fill="#989898" font-family="'Roboto-Bold'" font-size="24">KINECT</text>
-			</g>
-			<g class="device-status">
-				<circle  fill="#99CC00" cx="84.277" cy="64.507" r="37.912"/>
-			</g>
-			<g class="device-icon" transform="translate(20)">
-						
-			</g>
-			<g class="feature-list">
-				<g class="feature">
-					<g class="feature-icon">
-						<path d="M168.855,139.922c-2.493-1.171-3.771,1.42-3.771,1.42l-6.239,10.187l-1.254-0.722l4.479-16.511
-						c0,0,0.591-2.744-1.998-3.275c-2.878-0.628-3.729,1.671-3.729,1.671l-4.209,16.093l-1.402-0.385l2.048-19.283
-						c0,0,0.176-3.004-2.719-3.243c-2.897-0.241-3.255,2.711-3.255,2.711l-1.966,19.285h-1.254l-1.462-17.875
-						c0,0-0.662-2.912-3.193-2.912c-2.528,0-2.655,3.419-2.655,3.419l0.645,21.988l-0.645,0.705l-4.795-3.761c0,0-2.253-1.79-4.057,0.04
-						c-1.628,1.652,0.227,4.172,0.227,4.172l9.466,14.584l20.931,1.245l12.127-26.12C170.173,143.357,171.125,141.039,168.855,139.922"
-						/>
-					</g>
-					<text class="feature-text" transform="matrix(1 0 0 1 211.96 157.061)" fill="#222222" font-family="'Roboto-Regular'" font-size="18">Make a gesture...</text>
-				</g>
 
-				<g class="feature">
-					<g class="feature-icon">
-						<path d="M174.29,218.393c-0.748,0-1.354,0.604-1.354,1.352c0,0.209,0.051,0.402,0.135,0.58l-0.013,0.006
-						c0.84,1.787,1.315,3.775,1.315,5.877s-0.476,4.092-1.315,5.879l0.013,0.006c-0.084,0.178-0.135,0.373-0.135,0.58
-						c0,0.748,0.605,1.354,1.354,1.354c0.589,0,1.085-0.379,1.271-0.904c0.97-2.105,1.519-4.445,1.519-6.912
-						c0-2.469-0.549-4.807-1.519-6.912C175.375,218.77,174.878,218.393,174.29,218.393z"/>
-						<path d="M181.22,215.821c-0.747,0-1.352,0.607-1.352,1.354c0,0.207,0.049,0.398,0.131,0.574l-0.007,0.004
-						c1.232,2.564,1.937,5.432,1.963,8.457c-0.026,3.025-0.73,5.893-1.963,8.459L180,234.67c-0.082,0.174-0.131,0.367-0.131,0.572
-						c0,0.748,0.604,1.354,1.352,1.354c0.57,0,1.057-0.354,1.255-0.854c1.376-2.896,2.16-6.125,2.187-9.533
-						c-0.026-3.408-0.811-6.637-2.187-9.533C182.277,216.176,181.791,215.821,181.22,215.821z"/>
-						<path d="M189.563,214.069c-0.015-0.039-0.033-0.076-0.051-0.113l0,0c-0.222-0.445-0.677-0.756-1.208-0.756
-						c-0.748,0-1.353,0.605-1.353,1.354c0,0.197,0.044,0.383,0.119,0.551l-0.006,0.004c1.587,3.371,2.479,7.133,2.479,11.1
-						c0,3.969-0.892,7.73-2.479,11.104l0.006,0.002c-0.075,0.17-0.119,0.354-0.119,0.551c0,0.748,0.604,1.354,1.353,1.354
-						c0.531,0,0.986-0.311,1.208-0.756l0,0c0.018-0.037,0.036-0.074,0.051-0.113c1.721-3.693,2.686-7.805,2.686-12.139
-						C192.25,221.874,191.283,217.762,189.563,214.069z"/>
-						<path d="M170.076,219.09l-3.852-9.697c0,0-0.396-4.018-0.76-5.555c-1.603-6.918-9.314-13.195-17.678-13.195
-						c-10.174,0-18.425,8.254-18.425,18.436c0,5.881,2.754,11.121,7.043,14.496v15.641h19.666v-5.641h2.888
-						c4.012,0,7.266-3.254,7.266-7.27v-5.152h2.471c0.82,0,1.491-0.668,1.491-1.486C170.187,219.461,170.149,219.264,170.076,219.09z
-						M159.813,213.524c-1.392,0-2.52-1.129-2.52-2.52c0-1.393,1.128-2.521,2.52-2.521s2.521,1.129,2.521,2.521
-						C162.333,212.395,161.207,213.524,159.813,213.524z"/>
-					</g>
-					<text class="feature-text" transform="matrix(1 0 0 1 211.959 230.0249)" fill="#222222" font-family="'Roboto-Regular'" font-size="18">Say something...</text>
-				</g>
-			</g>
-			<rect class="category-indicator input" x="64.286" y="131.967" fill="#AA66CC" width="12" height="93.242"/>
-		</g>
-	</svg>
-</div>
-	<!--
-		<img id="box" src="img/mockups/Kinect.svg" alt=""
-		style="position: absolute; left: 500px;" />
-	-->
-</div>
-        
-</body>
+            });
+        </script>
+        <!--Styles-->
+        <!--google font-->
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="css/arubi.css">
+    </head>
+    <body>
+        <div class="container" style=" height: 100%; width:100%; text-align: center;">
+            <!--<div class="panel input"></div>-->
+            <div id="clickme">
+                Click here
+            </div>
+            <div class="input spec-list">
+<!--                <div class="spec-list-title">Input Spec List</div>-->
+
+                <div class="spec">
+                    <div class="spec-icon">
+                        <img src="http://placehold.it/50x50">
+                    </div>
+                    <div class="spec-title">spec 1</div>
+                </div>
+                <div class="spec">
+                    <div class="spec-icon">
+                        <img src="http://placehold.it/50x50">
+                    </div>
+                    <div class="spec-title">
+                        spec 2
+                    </div>
+                </div>
+                <div class="spec">
+                    <div class="spec-icon">
+                        <img src="http://placehold.it/50x50">
+                    </div>
+                    <div class="spec-title">
+                        spec 3
+                    </div>
+                    
+                </div>
+                <div class="spec">
+                    <div class="spec-icon">
+                        <img src="http://placehold.it/50x50">
+                    </div>
+                    <div class="spec-title">
+                        spec 4
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+
+            </div>
+            
+            <div class="device">
+                <div class="device-popup">
+                    <div class="device-title">
+                        Kinect
+                    </div>
+
+                    <div class="feature-list">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <img src="http://placehold.it/50x50" alt=""/>
+                            </div>
+                            <span class="feature-title">Make a gesture...</span>
+
+                        </div>
+
+                        <div class="feature">
+
+                            <div class="feature-icon">
+                                <img src="http://placehold.it/50x50" alt=""/>
+                            </div>
+                            <span class="feature-title">Say something...</span>
+                        </div>
+
+                    </div>
+                    <input />
+                </div>
+
+                <div class="device-circle state1">
+                    <div class="device-circle-background">
+
+                        
+                    </div>
+                    <div class="device-circle-icon on">
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="output spec">
+
+            </div>
+
+            <div style="display: none;">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="392.535px" height="285.63px" viewBox="0 0 392.535 285.63" enable-background="new 0 0 392.535 285.63"
+                     xml:space="preserve">
+                <g id="kinect">
+
+
+                <g class="popup-dialog">
+
+                <rect x="84.277" y="64.507" fill="#F1F1F1" width="380" height="200">
+                </rect>
+
+
+                </g>
+                <g class="device-name">
+                <text transform="matrix(1 0 0 1 199.1562 95.146)" fill="#989898" font-family="'Roboto-Bold'" font-size="24">KINECT</text>
+                </g>
+
+
+                <g class="feature-list">
+                <g class="feature">
+                <g class="feature-icon">
+                <path d="M168.855,139.922c-2.493-1.171-3.771,1.42-3.771,1.42l-6.239,10.187l-1.254-0.722l4.479-16.511
+                      c0,0,0.591-2.744-1.998-3.275c-2.878-0.628-3.729,1.671-3.729,1.671l-4.209,16.093l-1.402-0.385l2.048-19.283
+                      c0,0,0.176-3.004-2.719-3.243c-2.897-0.241-3.255,2.711-3.255,2.711l-1.966,19.285h-1.254l-1.462-17.875
+                      c0,0-0.662-2.912-3.193-2.912c-2.528,0-2.655,3.419-2.655,3.419l0.645,21.988l-0.645,0.705l-4.795-3.761c0,0-2.253-1.79-4.057,0.04
+                      c-1.628,1.652,0.227,4.172,0.227,4.172l9.466,14.584l20.931,1.245l12.127-26.12C170.173,143.357,171.125,141.039,168.855,139.922"
+                      />
+                </g>
+                <text class="feature-text" transform="matrix(1 0 0 1 211.96 157.061)" fill="#222222" font-family="'Roboto-Regular'" font-size="18">Make a gesture...</text>
+                </g>
+                <g class="feature">
+                <g class="feature-icon">
+                <path d="M168.855,139.922c-2.493-1.171-3.771,1.42-3.771,1.42l-6.239,10.187l-1.254-0.722l4.479-16.511
+                      c0,0,0.591-2.744-1.998-3.275c-2.878-0.628-3.729,1.671-3.729,1.671l-4.209,16.093l-1.402-0.385l2.048-19.283
+                      c0,0,0.176-3.004-2.719-3.243c-2.897-0.241-3.255,2.711-3.255,2.711l-1.966,19.285h-1.254l-1.462-17.875
+                      c0,0-0.662-2.912-3.193-2.912c-2.528,0-2.655,3.419-2.655,3.419l0.645,21.988l-0.645,0.705l-4.795-3.761c0,0-2.253-1.79-4.057,0.04
+                      c-1.628,1.652,0.227,4.172,0.227,4.172l9.466,14.584l20.931,1.245l12.127-26.12C170.173,143.357,171.125,141.039,168.855,139.922"
+                      />
+                </g>
+                <text class="feature-text" transform="matrix(1 0 0 1 211.96 157.061)" fill="#222222" font-family="'Roboto-Regular'" font-size="18">Make a gesture...</text>
+                </g>
+                <g class="feature">
+                <g class="feature-icon">
+                <path d="M168.855,139.922c-2.493-1.171-3.771,1.42-3.771,1.42l-6.239,10.187l-1.254-0.722l4.479-16.511
+                      c0,0,0.591-2.744-1.998-3.275c-2.878-0.628-3.729,1.671-3.729,1.671l-4.209,16.093l-1.402-0.385l2.048-19.283
+                      c0,0,0.176-3.004-2.719-3.243c-2.897-0.241-3.255,2.711-3.255,2.711l-1.966,19.285h-1.254l-1.462-17.875
+                      c0,0-0.662-2.912-3.193-2.912c-2.528,0-2.655,3.419-2.655,3.419l0.645,21.988l-0.645,0.705l-4.795-3.761c0,0-2.253-1.79-4.057,0.04
+                      c-1.628,1.652,0.227,4.172,0.227,4.172l9.466,14.584l20.931,1.245l12.127-26.12C170.173,143.357,171.125,141.039,168.855,139.922"
+                      />
+                </g>
+                <text class="feature-text" transform="matrix(1 0 0 1 211.96 157.061)" fill="#222222" font-family="'Roboto-Regular'" font-size="18">Make a gesture...</text>
+                </g>
+
+                <g class="feature">
+                <g class="feature-icon">
+                <path d="M174.29,218.393c-0.748,0-1.354,0.604-1.354,1.352c0,0.209,0.051,0.402,0.135,0.58l-0.013,0.006
+                      c0.84,1.787,1.315,3.775,1.315,5.877s-0.476,4.092-1.315,5.879l0.013,0.006c-0.084,0.178-0.135,0.373-0.135,0.58
+                      c0,0.748,0.605,1.354,1.354,1.354c0.589,0,1.085-0.379,1.271-0.904c0.97-2.105,1.519-4.445,1.519-6.912
+                      c0-2.469-0.549-4.807-1.519-6.912C175.375,218.77,174.878,218.393,174.29,218.393z"/>
+                <path d="M181.22,215.821c-0.747,0-1.352,0.607-1.352,1.354c0,0.207,0.049,0.398,0.131,0.574l-0.007,0.004
+                      c1.232,2.564,1.937,5.432,1.963,8.457c-0.026,3.025-0.73,5.893-1.963,8.459L180,234.67c-0.082,0.174-0.131,0.367-0.131,0.572
+                      c0,0.748,0.604,1.354,1.352,1.354c0.57,0,1.057-0.354,1.255-0.854c1.376-2.896,2.16-6.125,2.187-9.533
+                      c-0.026-3.408-0.811-6.637-2.187-9.533C182.277,216.176,181.791,215.821,181.22,215.821z"/>
+                <path d="M189.563,214.069c-0.015-0.039-0.033-0.076-0.051-0.113l0,0c-0.222-0.445-0.677-0.756-1.208-0.756
+                      c-0.748,0-1.353,0.605-1.353,1.354c0,0.197,0.044,0.383,0.119,0.551l-0.006,0.004c1.587,3.371,2.479,7.133,2.479,11.1
+                      c0,3.969-0.892,7.73-2.479,11.104l0.006,0.002c-0.075,0.17-0.119,0.354-0.119,0.551c0,0.748,0.604,1.354,1.353,1.354
+                      c0.531,0,0.986-0.311,1.208-0.756l0,0c0.018-0.037,0.036-0.074,0.051-0.113c1.721-3.693,2.686-7.805,2.686-12.139
+                      C192.25,221.874,191.283,217.762,189.563,214.069z"/>
+                <path d="M170.076,219.09l-3.852-9.697c0,0-0.396-4.018-0.76-5.555c-1.603-6.918-9.314-13.195-17.678-13.195
+                      c-10.174,0-18.425,8.254-18.425,18.436c0,5.881,2.754,11.121,7.043,14.496v15.641h19.666v-5.641h2.888
+                      c4.012,0,7.266-3.254,7.266-7.27v-5.152h2.471c0.82,0,1.491-0.668,1.491-1.486C170.187,219.461,170.149,219.264,170.076,219.09z
+                      M159.813,213.524c-1.392,0-2.52-1.129-2.52-2.52c0-1.393,1.128-2.521,2.52-2.521s2.521,1.129,2.521,2.521
+                      C162.333,212.395,161.207,213.524,159.813,213.524z"/>
+                </g>
+                <text class="feature-text" transform="matrix(1 0 0 1 211.959 230.0249)" fill="#222222" font-family="'Roboto-Regular'" font-size="18">Say something...</text>
+                </g>
+                </g>
+                <rect class="category-indicator input" x="64.286" y="131.967" fill="#AA66CC" width="12" height="93.242"/>
+                <g class="device-circle">
+                <circle fill="#F1F1F1" cx="84.277" cy="64.507" r="60">
+                </circle>
+                <g class="device-status">
+                <circle  fill="#99CC00" cx="84.277" cy="64.507" r="37.912"/>
+                </g>
+                <g class="device-icon" transform="translate(20)">
+
+                </g>
+
+                </g>
+
+                </g>
+                </svg>
+            </div>
+
+        </div>
+
+    </body>
 </html>
