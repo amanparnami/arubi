@@ -20,20 +20,20 @@ C:\Users\t-greyes\Dropbox\Georgia Tech\Ubicomp & Augmented Reality\Kinect\Kinect
 C:\Users\t-greyes\Dropbox\Georgia Tech\Ubicomp & Augmented Reality\Kinect\KinectModule\KinectModule\obj\x86\Debug\KinectModule.exe
 C:\Users\t-greyes\Dropbox\Georgia Tech\Ubicomp & Augmented Reality\Kinect\KinectModule\KinectModule\obj\x86\Debug\KinectModule.pdb
 C:\Users\t-greyes\Dropbox\Georgia Tech\Ubicomp & Augmented Reality\Kinect\KinectModule\KinectModule\bin\Debug\KinectModule.exe.config
-C:\Users\Craig\Desktop\KinectModule\KinectModule\bin\Debug\KinectModule.exe.config
-C:\Users\Craig\Desktop\KinectModule\KinectModule\obj\x86\Debug\KinectModule.exe
-C:\Users\Craig\Desktop\KinectModule\KinectModule\obj\x86\Debug\KinectModule.pdb
-C:\Users\Craig\Desktop\KinectModule\KinectModule\bin\Debug\KinectModule.exe
-C:\Users\Craig\Desktop\KinectModule\KinectModule\bin\Debug\KinectModule.pdb
-C:\Users\Craig\Desktop\KinectModule\KinectModule\bin\Debug\Fizbin.Kinect.Gestures.pdb
-C:\Users\Craig\Desktop\KinectModule\KinectModule\bin\Debug\Lighthouse.Kinect.Gestures.pdb
-C:\Users\Craig\Desktop\KinectModule\KinectModule\bin\Debug\Microsoft.Kinect.Toolkit.pdb
-C:\Users\Craig\Desktop\KinectModule\KinectModule\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
-C:\Users\Craig\Desktop\KinectModule\KinectModule\obj\x86\Debug\KinectModule.csprojResolveAssemblyReference.cache
-C:\Users\Craig\Desktop\KinectModule\KinectModule\obj\x86\Debug\MainWindow.baml
-C:\Users\Craig\Desktop\KinectModule\KinectModule\obj\x86\Debug\MainWindow.g.cs
-C:\Users\Craig\Desktop\KinectModule\KinectModule\obj\x86\Debug\App.g.cs
-C:\Users\Craig\Desktop\KinectModule\KinectModule\obj\x86\Debug\KinectModule_MarkupCompile.cache
-C:\Users\Craig\Desktop\KinectModule\KinectModule\obj\x86\Debug\KinectModule.g.resources
-C:\Users\Craig\Desktop\KinectModule\KinectModule\obj\x86\Debug\KinectModule.Properties.Resources.resources
-C:\Users\Craig\Desktop\KinectModule\KinectModule\obj\x86\Debug\KinectModule.csproj.GenerateResource.Cache
+F:\KinectModule\KinectModule\KinectModule\bin\Debug\KinectModule.exe.config
+F:\KinectModule\KinectModule\KinectModule\obj\x86\Debug\KinectModule.exe
+F:\KinectModule\KinectModule\KinectModule\obj\x86\Debug\KinectModule.pdb
+F:\KinectModule\KinectModule\KinectModule\bin\Debug\KinectModule.exe
+F:\KinectModule\KinectModule\KinectModule\bin\Debug\KinectModule.pdb
+F:\KinectModule\KinectModule\KinectModule\bin\Debug\Fizbin.Kinect.Gestures.pdb
+F:\KinectModule\KinectModule\KinectModule\bin\Debug\Lighthouse.Kinect.Gestures.pdb
+F:\KinectModule\KinectModule\KinectModule\bin\Debug\Microsoft.Kinect.Toolkit.pdb
+F:\KinectModule\KinectModule\KinectModule\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
+F:\KinectModule\KinectModule\KinectModule\obj\x86\Debug\KinectModule.csprojResolveAssemblyReference.cache
+F:\KinectModule\KinectModule\KinectModule\obj\x86\Debug\MainWindow.baml
+F:\KinectModule\KinectModule\KinectModule\obj\x86\Debug\MainWindow.g.cs
+F:\KinectModule\KinectModule\KinectModule\obj\x86\Debug\App.g.cs
+F:\KinectModule\KinectModule\KinectModule\obj\x86\Debug\KinectModule_MarkupCompile.cache
+F:\KinectModule\KinectModule\KinectModule\obj\x86\Debug\KinectModule.g.resources
+F:\KinectModule\KinectModule\KinectModule\obj\x86\Debug\KinectModule.Properties.Resources.resources
+F:\KinectModule\KinectModule\KinectModule\obj\x86\Debug\KinectModule.csproj.GenerateResource.Cache

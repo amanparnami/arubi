@@ -13,6 +13,7 @@ using Fizbin.Kinect.Gestures;
 using Microsoft.Speech.Recognition;
 using System.Collections.Generic;
 using Microsoft.Speech.AudioFormat;
+using System.Threading;
 
 namespace KinectModule
 {
@@ -24,12 +25,12 @@ namespace KinectModule
         private readonly KinectSensorChooser sensorChooser = new KinectSensorChooser();
         private SpeechRecognitionEngine speechEngine;
         private Skeleton[] skeletons = new Skeleton[0];
-
+        private System.IO.Ports.SerialPort serialPort1;
         // skeleton gesture recognizer
         private GestureController gestureController;
 
         private List<System.Windows.Documents.Span> recognitionSpans;
-
+        //int skCount = 0;
         public MainWindow()
         {
             DataContext = this;
@@ -46,8 +47,8 @@ namespace KinectModule
             // bind chooser's sensor value to the local sensor manager
             var kinectSensorBinding = new Binding("Kinect") { Source = this.sensorChooser };
             BindingOperations.SetBinding(this.KinectSensorManager, KinectSensorManager.KinectSensorProperty, kinectSensorBinding);
-
-            
+            serialPort1 = new System.IO.Ports.SerialPort("COM6");
+            serialPort1.BaudRate = 9600;
         }
 
         #region Kinect Discovery & Setup
@@ -106,16 +107,20 @@ namespace KinectModule
                 this.speechEngine = new SpeechRecognitionEngine(ri.Id);
 
                 var directions = new Choices();
-                directions.Add(new SemanticResultValue("forward", "FORWARD"));
-                directions.Add(new SemanticResultValue("forwards", "FORWARD"));
-                directions.Add(new SemanticResultValue("straight", "FORWARD"));
-                directions.Add(new SemanticResultValue("backward", "BACKWARD"));
-                directions.Add(new SemanticResultValue("backwards", "BACKWARD"));
-                directions.Add(new SemanticResultValue("back", "BACKWARD"));
-                directions.Add(new SemanticResultValue("turn left", "LEFT"));
-                directions.Add(new SemanticResultValue("turn right", "RIGHT"));
-                directions.Add(new SemanticResultValue("lights on", "LIGHT_ON"));
-                directions.Add(new SemanticResultValue("lights off", "LIGHT_OFF"));
+                //directions.Add(new SemanticResultValue("forward", "FORWARD"));
+                //directions.Add(new SemanticResultValue("forwards", "FORWARD"));
+                //directions.Add(new SemanticResultValue("straight", "FORWARD"));
+                //directions.Add(new SemanticResultValue("backward", "BACKWARD"));
+                //directions.Add(new SemanticResultValue("backwards", "BACKWARD"));
+                //directions.Add(new SemanticResultValue("back", "BACKWARD"));
+                //directions.Add(new SemanticResultValue("turn left", "LEFT"));
+                //directions.Add(new SemanticResultValue("turn right", "RIGHT"));
+                directions.Add(new SemanticResultValue("lights on", "LIGHTS_ON"));
+                directions.Add(new SemanticResultValue("lights off", "LIGHTS_OFF"));
+                directions.Add(new SemanticResultValue("screen up", "SCREEN_UP"));
+                directions.Add(new SemanticResultValue("screen down", "SCREEN_DOWN"));
+                directions.Add(new SemanticResultValue("projector on", "PROJECTOR_ON"));
+                directions.Add(new SemanticResultValue("projector off", "PROJECTOR_OFF"));
 
                 var gb = new GrammarBuilder { Culture = ri.Culture };
                 gb.Append(directions);
@@ -200,31 +205,42 @@ namespace KinectModule
             const double ConfidenceThreshold = 0.3;
 
             ClearRecognitionHighlights();
-                Debug.WriteLine(e.Result.Semantics.Value.ToString());
 
             if (e.Result.Confidence >= ConfidenceThreshold)
             {
                 switch (e.Result.Semantics.Value.ToString())
                 {
-                    case "FORWARD":
+                    case "LIGHTS_ON":
+                        Gesture = "Lights On";
+                        HttpGet("speech", "lights_on");
                         break;
 
-                    case "BACKWARD":
+                    case "LIGHTS_OFF":
+                        Gesture = "Lights Off";
+                        HttpGet("speech", "lights_off");
                         break;
 
-                    case "LEFT":
+                    case "SCREEN_UP":
+                        Gesture = "Screen Up";
+                        HttpGet("speech", "screen_up");
                         break;
 
-                    case "RIGHT":
-                        break;
-                    case "LIGHT_ON":
-                        HttpGet("lights on");
+                    case "SCREEN_DOWN":
+                        Gesture = "Screen Down";
+                        HttpGet("speech", "screen_down");
                         break;
 
-                    case "LIGHT_OFF":
-                        HttpGet("lights off");
+                    case "PROJECTOR_ON":
+                        Gesture = "Projector On";
+                        HttpGet("speech", "projector_turn_on");
+                        break;
+
+                    case "PROJECTOR_OFF":
+                        Gesture = "Projector Off";
+                        HttpGet("speech", "projector_turn_off");
                         break;
                 }
+                //Debug.WriteLine(e.Result.Semantics.Value.ToString());
             }
         }
 
@@ -297,47 +313,49 @@ namespace KinectModule
         /// <param name="e">Gesture event arguments.</param>
         private void OnGestureRecognized(object sender, GestureEventArgs e)
         {
-            Debug.WriteLine(e.GestureType);
+            String gestureName = "";
+
+            //Debug.WriteLine(e.GestureType);
 
             switch (e.GestureType)
-            {
-                case GestureType.Menu:
-                    Gesture = "Menu";
-                    break;
+            {                
                 case GestureType.WaveRight:
                     Gesture = "Wave Right";
+                    gestureName = "wave_right";
                     break;
                 case GestureType.WaveLeft:
                     Gesture = "Wave Left";
-                    break;
-                case GestureType.JoinedHands:
-                    Gesture = "Joined Hands";
+                    gestureName = "wave_left";
                     break;
                 case GestureType.SwipeLeft:
                     Gesture = "Swipe Left";
-                    HttpGet("lights on");
+                    gestureName = "swipe_left";
                     break;
                 case GestureType.SwipeRight:
                     Gesture = "Swipe Right";
-                    HttpGet("lights off");
-
+                    gestureName = "swipe_right";
                     break;
                 case GestureType.ZoomIn:
                     Gesture = "Zoom In";
+                    gestureName = "zoom_in";
                     break;
                 case GestureType.ZoomOut:
                     Gesture = "Zoom Out";
+                    gestureName = "zoom_out";
                     break;
                 default:
                     break;
             }
-            //HttpGet(Gesture);
+
+            HttpGet("gesture", gestureName);
+  
         }
 
 
-        private void HttpGet(String eventName)
+        private void HttpGet(String featureName, String specName)
         {
-            string address = string.Format("http://localhost/testconnection.php?sender=kinect&&arg={0}", Uri.EscapeDataString(eventName));
+            string address = string.Format("http://localhost/server/arubi.php?device=kinect&feature={0}&spec={1}", Uri.EscapeDataString(featureName), Uri.EscapeDataString(specName));
+            Console.WriteLine(address);
             string text;
             using (WebClient client = new WebClient())
             {
@@ -346,43 +364,43 @@ namespace KinectModule
             Console.WriteLine(text);
         }
 
-        private void HttpPost()
-        {
-            Console.WriteLine("testing");
-            // Create a request using a URL that can receive a post. 
-            WebRequest request = WebRequest.Create("http://www.contoso.com/PostAccepter.aspx ");
-            // Set the Method property of the request to POST.
-            request.Method = "POST";
-            // Create POST data and convert it to a byte array.
-            string postData = "This is a test that posts this string to a Web server.";
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
-            // Set the ContentType property of the WebRequest.
-            request.ContentType = "application/x-www-form-urlencoded";
-            // Set the ContentLength property of the WebRequest.
-            request.ContentLength = byteArray.Length;
-            // Get the request stream.
-            Stream dataStream = request.GetRequestStream();
-            // Write the data to the request stream.
-            dataStream.Write(byteArray, 0, byteArray.Length);
-            // Close the Stream object.
-            dataStream.Close();
-            // Get the response.
-            WebResponse response = request.GetResponse();
-            // Display the status.
-            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
-            // Get the stream containing content returned by the server.
-            dataStream = response.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader(dataStream);
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd();
-            // Display the content.
-            Console.WriteLine(responseFromServer);
-            // Clean up the streams.
-            reader.Close();
-            dataStream.Close();
-            response.Close();
-        }
+        //private void HttpPost()
+        //{
+        //    Console.WriteLine("testing");
+        //    // Create a request using a URL that can receive a post. 
+        //    WebRequest request = WebRequest.Create("http://www.contoso.com/PostAccepter.aspx ");
+        //    // Set the Method property of the request to POST.
+        //    request.Method = "POST";
+        //    // Create POST data and convert it to a byte array.
+        //    string postData = "This is a test that posts this string to a Web server.";
+        //    byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+        //    // Set the ContentType property of the WebRequest.
+        //    request.ContentType = "application/x-www-form-urlencoded";
+        //    // Set the ContentLength property of the WebRequest.
+        //    request.ContentLength = byteArray.Length;
+        //    // Get the request stream.
+        //    Stream dataStream = request.GetRequestStream();
+        //    // Write the data to the request stream.
+        //    dataStream.Write(byteArray, 0, byteArray.Length);
+        //    // Close the Stream object.
+        //    dataStream.Close();
+        //    // Get the response.
+        //    WebResponse response = request.GetResponse();
+        //    // Display the status.
+        //    Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+        //    // Get the stream containing content returned by the server.
+        //    dataStream = response.GetResponseStream();
+        //    // Open the stream using a StreamReader for easy access.
+        //    StreamReader reader = new StreamReader(dataStream);
+        //    // Read the content.
+        //    string responseFromServer = reader.ReadToEnd();
+        //    // Display the content.
+        //    Console.WriteLine(responseFromServer);
+        //    // Clean up the streams.
+        //    reader.Close();
+        //    dataStream.Close();
+        //    response.Close();
+        //}
 
         /// <summary>
         /// 
@@ -398,20 +416,47 @@ namespace KinectModule
 
                 // resize the skeletons array if needed
                 if (skeletons.Length != frame.SkeletonArrayLength)
+                {
                     skeletons = new Skeleton[frame.SkeletonArrayLength];
-
+                }
                 // get the skeleton data
                 frame.CopySkeletonDataTo(skeletons);
-
+                int count = 0;
                 foreach (var skeleton in skeletons)
                 {
                     // skip the skeleton if it is not being tracked
                     if (skeleton.TrackingState != SkeletonTrackingState.Tracked)
                         continue;
 
+                    count++;
+                   
                     // update the gesture controller
                     gestureController.UpdateAllGestures(skeleton);
                 }
+
+                //if (count != skCount)
+                //{
+                    //serialPort1.Open();
+                        
+                    //if (count == 0)
+                    //{
+                    //    if (serialPort1.IsOpen)
+                    //    {
+                    //        serialPort1.Write("0");
+                    //        Console.WriteLine("LED High");
+                    //    }
+                    //}
+                    //else if (count > 0)
+                    //{
+                    //    if (serialPort1.IsOpen)
+                    //    {
+                    //        serialPort1.Write("1");
+                    //        Console.WriteLine("LED High");
+                    //    }
+                    //}
+                    //skCount = count;
+                    //serialPort1.Close();
+                //}
             }
         }
 
