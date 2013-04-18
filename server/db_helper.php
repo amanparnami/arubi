@@ -19,7 +19,7 @@ function getDBResultsArray($dbQuery){
 	$dbResults=mysql_query($dbQuery);
 
 	if(!$dbResults){
-		$GLOBALS["_PLATFORM"]->sandboxHeader("HTTP/1.1 500 Internal Server Error");
+		//$GLOBALS["_PLATFORM"]->sandboxHeader("HTTP/1.1 500 Internal Server Error");
 		//die();
 		return;
 	}
@@ -42,14 +42,14 @@ function getDBResultRecord($dbQuery){
 	$dbResults=mysql_query($dbQuery);
 
 	if(!$dbResults){
-		$GLOBALS["_PLATFORM"]->sandboxHeader("HTTP/1.1 500 Internal Server Error");
-		//die();
+		//$GLOBALS["_PLATFORM"]->sandboxHeader("HTTP/1.1 500 Internal Server Error");
+		die();
 		return;
 	}
 
 	if(mysql_num_rows($dbResults) != 1){
 		//$GLOBALS["_PLATFORM"]->sandboxHeader('HTTP/1.1 404 Not Found');
-		//die();
+		die();
 		return;
 	}
 	return mysql_fetch_assoc($dbResults);

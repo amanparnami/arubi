@@ -50,7 +50,7 @@ function getIdFromString($type, $str) {
 
 $deviceId = getIdFromString("device", $device);
 $featureId = getIdFromString("feature", $feature);
-$inputId = getIdFromString("spec", $spec);
+
 
 //ASSUMPTION a spec cannot occur in multiple rules
 function getRuleIdFromSpecId($specId)
@@ -60,52 +60,30 @@ function getRuleIdFromSpecId($specId)
 	$result = getDBResultRecord($dbQuery);
 	echo json_encode($result);
 }
-
-function getOutputIdFromInputId($inputSpecId) {
-	$dbQuery = sprintf("SELECT output_id FROM rule WHERE input_id = $inputSpecId");
+function getOutputIpAddress($outputId) {
+	$dbQuery= sprintf("SELECT d.ipaddress FROM output as o 
+        JOIN `feature`AS f
+        JOIN `device` AS d
+        WHERE o.id = $outputId AND f.id = o.feature_id AND f.device_id = d.id");
 	$result = getDBResultRecord($dbQuery);
-	echo json_encode($result);
+	
+	return $result['ipaddress'];
 }
 
-if($device == "kinect")
-{
-	switch($feature)
-	{
-		case "speech":
-			switch($spec)
-			{
-				case "lights_on":
-				break;
-				case "lights_off":
-				break;
-				case "screen_up":
-				break;
-				case "screen_down":
-				break;
-				case "lights_dim":
-				break;
-				case "lights_bright":
-				break;
-			}
-		break;
-		case "gesture":
-			switch($spec)
-			{
-				case "swipe_left":
-				break;
-				case "swipe_right":
-				break;
-				case "wave_left":
-				break;
-				case "wave_right":
-				break;
-				case "zoom_in":
-				break;
-				case "zoom_out":
-				break;
-			}
-		break;
-	}
+function executeRule($spec) { //$spec is not id
+	$inputId = getIdFromString("spec", $spec);
+	//Getting output id from input id
+	$dbQuery = sprintf("SELECT id, output_id FROM rule WHERE input_id=$inputId");
+	$result = getDBResultRecord($dbQuery);
+	
+	$ipaddress = getOutputIpAddress($result['output_id']);
+	//Activation of output
+	file_get_contents("http://$ipaddress/?command=$spec");
+	
+	logMsg("rule",$result['id'], "execute", "executed the rule");
+}
+
+
 	// $ourFileHandle = fopen($ourFileName, 'w') or die("can't open file");
 	// fwrite($ourFileHandle, $arg);
 	// fclose($ourFileHandle);
@@ -122,19 +100,7 @@ if($device == "kinect")
 		// file_get_contents("http://192.168.1.177/?command=powerOff");
 	// } 
 	// echo $arg;
-}
-else if($sender == "arduino")
-{
-	if($inPresentationMode) {
-		echo "lightOff";
-	} else {
-		echo "lightsOn";
-	}
-	
-	// $ourFileHandle = fopen($ourFileName, 'r') or die("can't open file");
-	// $contents = fread($ourFileHandle, filesize($ourFileName));
-	// echo $contents;
-}
+
 //echo "Got it!!";
-getOutputIdFromInputId($inputId);
+executeRule($spec);
 ?>
