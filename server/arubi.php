@@ -61,6 +61,12 @@ function getRuleIdFromSpecId($specId)
 	echo json_encode($result);
 }
 
+function getOutputIdFromInputId($inputSpecId) {
+	$dbQuery = sprintf("SELECT output_id FROM rule WHERE input_id = $specId");
+	$result = getDBResultRecord($dbQuery);
+	echo json_encode($result);
+}
+
 if($device == "kinect")
 {
 	switch($feature)
@@ -130,5 +136,5 @@ else if($sender == "arduino")
 	// echo $contents;
 }
 //echo "Got it!!";
-getRuleIdFromSpecId($inputId);
+getOutputIdFromSpecId($inputId);
 ?>
