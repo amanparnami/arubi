@@ -5,14 +5,16 @@ header("Content-type: application/json");
 //http://localhost/server/updateDeviceInfo.php?f=updateIP&device=&ip=192.168.1.2
 
 $deviceId = $_GET["id"];
-$ipAddress = $_GET["ip"]
-$availability = $_GET["available"]
+
+
 switch($_GET["f"])
 {
 	case "updateIP":
+	$ipAddress = $_GET["ip"]
 	updateIpAddress($deviceId, $ipAddress);
 	break;
 	case "updateAvailability":
+	$availability = $_GET["available"]
 	updateAvailability($deviceId, $availability);
 	break;
 }
