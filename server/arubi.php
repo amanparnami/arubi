@@ -62,7 +62,7 @@ function getRuleIdFromSpecId($specId)
 }
 
 function getOutputIdFromInputId($inputSpecId) {
-	$dbQuery = sprintf("SELECT output_id FROM rule WHERE input_id = $specId");
+	$dbQuery = sprintf("SELECT output_id FROM rule WHERE input_id = $inputSpecId");
 	$result = getDBResultRecord($dbQuery);
 	echo json_encode($result);
 }
@@ -136,5 +136,5 @@ else if($sender == "arduino")
 	// echo $contents;
 }
 //echo "Got it!!";
-getOutputIdFromSpecId($inputId);
+getOutputIdFromInputId($inputId);
 ?>
