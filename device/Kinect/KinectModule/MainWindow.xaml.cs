@@ -14,6 +14,7 @@ using Microsoft.Speech.Recognition;
 using System.Collections.Generic;
 using Microsoft.Speech.AudioFormat;
 using System.Threading;
+using System.Net.Sockets;
 
 namespace KinectModule
 {
@@ -22,6 +23,8 @@ namespace KinectModule
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+
+        public String ipAddress;
         private readonly KinectSensorChooser sensorChooser = new KinectSensorChooser();
         private SpeechRecognitionEngine speechEngine;
         private Skeleton[] skeletons = new Skeleton[0];
@@ -33,6 +36,9 @@ namespace KinectModule
         //int skCount = 0;
         public MainWindow()
         {
+            ipAddress = LocalIPAddress();
+            Console.WriteLine("IP Address: " + ipAddress);
+            
             DataContext = this;
 
             InitializeComponent();
@@ -47,8 +53,25 @@ namespace KinectModule
             // bind chooser's sensor value to the local sensor manager
             var kinectSensorBinding = new Binding("Kinect") { Source = this.sensorChooser };
             BindingOperations.SetBinding(this.KinectSensorManager, KinectSensorManager.KinectSensorProperty, kinectSensorBinding);
-            serialPort1 = new System.IO.Ports.SerialPort("COM6");
-            serialPort1.BaudRate = 9600;
+            //serialPort1 = new System.IO.Ports.SerialPort("COM6");
+            //serialPort1.BaudRate = 9600;
+
+            HttpUpdateIp(ipAddress);
+        }
+
+        public string LocalIPAddress()
+        {
+            IPHostEntry host;
+            string localIP = "";
+            host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    localIP = ip.ToString();
+                }
+            }
+            return localIP;
         }
 
         #region Kinect Discovery & Setup
@@ -351,6 +374,17 @@ namespace KinectModule
   
         }
 
+        private void HttpUpdateIp(String ipAddress)
+        {
+            string address = string.Format("http://localhost/server/updateDeviceInfo.php?f=updateIp&device=kinect&ip=192.168.2.9");
+            Console.WriteLine(address);
+            string text;
+            using (WebClient client = new WebClient())
+            {
+                text = client.DownloadString(address);
+            }
+            Console.WriteLine(text);
+        }
 
         private void HttpGet(String featureName, String specName)
         {
