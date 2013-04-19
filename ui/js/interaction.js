@@ -13,6 +13,32 @@ $(function() {
 
 });
 
+function adjustDevices(deviceId) {
+    var deviceDiv = $('.device[data-id="' + deviceId + '"]');
+    var deviceType = $(deviceDiv).attr("data-type");
+
+
+    $(deviceDiv).wrap('<div class="rule-device-container"/>')
+
+    deviceDiv = $(deviceDiv).parents(".rule-device-container");
+
+    if (deviceType == "1")
+        $(".input.rule-device-list").append(deviceDiv);
+    else if (deviceType == "0")
+        $(".output.rule-device-list").append(deviceDiv);
+//    
+//    var offset = {};
+//    $(".device").each(function (){
+//        console.log($(this)[0]);
+//        offset = $(this).parent(".rule-device-container").offset();
+//        
+//        $(this).css("margin-top", -offset.top);
+//        
+////        console.log("device #" + $(this).attr("data-id") + "'s offsettop is " + offset.top);
+//    });
+}
+
+
 function setSpecsForRule(type, specId) {
     var ruleHolder = $("#rule-holder");
 
@@ -36,7 +62,7 @@ function setSpecsForRule(type, specId) {
 
     var input = $(ruleHolder).attr("data-input");
     var output = $(ruleHolder).attr("data-output");
-    
+
     if (
             ("" != $(ruleHolder).attr("data-input"))
             &&
@@ -44,56 +70,91 @@ function setSpecsForRule(type, specId) {
             )
     {
         console.log("ready to set rule");
-            setRule(input, output, 1, 2, 1);
+        setRule(input, output, 1, 2, 1);
     }
 
 }
 
 
 function bindDeviceFeatures() {
+    //Move device to the right place    
+
+//    $(".device .feature-list").one("click touchend", ".feature", function() {
+//        
+//    });
+
+    var featureIoType = "";
+    var featureId = "";
+
+    var deviceId = "";
 
     //Bind click handlers for features
-    $(".device .feature-list").on("click touchend", ".feature", function() {
+    $(".device .feature-list").one("click touchend", ".feature", function() {
+        console.log("in bind device features");
 //        console.log($(this).);
-        var featureIoType = $(this).attr("data-io-type");
-        var featureId = $(this).attr("data-id");
 
-        var deviceId = $(this).parents(".device").attr("data-id");
+        featureIoType = $(this).attr("data-io-type");
+        featureId = $(this).attr("data-id");
+
+        deviceId = $(this).parents(".device").attr("data-id");
+
         console.log(deviceId);
 
-        if (featureIoType == "1")
+        adjustDevices(deviceId);
+
+    });
+
+    $(".device .feature-list").on("click touchend", ".feature", function() {
+        featureIoType = $(this).attr("data-io-type");
+        featureId = $(this).attr("data-id");
+
+        deviceId = $(this).parents(".device").attr("data-id");
+
+        if (featureIoType == "1") {
             getInputSpec(featureId, deviceId);
-        else if (featureIoType == "0")
+                       
+        }
+        else if (featureIoType == "0") {
             getOutputSpec(featureId, deviceId);
 
+
+        }
+
     });
 
 }
 
-function moveDeviceCircleToInput(deviceId) {
+function moveInputDevice(deviceId, callback) {
+    var originalLeft = $('.device[data-id="' + deviceId + '"] ').css("left");
+    var originalTop = $('.device[data-id="' + deviceId + '"] ').css("top");
+
     deviceElement = $('.device[data-id="' + deviceId + '"] ');
     $(deviceElement).children('.device-popup').animate({opacity: "0"}, 500).hide();
-    $(deviceElement).children('.device-circle').animate({left: "-=300", top: "-=150"}, 500).one("click touchend", function() {
-        console.log("circle clicked after moving to side");
 
-        $(deviceElement).children('.device-popup').show().animate({opacity: "1"}, 500);
-        $(deviceElement).children('.device-circle').animate({left: "+=300", top: "+=150"}, 500);
+    $(deviceElement).delay(500).animate({left: "0", top: "0"}, 500, callback).one("click touchend", function() {
+            console.log("circle clicked after moving to side");
 
-        $(deviceElement).children('.device-circle').children('.device-circle-spec-icon').hide().remove();
-    });
+            $(deviceElement).children('.device-popup').show().animate({opacity: "1"}, 500);
+//            $(deviceElement).animate({left: originalLeft, top: originalTop}, 500);
+
+            $(deviceElement).children('.device-circle').children('.device-circle-spec-icon').hide().remove();
+        });
+
 
 }
 
-function moveDeviceCircleToOutput(deviceId) {
+function moveOutputDevice(deviceId, callback) {
     deviceElement = $('.device[data-id="' + deviceId + '"] ');
     $(deviceElement).children('.device-popup').animate({opacity: "0"}, 500, function() {
         $(this).hide();
+        
     });
-    $(deviceElement).children('.device-circle').animate({left: "+=550", top: "-=150"}, 500).one("click touchend", function() {
+    
+    $(deviceElement).delay(500).animate({left: "0", top: "0"}, 500, callback).one("click touchend", function() {
         console.log("circle clicked after moving to side");
 
         $(deviceElement).children('.device-popup').show().animate({opacity: "1"}, 500);
-        $(deviceElement).children('.device-circle').animate({left: "-=550", top: "+=150"}, 500);
+//        $(deviceElement).children('.device-circle').animate({left: "-=550", top: "+=150"}, 500);
 
         $(deviceElement).children('.device-circle').children('.device-circle-spec-icon').hide().remove();
     });
@@ -109,7 +170,7 @@ function hideDevices() {
 function showDevices() {
     $(".device").each(function() {
         $(this).show();
-    });
+    }); 
 
 }
 

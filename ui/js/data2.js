@@ -59,53 +59,64 @@ function getDevices() {
 
                     console.log(device.name);
 
-                    deviceHtml += '<div class="device" data-id="' + device.id + '">';
-                    deviceHtml += '<div class="device-popup">';
-                    deviceHtml += '<div class="device-title">' + device.name + '</div>';
+//                    deviceHtml += '<div class="rule-device-container">';
+                    
+                    deviceHtml += '<div class="device" data-id="' + device.id + '" data-type="'+device.type+'">';
+                        deviceHtml += '<div class="device-popup">';
+                            deviceHtml += '<div class="device-title">' + device.name + '</div>';
 
-                    deviceHtml += '<div class="feature-list">';
+                            deviceHtml += '<div class="feature-list">';
+
+                            deviceHtml += '</div>';
+
+                        deviceHtml += '</div>';
+
+                        deviceHtml += '<div class="device-circle state1">';
+                            deviceHtml += '<div class="device-circle-background">';
+
+                            deviceHtml += '</div>';
+                            
+                            deviceHtml += '<div class="device-circle-icon on">';
+                            deviceHtml += '<img src="' + device.icon_url + '" alt="">';
+                            deviceHtml += '</div>';
+
+                        deviceHtml += '</div>';
+                        
+                        if(device.type == "1")deviceHtml += '<div class="input spec-list">';
+                        else if (device.type == "0")deviceHtml += '<div class="output spec-list">';
+                        deviceHtml += '</div>';
+
 
                     deviceHtml += '</div>';
-
-                    deviceHtml += '</div>';
-
-                    deviceHtml += '<div class="device-circle state1">';
-                    deviceHtml += '<div class="device-circle-background">';
-
-                    deviceHtml += '</div>';
-                    deviceHtml += '<div class="device-circle-icon on">';
-                    deviceHtml += '<img src="' + device.icon_url + '" alt="">';
-                    deviceHtml += '</div>';
-
-                    deviceHtml += '</div>';
-
-                    deviceHtml += '</div>';
+                    
+//                    deviceHtml += '</div>';
 
                     devicesHtml += deviceHtml;
 
+                    
+                    //Append device to containing div based on device type
+                    //If it's an input device, append it to the left side
+                    
+//                    if(device.type == "1")$(".input.rule-device-list").append(deviceHtml);
+//                    else if(device.type == "0")$(".output.rule-device-list").append(deviceHtml);
+                    
                     getFeatures(device.id);
+
                 }
 
             });
             //return data;
             $(".device-container").html(devicesHtml);
 
-                        //Bind click handlers for features
-//            $(".feature");
-
-
+            adjustDevices();
+    
             bindDeviceFeatures();
 
-            //$("#devicepanel").hide();
-//            hideDevices();
-
         }
-
     });
 }
 
 //Function to get information for a device
-
 
 //Get all information for features
 
@@ -143,7 +154,6 @@ function getFeatures(deviceId) {
             });
         }
     });
-
 }
 
 function getInputFeatures(deviceId) {
@@ -172,9 +182,7 @@ function getInputFeatures(deviceId) {
             console.log(featuresHtml);
             $(".input .featurepanel").html(featuresHtml);
         }
-
     });
-
 }
 
 function getOutputFeatures(deviceId) {
@@ -203,16 +211,12 @@ function getOutputFeatures(deviceId) {
             console.log(featuresHtml);
             $(".output .featurepanel").html(featuresHtml);
         }
-
     });
-
 }
 
 //Get all information for specs
 function getInputSpec(featureId, deviceId) {
     console.log("get input spec for device @" + deviceId);
-    
-    moveDeviceCircleToInput(deviceId);
     
     $.ajax({
         url: "../server/spec.php",
@@ -235,9 +239,13 @@ function getInputSpec(featureId, deviceId) {
                 
             });
             
-            $(".input.spec-list").html(specsHTML).show();
+            moveInputDevice(deviceId, function () {
+                $('.device[data-id="'+deviceId+'"] .input.spec-list').html(specsHTML).show();
+            }); 
             
-            $(".input.spec-list").on("click touchend", ".spec", function (){
+
+            
+            $('.device[data-id="'+deviceId+'"] .input.spec-list').on("click touchend", ".spec", function (){
                 var img =  $(this).children(".spec-icon").children("img");
                 var imgUrl = $(img).attr("src");
                 console.log("url is:"+ imgUrl);
@@ -255,8 +263,6 @@ function getInputSpec(featureId, deviceId) {
                 console.log(specId);
                 setSpecsForRule("input", specId);
             });
-            
-
         }
     });
 }
@@ -264,7 +270,7 @@ function getInputSpec(featureId, deviceId) {
 function getOutputSpec(featureId, deviceId) {
     console.log("get output spec for device @" + deviceId);
     
-    moveDeviceCircleToOutput(deviceId);
+    
     
     $.ajax({
         url: "../server/spec.php",
@@ -286,29 +292,32 @@ function getOutputSpec(featureId, deviceId) {
                 specsHTML += '</div>';
             });
             
-            $(".output.spec-list").html(specsHTML).show()
+            moveOutputDevice(deviceId, function () {
+                $('.device[data-id="'+deviceId+'"] .output.spec-list').html(specsHTML).show();
             
-            $(".output.spec-list").on("click touchend", ".spec", function (){
-                
-                var img =  $(this).children(".spec-icon").children("img");
-                var imgUrl = $(img).attr("src");
-                console.log("url is:"+ imgUrl);
-                
-                $(this).parents(".spec-list").hide();
-                
-                var deviceCircleSpecIcon = "";
-                deviceCircleSpecIcon += '<div class="device-circle-spec-icon output">';
-                deviceCircleSpecIcon += '<img src="'+imgUrl+'">';
-                deviceCircleSpecIcon += '</div>';
-                
-                $('.device[data-id="'+deviceId+'"] ').children('.device-circle').append(deviceCircleSpecIcon);
-                
-                var specId = $(this).attr("data-id");
-                console.log(specId);
-                setSpecsForRule("output", specId);
-                
-            });;
 
+            });
+            
+                $('.device[data-id="'+deviceId+'"] .output.spec-list').on("click touchend", ".spec", function (){
+
+                    var img =  $(this).children(".spec-icon").children("img");
+                    var imgUrl = $(img).attr("src");
+                    console.log("url is:"+ imgUrl);
+
+                    $(this).parents(".spec-list").hide();
+
+                    var deviceCircleSpecIcon = "";
+                    deviceCircleSpecIcon += '<div class="device-circle-spec-icon output">';
+                    deviceCircleSpecIcon += '<img src="'+imgUrl+'">';
+                    deviceCircleSpecIcon += '</div>';
+
+                    $('.device[data-id="'+deviceId+'"] ').children('.device-circle').append(deviceCircleSpecIcon);
+
+                    var specId = $(this).attr("data-id");
+                    console.log(specId);
+                    setSpecsForRule("output", specId);
+
+                });
         }
     });
 }
@@ -333,8 +342,7 @@ function getRules() {
 
 function setRule(inputId, outputId, programmerId, userId, loc_id) {
     $("svg.rule-connection").animate({opacity: 1}, 500);
-//    $("svg.rule-connection").animate({opacity: 1}, 500);
-    //By default: programmer = 1, user = 1
+
     $.ajax({
         url: "../server/rule.php",
         type: "GET",
@@ -347,8 +355,6 @@ function setRule(inputId, outputId, programmerId, userId, loc_id) {
             "loc_id": loc_id,
         }, success: function(rules) {
             //Fetch the ruleId and set it in UI
-            
-
         }
     });
 }
