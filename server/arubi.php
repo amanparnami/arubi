@@ -73,14 +73,20 @@ function getOutputIpAddress($outputId) {
 function executeRule($spec) { //$spec is not id
 	$inputId = getIdFromString("spec", $spec);
 	//Getting output id from input id
-	$dbQuery = sprintf("SELECT id, output_id FROM rule WHERE input_id=$inputId");
-	$result = getDBResultRecord($dbQuery);
+	$dbQuery = sprintf("SELECT r.id, r.output_id, o.value FROM rule AS r JOIN output as o WHERE r.input_id=$inputId AND o.id = r.output_id");
+	$result = getDBResultsArray($dbQuery);
+	for($i = 0; $i < count($result); $i++) {
+		$ipaddress = getOutputIpAddress($result[$i]['output_id']);
+		$output_cmd = $result[$i]['value'];
+		file_get_contents("http://$ipaddress/?command=$output_cmd");
+		logMsg("rule",$result[$i]['id'], "execute", "executed the rule");
+	}
+	echo json_encode($result);
 	
-	$ipaddress = getOutputIpAddress($result['output_id']);
 	//Activation of output
-	file_get_contents("http://$ipaddress/?command=$spec");
+	// 
 	
-	logMsg("rule",$result['id'], "execute", "executed the rule");
+	
 }
 
 
