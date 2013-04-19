@@ -144,6 +144,8 @@ namespace KinectModule
                 directions.Add(new SemanticResultValue("screen down", "SCREEN_DOWN"));
                 directions.Add(new SemanticResultValue("projector on", "PROJECTOR_ON"));
                 directions.Add(new SemanticResultValue("projector off", "PROJECTOR_OFF"));
+                directions.Add(new SemanticResultValue("presentation mode", "PRESENTATION_MODE"));
+                directions.Add(new SemanticResultValue("blackboard mode", "BLACKBOARD_MODE"));
 
                 var gb = new GrammarBuilder { Culture = ri.Culture };
                 gb.Append(directions);
@@ -255,12 +257,22 @@ namespace KinectModule
 
                     case "PROJECTOR_ON":
                         Gesture = "Projector On";
-                        HttpGet("speech", "projector_turn_on");
+                        HttpGet("speech", "projector_on");
                         break;
 
                     case "PROJECTOR_OFF":
                         Gesture = "Projector Off";
-                        HttpGet("speech", "projector_turn_off");
+                        HttpGet("speech", "projector_off");
+                        break;
+
+                    case "PRESENTATION_MODE":
+                        Gesture = "Presentation Mode";
+                        HttpGet("speech", "presentation_mode");
+                        break;
+
+                    //case "BLACKBOARD_MODE":
+                        Gesture = "Blackboard Mode";
+                        HttpGet("speech", "blackboard_mode");
                         break;
                 }
                 //Debug.WriteLine(e.Result.Semantics.Value.ToString());
