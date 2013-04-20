@@ -11,7 +11,7 @@ function getDevicesJson(handler) {
         success: function(devices) {
 
             ////name return data as devices
-            //alert("success");
+
             devicesHtml = '';
             $(devices).each(function(i) {
                 device = devices[i];
@@ -100,9 +100,6 @@ function getDevices() {
 
                     //Append device to containing div based on device type
                     //If it's an input device, append it to the left side
-
-//                    if(device.type == "1")$(".input.rule-device-list").append(deviceHtml);
-//                    else if(device.type == "0")$(".output.rule-device-list").append(deviceHtml);
 
                     getFeatures(device.id);
 
@@ -247,8 +244,6 @@ function getInputSpec(featureId, deviceId, deviceHolder) {
             $(deviceHolder).children(".input.spec-list").html(specsHTML).show(500);
 //            }); 
 
-
-
             $(deviceHolder).children(".input.spec-list").on("click touchend", ".spec", function() {
                 var img = $(this).children(".spec-icon").children("img");
                 var imgUrl = $(img).attr("src");
@@ -262,7 +257,10 @@ function getInputSpec(featureId, deviceId, deviceHolder) {
 
                 var specId = $(this).attr("data-id");
                 console.log(specId);
-                setSpecsForRule("input", specId);
+                
+                $(deviceHolder).parent(".rule-device-container").attr("data-spec-id", specId);
+                
+//                setSpecsForRule("input", specId);
             });
 
 
@@ -282,7 +280,7 @@ function getInputSpec(featureId, deviceId, deviceHolder) {
                 $(deviceHolder).children('.input.spec-list').show();
 
                 $(this).hide();
-
+                
                 e.stopPropagation();
             });
         }
@@ -333,6 +331,8 @@ function getOutputSpec(featureId, deviceId, deviceHolder) {
 
                 var specId = $(this).attr("data-id");
                 console.log(specId);
+                
+                $(deviceHolder).parent(".rule-device-container").attr("data-spec-id", specId);
 //                    setSpecsForRule("output", specId);
             });
 

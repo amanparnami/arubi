@@ -23,7 +23,7 @@ function appendDevice(deviceId, featureId){
     var deviceType = $(deviceDiv).attr("data-type");
     
     if (deviceType == "1")    {
-        $(deviceDiv).wrap('<div class="rule-device-container" data-seq="'+inputCount+'"/>');
+        $(deviceDiv).wrap('<div class="rule-device-container" data-seq="'+inputCount+'" data-spec-id=""/>');
         deviceDiv = $(deviceDiv).parents(".rule-device-container");
         
         $(".input.rule-device-list").append(deviceDiv);
@@ -36,7 +36,7 @@ function appendDevice(deviceId, featureId){
         '.input.rule-device-list .rule-device-container[data-seq='+inputCount+'] .device');
     }
     else if (deviceType == "0"){
-        $(deviceDiv).wrap('<div class="rule-device-container" data-seq="'+outputCount+'"/>');
+        $(deviceDiv).wrap('<div class="rule-device-container" data-seq="'+outputCount+'" data-spec-id=""/>');
         deviceDiv = $(deviceDiv).parents(".rule-device-container");
         
         $(".output.rule-device-list").append(deviceDiv);
