@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Argon Basic AR Web App</title>
+        <link rel="apple-touch-icon" href="assets/sample_icon_57x57.png" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+        <meta name="arenabled"/>
+        <script src="js/jquery-1.9.1.min.js"></script>
+
+        <!--Functions for data access and interaction-->
+<!--         <script src="js/data2.js" type="text/javascript"></script> -->
+
+        <!--Include code to fake click events with touch-->
+<!--         <script src="js/touchtoclick.js" type="text/javascript"></script> -->
+
+        <!--Include code for argon-->
+        <script src="js/app2.js" type="text/javascript"></script>
+		
+		<script src="js/jquery.hammer.js" type="text/javascript"></script>
+		
+		<script src="js/interaction_aman.js" type="text/javascript"></script>
+		
+<!--         <script src="js/interaction.js" type="text/javascript"></script> -->
+
+        <!--include js file for onscreen logger-->
+<!--         <script src="js/jslog.js"></script> -->
+
+        <link href="css/arubi.css" rel="stylesheet" type="text/css">
+        <!--2248x1024-->
+
+        <script>
+            //Initialize argon
+//            document.addEventListener("AR.ArgonReadyEvent", app.onArgonReady);
+
+
+            $(document).ready(function() {
+                //Init logger
+//                JSLOG.init();
+
+                console.log("test logging");
+				function getEl(id) {
+					return document.getElementById(id);
+				}
+                //getDevices();
+				
+				$("#teststart").hammer({ drag_max_touches:0}).on("touch", function(ev) {
+					var touches = ev.gesture.touches;
+
+					ev.gesture.preventDefault();
+					$('.device-container').html("drag started");
+					ev.gesture.stopDetect();
+				});
+					
+				$("#testend").hammer({ drag_max_touches:0}).on("release", function(ev) {
+					var touches = ev.gesture.touches;
+
+					ev.gesture.preventDefault();
+					$('.device-container').html("drag ended");
+				});	
+                //setInterval(function() {
+                    //check device availability
+//                    app._checkVisibleDevices();
+
+//                console.log("window dimension:" + window.innerHeight + " , "+ window.innerWidth);
+                //}, 3000);
+            });
+
+
+        </script>
+    </head>
+    <body>
+        <script src="http://argon.gatech.edu/argon_o.js"></script>
+        <!--<div style="position: fixed; top: 0px; height: 500px;width: 100%; z-index:1200;" id="logcontainer"></div>-->
+
+        <div class="container" style=" height: 100%; width:100%; text-align: center;">
+
+<!--             <svg class="rule-connection">
+            <path stroke="#f1f1f1" stroke-width="3" fill="none" d="M 100,100 Q 500,50, 900,100"></path>
+            </svg> -->
+            <svg class="rule-connection">
+				<path stroke="#f1f1f1" stroke-width="3" fill="none" d="M 100,100 Q 500,50, 900,100"></path>
+            </svg>
+            <div id="teststart" class="input rule-device-list" data-selected="0">
+				hi
+            </div>
+
+			
+
+            <div id="testid" class="device-container">
+			
+					vola
+            </div>
+
+			
+
+          <!--  <div class="output spec-list">
+
+            </div> -->
+
+            <div id="testend" class="output rule-device-list" data-selected="0">
+				hello
+            </div>
+
+            <div class="control-container">
+                <div id="rule-holder" style="display:none;" data-input="" data-output=""></div>
+
+            </div>
+        </div>
+
+
+
+    </body>
+
+
+</html>            
