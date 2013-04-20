@@ -210,6 +210,8 @@ span.feature-title{
     float: left;
 
     font-size: 0.8em;
+    
+    z-index: 1102;
     /*padding-bottom: 10px;*/
 }
 
@@ -332,21 +334,34 @@ span.feature-title{
     position: relative;
 }
 
+.input.rule-device-list .rule-device-container{
+    margin-top: 60px;
+}
+
 .input.rule-device-list .device{
-    top: 224px;
-    left: 319px;
+    /*top: 224px;*/
+    /*left: 319px;*/
 }
 
 .output.rule-device-list .device{
-    top: 200px;
-    left: -500px;
+    /*top: 200px;*/
+    /*left: -500px;*/
 }
 
 .rule-device-container .device .device-popup{
     /*display: none;*/
     position: absolute;
+
+}
+
+.input .rule-device-container .device .device-popup{
     top: 80px;
     left: 80px;
+}
+
+.output .rule-device-container .device .device-popup{
+    top: 80px;
+    right: -50px;
 }
 
 .rule-device-container .device .device-circle{
