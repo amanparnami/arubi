@@ -162,8 +162,8 @@
 			e4.bind("maxConnections", maxConnectionsCallback);			
 			jsPlumb.addEndpoint("window4", { anchor:[0.25, 0, 0, -1] }, exampleEndpoint2);
 
-			// make .window divs draggable
-			jsPlumb.draggable($(".window"));
+			// // make .window divs draggable
+			// jsPlumb.draggable($(".window"));
 
 			// add endpoint of type 3 using a selector. 
 			jsPlumb.addEndpoint($(".window"), exampleEndpoint3);

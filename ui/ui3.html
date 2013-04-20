@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Argon Basic AR Web App</title>
+        <link rel="apple-touch-icon" href="assets/sample_icon_57x57.png" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+        <meta name="arenabled"/>
+        
+		<script src="js/jquery-1.9.1.min.js"></script>
+        <link href="css/arubi.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="css/demo-new.css">
+		<link rel="stylesheet" href="css/anchorDemo.css">
+        <!--2248x1024-->
+
+        <script>
+            //Initialize argon
+//            document.addEventListener("AR.ArgonReadyEvent", app.onArgonReady);
+
+
+            $(document).ready(function() {
+                //Init logger
+//                JSLOG.init();
+
+                console.log("test logging");
+
+                getDevices();
+
+                setInterval(function() {
+                    //check device availability
+//                    app._checkVisibleDevices();
+
+//                console.log("window dimension:" + window.innerHeight + " , "+ window.innerWidth);
+                }, 3000);
+            });
+
+
+        </script>
+    </head>
+    <body>
+        <script src="http://argon.gatech.edu/argon_o.js"></script>
+        <!--<div style="position: fixed; top: 0px; height: 500px;width: 100%; z-index:1200;" id="logcontainer"></div>-->
+		 <div id="main">
+			<div id="render"></div>
+			<div class="window" id="window1">			
+				<strong>Window 1</strong>
+				<a href="#" id="enableDisableSource">disable</a>				
+			</div>
+			<div class="window smallWindow" id="window2"><strong>Window 2</strong><br/><br/></div>
+		    <div class="window smallWindow" id="window3"><strong>Window 3</strong><br/><br/></div>
+		    <div class="window smallWindow" id="window4"><strong>Window 4</strong><br/><br/></div>
+		    <div class="window smallWindow" id="window5"><strong>Window 5</strong><br/><br/></div>
+		    <div class="window smallWindow" id="window6"><strong>Window 6</strong><br/><br/></div>
+		</div>
+        <div class="container" style=" height: 100%; width:100%; text-align: center;">
+
+            <!-- <svg class="rule-connection">
+            <path stroke="#f1f1f1" stroke-width="3" fill="none" d="M 100,100 Q 500,50, 900,100"></path>
+            </svg> -->
+
+            <div class="input rule-device-list" data-count="0">
+
+                
+            </div>
+
+
+
+            <div class="device-container">
+
+            </div>
+
+
+            <div class="output spec-list">
+
+            </div>
+
+            <div class="output rule-device-list" data-count="0">
+
+            </div>
+
+            <div class="control-container">
+                <div id="rule-holder" style="display:none;" data-input="" data-output=""></div>
+
+            </div>
+        </div>
+
+
+		<script src="js/jquery-ui-1.10.1.custom.js"></script>
+		<script src="js/jquery.ui.touch-punch.min.js"></script>
+
+        <!--Functions for data access and interaction-->
+        <script src="js/data2.js" type="text/javascript"></script>
+
+        <!--Include code to fake click events with touch-->
+        <script src="js/touchtoclick.js" type="text/javascript"></script>
+
+        <!--Include code for argon-->
+        <script src="js/app2.js" type="text/javascript"></script>
+
+        <script src="js/interaction.js" type="text/javascript"></script>
+
+        <!--include js file for onscreen logger-->
+        <!-- <script src="js/jslog.js"></script> -->
+<!-- DEP -->
+
+		<!-- /DEP -->
+		
+		<!-- JS -->
+		<!-- support lib for bezier stuff -->
+		<script src="js/jsBezier-0.6-min.js"></script>
+		<!-- jsplumb util -->
+		<script src="js/1.4.0/jsPlumb-util-1.4.0-RC1.js"></script>
+		<!-- base DOM adapter -->
+		<script src="js/1.4.0/jsPlumb-dom-adapter-1.4.0-RC1.js"></script>
+		<!-- main jsplumb engine -->
+		<script src="js/1.4.0/jsPlumb-1.4.0-RC1.js"></script>
+        <!-- anchors -->
+		<script src="js/1.4.0/jsPlumb-anchors-1.4.0-RC1.js"></script>                
+        <!-- endpoint -->
+		<script src="js/1.4.0/jsPlumb-endpoint-1.4.0-RC1.js"></script>  
+        <!-- connection -->
+		<script src="js/1.4.0/jsPlumb-connection-1.4.0-RC1.js"></script>
+		<!-- connectors, endpoint and overlays  -->
+		<script src="js/1.4.0/jsPlumb-defaults-1.4.0-RC1.js"></script>
+        <!-- flowchart connectors -->
+		<script src="js/1.4.0/jsPlumb-connectors-flowchart-1.4.0-RC1.js"></script>        
+		<!-- SVG renderer -->
+		<script src="js/1.4.0/jsPlumb-renderers-svg-1.4.0-RC1.js"></script>
+		<!-- canvas renderer -->
+		<script src="js/1.4.0/jsPlumb-renderers-canvas-1.4.0-RC1.js"></script>
+		<!-- vml renderer -->
+		<script src="js/1.4.0/jsPlumb-renderers-vml-1.4.0-RC1.js"></script>
+		<!-- jquery jsPlumb adapter -->
+		<script src="js/1.4.0/jquery.jsPlumb-1.4.0-RC1.js"></script>
+		<!-- /JS -->
+		
+				<!--  demo code -->		
+		<script src="js/anchorDemo-jquery.js"></script>
+		
+		<!--  demo helper code -->
+		<script src="js/demo-list.js"></script>
+		<script src="js/demo-helper-jquery.js"></script>
+    </body>
+
+
+</html>            
