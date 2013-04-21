@@ -1,7 +1,7 @@
 .window { 
 	border:2px dotted #346789; 
-	width:14em; 
-	height:4em; 
+/* 	width:14em; 
+	height:4em;  */
 	z-index:20; 
 	position:absolute; 
 	/* color:white; */
@@ -17,6 +17,9 @@
 	top:1em;
 	left:15em;
 }
+.drag-locked { border:1px solid red; }
+.dropHover { border:1px dotted red; }
+.dragActive { border:2px dotted orange; }
 /* #window1 { 
 	background-color:#225588; 
 	top:9em;
@@ -30,5 +33,25 @@
 #window4 { top:31em; left:26em; }
 #window5 {top:39em;left:13em; }
 #window6 {top:21em;left:56em; } */
-
+#window1 { 
+	background-color:#225588; 
+	top:9em;
+	left:14em;
+	width:30em;
+	height:6em;
+	text-align:left;
+} 
+#window2 { top:0px; left:750px;}
+#window3 { top:200px; left:750px; }
+#window4 { top:400px; left:750px; }
+.aLabel {
+ 	background-color:white; 
+	padding:0.4em; 
+	font:12px sans-serif; 
+	color:#444;
+	z-index:21;
+	border:1px dotted gray;
+	opacity:0.8;
+	filter:alpha(opacity=80);
+}
 ._jsPlumb_endpoint { z-index:32; }
