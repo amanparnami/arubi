@@ -19,6 +19,10 @@ switch($_GET["f"])
 	case "updateRule": 
 		updateRule($_GET["ruleId"], $_GET["inputId"], $_GET["outputId"]);
 		break;
+        case "getLastExecutedRule":
+            getLastExecutedRule();break;
+        case "deleteRule":
+                deleteRule($_GET["ruleId"]);break;
 	default:
 		break;
 }
@@ -75,5 +79,21 @@ function updateRule($rId, $in, $out) {
 	$dbQuery = sprintf("UPDATE rule SET input_id = $in, output_id = $out WHERE id = $rId");
 	$result = getDBResultAffected($dbQuery);
 	echo json_encode($result);
+}
+
+function deleteRule($rId){
+    $dbQuery = sprintf("DELETE FROM rule
+    WHERE id=$rId");
+    $result = getDBResultAffected($dbQuery);
+    echo json_encode($result);
+    
+}
+
+function getLastExecutedRule() 
+{
+    $dbQuery = sprintf("SELECT source_id as ruleId, timestamp FROM log WHERE source_name='rule' AND event_type='execute' ORDER BY id DESC LIMIT 1 ");
+    $result = getDBResultRecord($dbQuery);
+
+    echo json_encode($result);
 }
 ?>
