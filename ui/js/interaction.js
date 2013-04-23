@@ -5,11 +5,11 @@
 
 $(function() {
     //Bind buttons
-//    $
-    $("create-rule").on("click touchend", function() {
 
-
-    });
+//    $("create-rule").on("touchend", function() {
+//
+//
+//    });
 
 });
 
@@ -21,6 +21,7 @@ function appendDevice(deviceId, featureId){
     var deviceDiv = $('.device-container .device[data-id="' + deviceId + '"]').clone();    
     
     var deviceType = $(deviceDiv).attr("data-type");
+    $(deviceDiv).show().css("opacity", 1);
     
     if (deviceType == "1")    {
         $(deviceDiv).wrap('<div class="rule-device-container" data-seq="'+inputCount+'" data-spec-id=""/>');
@@ -57,7 +58,7 @@ function appendDevice(deviceId, featureId){
 
 function bindSideInputFeature(featureId,deviceHolder){
     //Click circle to open side feature list
-    $(deviceHolder).children(".device-circle").on("click touchend", function (){
+    $(deviceHolder).children(".device-circle").on("touchend", function (){
         //Hide spec list
         $(deviceHolder).children(".spec-list").hide();
         
@@ -70,7 +71,7 @@ function bindSideInputFeature(featureId,deviceHolder){
     console.log("in bind side input feature function");
     
     //Click feature to close feature list
-    $(deviceHolder).children(".device-popup").children(" .feature-list").on("click touchend", ".feature", function () {
+    $(deviceHolder).children(".device-popup").children(" .feature-list").on("touchend", ".feature", function () {
         featureId = $(this).attr("data-id");
         $(deviceHolder).children(".device-popup").hide();
         
@@ -80,7 +81,7 @@ function bindSideInputFeature(featureId,deviceHolder){
 
 function bindSideOutputFeature(featureId, deviceHolder){
     //Click circle to open side feature list
-    $(deviceHolder).children(".device-circle").on("click touchend", function (){
+    $(deviceHolder).children(".device-circle").on("touchend", function (){
         //Hide spec list
         $(deviceHolder).children(".spec-list").hide();
         
@@ -93,7 +94,7 @@ function bindSideOutputFeature(featureId, deviceHolder){
     console.log("in bind side output feature function");
     
     //Click feature to close feature list
-    $(deviceHolder).children(".device-popup").children(".feature-list").on("click touchend", ".feature", function () {
+    $(deviceHolder).children(".device-popup").children(".feature-list").on("touchend", ".feature", function () {
         featureId = $(this).attr("data-id");
         
         $(deviceHolder).children(".device-popup").hide();
@@ -179,7 +180,9 @@ function bindDeviceFeatures() {
 
     //Bind click handlers for features
     //Append device to input/output list
-    $(".device .feature-list").on("click touchend", ".feature", function() {
+    $(".device .feature-list").on("touchend", ".feature", function() {
+        
+        
         console.log("in bind device features");
 
         featureIoType = $(this).attr("data-io-type");
@@ -189,25 +192,32 @@ function bindDeviceFeatures() {
         
         console.log("before appending device #" + deviceId);
         
-        appendDevice(deviceId, featureId);
-
         //Hide current device
                 
         //for testing purpose, show it after 3 seconds.
         
         var device = $(this).parents(".device");
-        $(device).hide();
         
-        setTimeout(function(){
-            console.log("after 3 seconds");
-            
-            $(device).show(); 
-        },3000);
+        
+        $(this).animate({backgroundColor:"rgba(255,255,255,1)"}, 300, function () {
+            $(device).animate({opacity: 0},300, function () {
+                $(device).hide();
+                $(device).css("opacity", 1);
+                appendDevice(deviceId, featureId);
+            });
+
+        });
+        
+//        setTimeout(function(){
+//            console.log("after 3 seconds");
+//            
+////            $(device).show(); 
+//        },3000);
         
     });
     
     
-//    $(".device .feature-list").on("click touchend", ".feature", function() {
+//    $(".device .feature-list").on("touchend", ".feature", function() {
 //        featureIoType = $(this).attr("data-io-type");
 //        featureId = $(this).attr("data-id");
 //
@@ -234,7 +244,7 @@ function moveInputDevice(deviceId, callback) {
     deviceElement = $('.device[data-id="' + deviceId + '"] ');
     $(deviceElement).children('.device-popup').animate({opacity: "0"}, 500).hide();
 
-    $(deviceElement).delay(500).animate({left: "0", top: "0"}, 500, callback).one("click touchend", function() {
+    $(deviceElement).delay(500).animate({left: "0", top: "0"}, 500, callback).one("touchend", function() {
             console.log("circle clicked after moving to side");
 
             $(deviceElement).children('.device-popup').show().animate({opacity: "1"}, 500);
@@ -253,7 +263,7 @@ function moveOutputDevice(deviceId, callback) {
         
     });
     
-    $(deviceElement).delay(500).animate({left: "0", top: "0"}, 500, callback).one("click touchend", function() {
+    $(deviceElement).delay(500).animate({left: "0", top: "0"}, 500, callback).one("touchend", function() {
         console.log("circle clicked after moving to side");
 
         $(deviceElement).children('.device-popup').show().animate({opacity: "1"}, 500);
@@ -265,13 +275,13 @@ function moveOutputDevice(deviceId, callback) {
 
 //Functions for binding
 function hideDevices() {
-    $(".device").each(function() {
+    $(".device-container .device").each(function() {
         $(this).hide();
     });
 
 }
 function showDevices() {
-    $(".device").each(function() {
+    $(".device-container .device").each(function() {
         $(this).show();
     }); 
 
@@ -279,10 +289,10 @@ function showDevices() {
 
 function showDevice(deviceId) {
 //    console.log("showing device#"+deviceId);
-    $(".device[data-device-id=" + deviceId + "]").show();
+    $(".device-container .device[data-id=" + deviceId + "]").show();
 }
 
 function hideDevice(deviceId) {
 //    console.log("hiding device#"+deviceId);
-    $(".device[data-device-id=" + deviceId + "]").hide();
+    $(".device-container .device[data-id=" + deviceId + "]").hide();
 }

@@ -8,8 +8,8 @@ body{
     color: black!important;
     width: 1024px;
     height: 768px;
-    border: 1px solid red;
-    
+    /*border: 1px solid red;*/
+
 }
 
 .container{
@@ -210,25 +210,32 @@ span.feature-title{
     float: left;
 
     font-size: 0.8em;
-    
-    z-index: 1102;
+
+    z-index: 1104;
     /*padding-bottom: 10px;*/
+
 }
 
 .spec-list.input{
     margin: 0px 0 0 10px;
     left: 115px;
     top: 35px;
-    
+
     position: absolute;
+
+
+    box-shadow: 7px -5px 10px rgba(0,0,0,0.3);
 }
 
 .spec-list.output{
 
     right: -15px;
     top: 35px;
-    
+
     position: absolute;
+
+
+    box-shadow: -7px -5px 10px rgba(0,0,0,0.3);
 }
 
 .spec-list-title{
@@ -290,21 +297,12 @@ span.feature-title{
     border-radius: 5px;
     box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
     float: left;
-    
+
     margin-left: 50px;
-    
+
     padding-top: 20px;
 }
 
-
-/*For development*/
-.device[data-id="1"]{
-    z-index: 1103;
-}
-
-.device[data-id="5"]{
-    z-index: 1102;
-}
 
 /*for rule input device list*/
 .rule-device-list{
@@ -312,7 +310,7 @@ span.feature-title{
     top: 0;
     /*height: 100%;*/
     width: 250px;
-    border: solid 1px #f1f1f1;
+    /*border: solid 1px #f1f1f1;*/
 }
 
 .input.rule-device-list{
@@ -320,22 +318,36 @@ span.feature-title{
 }
 
 .output.rule-device-list{
-    right: 0;
+    /*right: 0;*/
 }
 
 .output.rule-device-list .device{
-    margin-left: 100px;
+    margin-left: 60px;
 }
 
 .rule-device-container{
-    border: solid 3px #333;
+    border: solid 3px #f1f1f1;
     height: 150px;
-    width: 250px;
+    width: 230px;
     position: relative;
+    border-radius: 15%;
+
+    padding-top: 10px;
+}
+
+.output .rule-device-container{
+    left: 790px;
 }
 
 .input.rule-device-list .rule-device-container{
-    margin-top: 60px;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+.output.rule-device-list .rule-device-container{
+    margin-top: 30px;
+    margin-right: 10px;
+    padding-left: 10px;
 }
 
 .input.rule-device-list .device{
@@ -361,10 +373,51 @@ span.feature-title{
 
 .output .rule-device-container .device .device-popup{
     top: 80px;
-    right: -50px;
+    right: -80px;
 }
 
 .rule-device-container .device .device-circle{
     top: 0;
     left: 0;
+}
+
+#notification{
+    position: absolute;
+    width: 60%;
+    background: #f1f1f1;
+    margin-left: 20%;
+
+    border-radius: 0 0 10px 10px;
+    /*z-index: 1103;*/
+    padding: 5px 0;
+
+    text-align: center;
+}
+
+div.aLabel{
+    width: 120px;
+    height: 30px;
+}
+
+.aLabel .rule-info{
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+
+}
+
+.aLabel .rule-executed{
+    position: absolute;
+    left: 60px; 
+}
+
+.aLabel .rule-executed-num{
+    float: left;
+    margin-left: 12px;
+}
+
+
+.device[data-id="1"]{
+    z-index: 1105;
 }

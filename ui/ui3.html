@@ -7,159 +7,181 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
         <meta name="arenabled"/>
-        
-		<script src="js/jquery-1.9.1.min.js"></script>
-        <link href="css/arubi.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="css/demo-new.css">
-		<link rel="stylesheet" href="css/anchorDemo.css">
-        <!--2248x1024-->
 
-<!--         <script>
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <link href="css/arubi.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="css/demo-new.css">
+        <link rel="stylesheet" href="css/anchorDemo.css">
+        <!--2248x1024-->
+        <!--Include code for argon-->
+        <script src="js/app2.js" type="text/javascript"></script>
+
+        <!--Functions for data access and interaction-->
+        <script src="js/data2.js" type="text/javascript"></script>
+
+
+        <script src="js/interaction.js" type="text/javascript"></script>
+
+        <!--include js file for onscreen logger-->
+        <!--<script src="js/jslog.js"></script>-->
+
+
+        <script>
             //Initialize argon
-//            document.addEventListener("AR.ArgonReadyEvent", app.onArgonReady);
+            document.addEventListener("AR.ArgonReadyEvent", app.onArgonReady);
+
 
 
             $(document).ready(function() {
                 //Init logger
-//                JSLOG.init();
+//                        JSLOG.init();
 
-                console.log("test logging");
+//                        console.log("test logging");
 
-//                getDevices();
+//                        getDevices(function () {});
 
                 setInterval(function() {
                     //check device availability
-//                    app._checkVisibleDevices();
+                    app._checkVisibleDevices();
 
 //                console.log("window dimension:" + window.innerHeight + " , "+ window.innerWidth);
                 }, 3000);
+
+
+                setInterval(function() {
+                    getLastExecutedRule();
+                }, 1000);
             });
 
 
-        </script> -->
+        </script>
     </head>
     <body>
         <script src="http://argon.gatech.edu/argon_o.js"></script>
-        <!--<div style="position: fixed; top: 0px; height: 500px;width: 100%; z-index:1200;" id="logcontainer"></div>-->
-		<div class="container" style=" height: 100%; width:100%; text-align: center;">
-		 <div id="main">
-			<div id="render"></div>
-			<!-- <div id="window1" class="input rule-device-list  window" data-count="0"> -->
+        <div id="notification">
+            <p>This is some logging information, hello world! </p>
+        </div>
+        <!--<div style="position: absolute; top: 400px; height: 300px;width: 100%; z-index:1;" id="logcontainer"></div>-->
+        <div class="container" style=" height: 100%; width:100%; text-align: center;">
+            <div id="main">
+                <div id="render"></div>
+                <div class="input rule-device-list" data-count="0"> 
 
-                <div  id="window1" class="rule-device-container window" data-seq="0" data-spec-id="1"><div class="device" data-id="1" data-type="1"><div class="device-popup" style="display: none;"><div class="device-title">Kinect</div><div class="feature-list"><div class="feature" data-io-type="1" data-id="1"><div class="feature-icon"><img src="img/icons/feature/speech.svg" alt=""></div><span class="feature-title">Speech Input</span></div><div class="feature" data-io-type="1" data-id="2"><div class="feature-icon"><img src="img/icons/feature/gesture.svg" alt=""></div><span class="feature-title">Gesture Input</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/kinect.svg" alt=""></div><div class="device-circle-spec-icon input" style=""><img src="img/icons/input/speech.svg"></div></div><div class="input spec-list" style="display: none;"><div class="spec" data-id="1"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to switch on lights</div></div><div class="spec" data-id="2"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to switch off lights</div></div><div class="spec" data-id="3"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to lift projection screen up</div></div><div class="spec" data-id="4"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to lift projection screen down</div></div><div class="spec" data-id="11"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Speech input lights dim</div></div><div class="spec" data-id="12"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Speech input lights bright</div></div></div></div></div>
-                
-               <!--  <div class="rule-device-container window" data-seq="1" data-spec-id="2"><div class="device" data-id="1" data-type="1" style="display: block;"><div class="device-popup" style="display: none;"><div class="device-title">Kinect</div><div class="feature-list"><div class="feature" data-io-type="1" data-id="1"><div class="feature-icon"><img src="img/icons/feature/speech.svg" alt=""></div><span class="feature-title">Speech Input</span></div><div class="feature" data-io-type="1" data-id="2"><div class="feature-icon"><img src="img/icons/feature/gesture.svg" alt=""></div><span class="feature-title">Gesture Input</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/kinect.svg" alt=""></div><div class="device-circle-spec-icon input" style=""><img src="img/icons/input/speech.svg"></div></div><div class="input spec-list" style="display: none;"><div class="spec" data-id="1"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to switch on lights</div></div><div class="spec" data-id="2"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to switch off lights</div></div><div class="spec" data-id="3"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to lift projection screen up</div></div><div class="spec" data-id="4"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to lift projection screen down</div></div><div class="spec" data-id="11"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Speech input lights dim</div></div><div class="spec" data-id="12"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Speech input lights bright</div></div></div></div></div>
-                
-                <div class="rule-device-container window" data-seq="2" data-spec-id="5"><div class="device" data-id="1" data-type="1" style="display: block;"><div class="device-popup" style="display: none;"><div class="device-title">Kinect</div><div class="feature-list"><div class="feature" data-io-type="1" data-id="1"><div class="feature-icon"><img src="img/icons/feature/speech.svg" alt=""></div><span class="feature-title">Speech Input</span></div><div class="feature" data-io-type="1" data-id="2"><div class="feature-icon"><img src="img/icons/feature/gesture.svg" alt=""></div><span class="feature-title">Gesture Input</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/kinect.svg" alt=""></div><div class="device-circle-spec-icon input" style=""><img src="img/icons/input/swipe_left.png"></div></div><div class="input spec-list" style="display: none;"><div class="spec" data-id="5"><div class="spec-icon"><img src="img/icons/input/swipe_left.png"></div><div class="spec-title">Gesture for swipe left</div></div><div class="spec" data-id="6"><div class="spec-icon"><img src="img/icons/input/swipe_right.png"></div><div class="spec-title">Gesture to swipe right</div></div><div class="spec" data-id="7"><div class="spec-icon"><img src="img/icons/input/wave_right.png"></div><div class="spec-title">Gesture for wave right</div></div><div class="spec" data-id="8"><div class="spec-icon"><img src="img/icons/input/wave_left.png"></div><div class="spec-title">Gesture for wave left</div></div><div class="spec" data-id="9"><div class="spec-icon"><img src="img/icons/input/zoom_in.png"></div><div class="spec-title">Gesture to zoom in</div></div><div class="spec" data-id="10"><div class="spec-icon"><img src="img/icons/input/zoom_out.png"></div><div class="spec-title">Gesture to zoom out</div></div></div></div></div> -->
-            <!-- </div> -->
-			<!-- <div class="output rule-device-list" data-count="0"> -->
+                    <!--comment starts here-->
+                    <!--<div  id="window1" class="rule-device-container window" data-seq="0" data-spec-id="1"><div class="device" data-id="1" data-type="1"><div class="device-popup" style="display: none;"><div class="device-title">Kinect</div><div class="feature-list"><div class="feature" data-io-type="1" data-id="1"><div class="feature-icon"><img src="img/icons/feature/speech.svg" alt=""></div><span class="feature-title">Speech Input</span></div><div class="feature" data-io-type="1" data-id="2"><div class="feature-icon"><img src="img/icons/feature/gesture.svg" alt=""></div><span class="feature-title">Gesture Input</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/kinect.svg" alt=""></div><div class="device-circle-spec-icon input" style=""><img src="img/icons/input/speech.svg"></div></div><div class="input spec-list" style="display: none;"><div class="spec" data-id="1"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to switch on lights</div></div><div class="spec" data-id="2"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to switch off lights</div></div><div class="spec" data-id="3"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to lift projection screen up</div></div><div class="spec" data-id="4"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to lift projection screen down</div></div><div class="spec" data-id="11"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Speech input lights dim</div></div><div class="spec" data-id="12"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Speech input lights bright</div></div></div></div></div>-->
+                    <!--comment ends here-->
 
-                <div id="window2" class="rule-device-container window smallWindow" data-seq="0" data-spec-id="1"><div class="device" data-id="5" data-type="0"><div class="device-popup" style="display: none;"><div class="device-title">Lights</div><div class="feature-list"><div class="feature" data-io-type="0" data-id="3"><div class="feature-icon"><img src="img/icons/feature/light.svg" alt=""></div><span class="feature-title">Lights Controller</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/light.svg" alt=""></div><div class="device-circle-spec-icon output" style=""><img src="img/icons/output/light_on.png"></div></div><div class="output spec-list" style="display: none;"><div class="spec" data-id="1"><div class="spec-icon"><img src="img/icons/output/light_on.png"></div><div class="spec-title">Lights on</div></div><div class="spec" data-id="2"><div class="spec-icon"><img src="img/icons/output/light_off.png"></div><div class="spec-title">Lights off</div></div><div class="spec" data-id="3"><div class="spec-icon"><img src="img/icons/output/light_intensity_dim.svg"></div><div class="spec-title">Lights dim</div></div><div class="spec" data-id="4"><div class="spec-icon"><img src="img/icons/output/light_intensity_bright.svg"></div><div class="spec-title">Lights bright</div></div></div></div></div>
-                <div id="window3" class="rule-device-container window smallWindow" data-seq="1" data-spec-id="5"><div class="device" data-id="6" data-type="0"><div class="device-popup" style="display: none;"><div class="device-title">Projector 1 Screen</div><div class="feature-list"><div class="feature" data-io-type="0" data-id="4"><div class="feature-icon"><img src="img/icons/feature/screen.svg" alt=""></div><span class="feature-title">Screen</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/screen.svg" alt=""></div><div class="device-circle-spec-icon output" style=""><img src=""></div></div><div class="output spec-list" style="display: none;"><div class="spec" data-id="5"><div class="spec-icon"><img src=""></div><div class="spec-title">Screen up</div></div><div class="spec" data-id="6"><div class="spec-icon"><img src=""></div><div class="spec-title">Screen down</div></div></div></div></div>
-                <div id="window4" class="rule-device-container window smallWindow" data-seq="2" data-spec-id="1"><div class="device" data-id="5" data-type="0" style="display: block;"><div class="device-popup" style="display: none;"><div class="device-title">Lights</div><div class="feature-list"><div class="feature" data-io-type="0" data-id="3"><div class="feature-icon"><img src="img/icons/feature/light.svg" alt=""></div><span class="feature-title">Lights Controller</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/light.svg" alt=""></div><div class="device-circle-spec-icon output" style=""><img src="img/icons/output/light_on.png"></div></div><div class="output spec-list" style="display: none;"><div class="spec" data-id="1"><div class="spec-icon"><img src="img/icons/output/light_on.png"></div><div class="spec-title">Lights on</div></div><div class="spec" data-id="2"><div class="spec-icon"><img src="img/icons/output/light_off.png"></div><div class="spec-title">Lights off</div></div><div class="spec" data-id="3"><div class="spec-icon"><img src="img/icons/output/light_intensity_dim.svg"></div><div class="spec-title">Lights dim</div></div><div class="spec" data-id="4"><div class="spec-icon"><img src="img/icons/output/light_intensity_bright.svg"></div><div class="spec-title">Lights bright</div></div></div></div></div>
-                
-            <!-- </div> -->
-			<!-- <div class="window" id="window1">			
-				<strong>Window 1</strong>
-				<a href="#" id="enableDisableSource">disable</a>				
-			</div> -->
-			<!-- <div class="window smallWindow" id="window2"><strong>Window 2</strong><br/><br/></div>
-		    <div class="window smallWindow" id="window3"><strong>Window 3</strong><br/><br/></div>
-		    <div class="window smallWindow" id="window4"><strong>Window 4</strong><br/><br/></div>
-		    <div class="window smallWindow" id="window5"><strong>Window 5</strong><br/><br/></div>
-		    <div class="window smallWindow" id="window6"><strong>Window 6</strong><br/><br/></div> -->
-		</div>
-        
-
-            <!-- <svg class="rule-connection">
-            <path stroke="#f1f1f1" stroke-width="3" fill="none" d="M 100,100 Q 500,50, 900,100"></path>
-            </svg> -->
-
-            
+                    <!--  <div class="rule-device-container window" data-seq="1" data-spec-id="2"><div class="device" data-id="1" data-type="1" style="display: block;"><div class="device-popup" style="display: none;"><div class="device-title">Kinect</div><div class="feature-list"><div class="feature" data-io-type="1" data-id="1"><div class="feature-icon"><img src="img/icons/feature/speech.svg" alt=""></div><span class="feature-title">Speech Input</span></div><div class="feature" data-io-type="1" data-id="2"><div class="feature-icon"><img src="img/icons/feature/gesture.svg" alt=""></div><span class="feature-title">Gesture Input</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/kinect.svg" alt=""></div><div class="device-circle-spec-icon input" style=""><img src="img/icons/input/speech.svg"></div></div><div class="input spec-list" style="display: none;"><div class="spec" data-id="1"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to switch on lights</div></div><div class="spec" data-id="2"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to switch off lights</div></div><div class="spec" data-id="3"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to lift projection screen up</div></div><div class="spec" data-id="4"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Command to lift projection screen down</div></div><div class="spec" data-id="11"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Speech input lights dim</div></div><div class="spec" data-id="12"><div class="spec-icon"><img src="img/icons/input/speech.svg"></div><div class="spec-title">Speech input lights bright</div></div></div></div></div>
+                     
+                    <div class="rule-device-container window" data-seq="2" data-spec-id="5"><div class="device" data-id="1" data-type="1" style="display: block;"><div class="device-popup" style="display: none;"><div class="device-title">Kinect</div><div class="feature-list"><div class="feature" data-io-type="1" data-id="1"><div class="feature-icon"><img src="img/icons/feature/speech.svg" alt=""></div><span class="feature-title">Speech Input</span></div><div class="feature" data-io-type="1" data-id="2"><div class="feature-icon"><img src="img/icons/feature/gesture.svg" alt=""></div><span class="feature-title">Gesture Input</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/kinect.svg" alt=""></div><div class="device-circle-spec-icon input" style=""><img src="img/icons/input/swipe_left.png"></div></div><div class="input spec-list" style="display: none;"><div class="spec" data-id="5"><div class="spec-icon"><img src="img/icons/input/swipe_left.png"></div><div class="spec-title">Gesture for swipe left</div></div><div class="spec" data-id="6"><div class="spec-icon"><img src="img/icons/input/swipe_right.png"></div><div class="spec-title">Gesture to swipe right</div></div><div class="spec" data-id="7"><div class="spec-icon"><img src="img/icons/input/wave_right.png"></div><div class="spec-title">Gesture for wave right</div></div><div class="spec" data-id="8"><div class="spec-icon"><img src="img/icons/input/wave_left.png"></div><div class="spec-title">Gesture for wave left</div></div><div class="spec" data-id="9"><div class="spec-icon"><img src="img/icons/input/zoom_in.png"></div><div class="spec-title">Gesture to zoom in</div></div><div class="spec" data-id="10"><div class="spec-icon"><img src="img/icons/input/zoom_out.png"></div><div class="spec-title">Gesture to zoom out</div></div></div></div></div> -->
+                </div> 
+                <div class="output rule-device-list" data-count="0"> 
 
 
+                    <!--comment starts here-->
+                    <!--            <div id="window2" class="rule-device-container window smallWindow" data-seq="0" data-spec-id="1"><div class="device" data-id="5" data-type="0"><div class="device-popup" style="display: none;"><div class="device-title">Lights</div><div class="feature-list"><div class="feature" data-io-type="0" data-id="3"><div class="feature-icon"><img src="img/icons/feature/light.svg" alt=""></div><span class="feature-title">Lights Controller</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/light.svg" alt=""></div><div class="device-circle-spec-icon output" style=""><img src="img/icons/output/light_on.png"></div></div><div class="output spec-list" style="display: none;"><div class="spec" data-id="1"><div class="spec-icon"><img src="img/icons/output/light_on.png"></div><div class="spec-title">Lights on</div></div><div class="spec" data-id="2"><div class="spec-icon"><img src="img/icons/output/light_off.png"></div><div class="spec-title">Lights off</div></div><div class="spec" data-id="3"><div class="spec-icon"><img src="img/icons/output/light_intensity_dim.svg"></div><div class="spec-title">Lights dim</div></div><div class="spec" data-id="4"><div class="spec-icon"><img src="img/icons/output/light_intensity_bright.svg"></div><div class="spec-title">Lights bright</div></div></div></div></div>
+                                    <div id="window3" class="rule-device-container window smallWindow" data-seq="1" data-spec-id="5"><div class="device" data-id="6" data-type="0"><div class="device-popup" style="display: none;"><div class="device-title">Projector 1 Screen</div><div class="feature-list"><div class="feature" data-io-type="0" data-id="4"><div class="feature-icon"><img src="img/icons/feature/screen.svg" alt=""></div><span class="feature-title">Screen</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/screen.svg" alt=""></div><div class="device-circle-spec-icon output" style=""><img src=""></div></div><div class="output spec-list" style="display: none;"><div class="spec" data-id="5"><div class="spec-icon"><img src=""></div><div class="spec-title">Screen up</div></div><div class="spec" data-id="6"><div class="spec-icon"><img src=""></div><div class="spec-title">Screen down</div></div></div></div></div>
+                                    <div id="window4" class="rule-device-container window smallWindow" data-seq="2" data-spec-id="1"><div class="device" data-id="5" data-type="0" style="display: block;"><div class="device-popup" style="display: none;"><div class="device-title">Lights</div><div class="feature-list"><div class="feature" data-io-type="0" data-id="3"><div class="feature-icon"><img src="img/icons/feature/light.svg" alt=""></div><span class="feature-title">Lights Controller</span></div></div></div><div class="device-circle state1"><div class="device-circle-background"></div><div class="device-circle-icon on"><img src="img/icons/device/light.svg" alt=""></div><div class="device-circle-spec-icon output" style=""><img src="img/icons/output/light_on.png"></div></div><div class="output spec-list" style="display: none;"><div class="spec" data-id="1"><div class="spec-icon"><img src="img/icons/output/light_on.png"></div><div class="spec-title">Lights on</div></div><div class="spec" data-id="2"><div class="spec-icon"><img src="img/icons/output/light_off.png"></div><div class="spec-title">Lights off</div></div><div class="spec" data-id="3"><div class="spec-icon"><img src="img/icons/output/light_intensity_dim.svg"></div><div class="spec-title">Lights dim</div></div><div class="spec" data-id="4"><div class="spec-icon"><img src="img/icons/output/light_intensity_bright.svg"></div><div class="spec-title">Lights bright</div></div></div></div></div>-->
+                    <!--comment ends here-->
 
-            <div class="device-container">
 
-            </div>
+                    <!-- </div> -->
+                    <!-- <div class="window" id="window1">			
+                            <strong>Window 1</strong>
+                            <a href="#" id="enableDisableSource">disable</a>				
+                    </div> -->
+                    <!-- <div class="window smallWindow" id="window2"><strong>Window 2</strong><br/><br/></div>
+                <div class="window smallWindow" id="window3"><strong>Window 3</strong><br/><br/></div>
+                <div class="window smallWindow" id="window4"><strong>Window 4</strong><br/><br/></div>
+                <div class="window smallWindow" id="window5"><strong>Window 5</strong><br/><br/></div>
+                <div class="window smallWindow" id="window6"><strong>Window 6</strong><br/><br/></div> -->
+                </div>
 
 
-            <div class="output spec-list">
+                <!-- <svg class="rule-connection">
+                <path stroke="#f1f1f1" stroke-width="3" fill="none" d="M 100,100 Q 500,50, 900,100"></path>
+                </svg> -->
 
-            </div>
 
-            
 
-            <div class="control-container">
-                <div id="rule-holder" style="display:none;" data-input="" data-output=""></div>
 
+
+                <div class="device-container">
+
+                </div>
+
+
+                <div class="output spec-list">
+
+                </div>
+
+
+
+                <div class="control-container">
+                    <div id="rule-holder" style="display:none;" data-input="" data-output=""></div>
+
+                </div>
             </div>
         </div>
 
-
-		<script src="js/jquery-ui-1.10.1.custom.js"></script>
-		<script src="js/jquery.ui.touch-punch.min.js"></script>
-
+            <script src="js/jquery-ui-1.10.1.custom.js"></script>
+            <script src="js/jquery.ui.touch-punch.min.js"></script>
 
 
-        <!--include js file for onscreen logger-->
-        <!-- <script src="js/jslog.js"></script> -->
-<!-- DEP -->
+            <!-- DEP -->
 
-		<!-- /DEP -->
-		
-		<!-- JS -->
-		<!-- support lib for bezier stuff -->
-		<script src="js/jsBezier-0.6-min.js"></script>
-		<!-- jsplumb util -->
-		<script src="js/1.4.0/jsPlumb-util-1.4.0-RC1.js"></script>
-		<!-- base DOM adapter -->
-		<script src="js/1.4.0/jsPlumb-dom-adapter-1.4.0-RC1.js"></script>
-		<!-- main jsplumb engine -->
-		<script src="js/1.4.0/jsPlumb-1.4.0-RC1.js"></script>
-        <!-- anchors -->
-		<script src="js/1.4.0/jsPlumb-anchors-1.4.0-RC1.js"></script>                
-        <!-- endpoint -->
-		<script src="js/1.4.0/jsPlumb-endpoint-1.4.0-RC1.js"></script>  
-        <!-- connection -->
-		<script src="js/1.4.0/jsPlumb-connection-1.4.0-RC1.js"></script>
-		<!-- connector editors  -->
-		<script src="js/1.4.0/jsPlumb-connector-editors-1.4.0-RC1.js"></script>  
-		<!-- connectors, endpoint and overlays  -->
-		<script src="js/1.4.0/jsPlumb-defaults-1.4.0-RC1.js"></script>
-        <!-- flowchart connectors -->
-		<script src="js/1.4.0/jsPlumb-connectors-flowchart-1.4.0-RC1.js"></script>
-		<!-- state machine connectors -->
-		<script src="js/1.4.0/jsPlumb-connectors-statemachine-1.4.0-RC1.js"></script>        
-		<!-- SVG renderer -->
-		<script src="js/1.4.0/jsPlumb-renderers-svg-1.4.0-RC1.js"></script>
-		<!-- canvas renderer -->
-		<script src="js/1.4.0/jsPlumb-renderers-canvas-1.4.0-RC1.js"></script>
-		<!-- vml renderer -->
-		<script src="js/1.4.0/jsPlumb-renderers-vml-1.4.0-RC1.js"></script>
-		<!-- jquery jsPlumb adapter -->
-		<script src="js/1.4.0/jquery.jsPlumb-1.4.0-RC1.js"></script>
-		<!-- /JS -->
-		
+            <!-- /DEP -->
 
-		        <!--Functions for data access and interaction-->
-        <script src="js/data2.js" type="text/javascript"></script>
+            <!-- JS -->
+            <!-- support lib for bezier stuff -->
+            <script src="js/jsBezier-0.6-min.js"></script>
+            <!-- jsplumb util -->
+            <script src="js/1.4.0/jsPlumb-util-1.4.0-RC1.js"></script>
+            <!-- base DOM adapter -->
+            <script src="js/1.4.0/jsPlumb-dom-adapter-1.4.0-RC1.js"></script>
+            <!-- main jsplumb engine -->
+            <script src="js/1.4.0/jsPlumb-1.4.0-RC1.js"></script>
+            <!-- anchors -->
+            <script src="js/1.4.0/jsPlumb-anchors-1.4.0-RC1.js"></script>                
+            <!-- endpoint -->
+            <script src="js/1.4.0/jsPlumb-endpoint-1.4.0-RC1.js"></script>  
+            <!-- connection -->
+            <script src="js/1.4.0/jsPlumb-connection-1.4.0-RC1.js"></script>
+            <!-- connector editors  -->
+            <script src="js/1.4.0/jsPlumb-connector-editors-1.4.0-RC1.js"></script>  
+            <!-- connectors, endpoint and overlays  -->
+            <script src="js/1.4.0/jsPlumb-defaults-1.4.0-RC1.js"></script>
+            <!-- flowchart connectors -->
+            <script src="js/1.4.0/jsPlumb-connectors-flowchart-1.4.0-RC1.js"></script>
+            <!-- state machine connectors -->
+            <script src="js/1.4.0/jsPlumb-connectors-statemachine-1.4.0-RC1.js"></script>        
+            <!-- SVG renderer -->
+            <script src="js/1.4.0/jsPlumb-renderers-svg-1.4.0-RC1.js"></script>
+            <!-- canvas renderer -->
+            <script src="js/1.4.0/jsPlumb-renderers-canvas-1.4.0-RC1.js"></script>
+            <!-- vml renderer -->
+            <script src="js/1.4.0/jsPlumb-renderers-vml-1.4.0-RC1.js"></script>
+            <!-- jquery jsPlumb adapter -->
+            <script src="js/1.4.0/jquery.jsPlumb-1.4.0-RC1.js"></script>
+            <!-- /JS -->
 
-        <!--Include code to fake click events with touch-->
-        <!-- <script src="js/touchtoclick.js" type="text/javascript"></script> -->
 
-        <!--Include code for argon-->
-        <script src="js/app2.js" type="text/javascript"></script>
 
-        <script src="js/interaction.js" type="text/javascript"></script>
-		
-						<!--  demo code -->		
-		<script src="js/anchorDemo-jquery.js"></script>
-		
-		<!--  demo helper code -->
-		<script src="js/demo-list.js"></script>
-		<script src="js/demo-helper-jquery.js"></script>
-		
+            <!--Include code to fake click events with touch-->
+            <!-- <script src="js/touchtoclick.js" type="text/javascript"></script> -->
+
+
+
+            <!--  demo code -->		
+            <script src="js/anchorDemo-jquery.js"></script>
+
+            <!--load notification-->
+            <script src="js/notification.js"></script>
+
+            <!--  demo helper code -->
+            <!--<script src="js/demo-list.js"></script>-->
+            <!--<script src="js/demo-helper-jquery.js"></script>-->
+
     </body>
 
 

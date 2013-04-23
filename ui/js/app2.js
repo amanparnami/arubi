@@ -62,7 +62,7 @@ var app = {
     },
     onArgonReady: function() {
         //Get devices' json and create trackedObjects accordingly
-        getDevicesJson(app._devicesArrayHandler);
+        getDevices(app._devicesArrayHandler);
 
     }
 };
