@@ -8,10 +8,17 @@
 
 #include <SPI.h>
 #include <WiFly.h>
-#include "Credentials.h"
 
+char ssid[] = "WiFly";
+
+// WiFly server
 WiFlyServer server(80);
-WiFlyClient arubi("192.168.2.4", 80);
+
+// WiFly client with server ip address
+WiFlyClient client("192.168.2.4", 80);
+
+// Device id
+String deviceId = "5";
 
 // Initialize the message string
 String messageStr;
@@ -20,10 +27,10 @@ int pinOn = 3;
 int pinOff = 2;
 
 void setup() {
-  
+
   pinMode(pinOn, OUTPUT);     
   pinMode(pinOff, OUTPUT);
-  
+
   WiFly.begin();
 
   if (!WiFly.join(ssid)) {
@@ -36,39 +43,69 @@ void setup() {
   Serial.print("IP: ");
   String ipAddress = WiFly.ip();
   Serial.println(ipAddress);
-  
-  
-  if (arubi.connect()) 
+
+  if (client.connect()) 
   {
-    Serial.println("connected");
-    arubi.println("GET /server/updateDeviceInfo?f=updateIP&device=5&ip= HTTP/1.0");
-    arubi.println();
-  } 
-  else 
-  {
-    Serial.println("connection failed");
+    Serial.println("updating IP address...");  
+    updateIpAddress(deviceId, ipAddress);
   }
-  
-  
+  else
+  {
+    Serial.println("Error connecting...");
+  } 
+
+  if (client.connect()) 
+  {
+    Serial.println("updating device availability...");  
+    updateAvailability(deviceId, 1);
+  }
+
+  delay(1000);
+
   server.begin();
+}
+
+void updateIpAddress(String deviceId, String ipAddress)
+{
+  client.println("GET /server/updateDeviceInfo.php?f=updateIP&id=" + deviceId + "&ip=" + ipAddress + " HTTP/1.0");
+  client.println();
+  receiveHttpResponse();
+}
+
+void updateAvailability(String deviceId, int availability)
+{
+  client.println("GET /server/updateDeviceInfo.php?f=updateAvailability&id=" + deviceId + "&available=" + availability + " HTTP/1.0");
+  client.println();
+  receiveHttpResponse();
+}
+
+void receiveHttpResponse()
+{ 
+  client.flush();
+  client.stop();
+  Serial.println("disconnecting...");
 }
 
 void loop() 
 {  
-  WiFlyClient client = server.available();
-  if (client) 
+  WiFlyClient webServer = server.available();
+  if (webServer) 
   {
+
+    
     // an http request ends with a blank line
     boolean current_line_is_blank = true;
 
     messageStr = "";
     String tempStr = "";
-    
-    while (client.connected()) 
+
+    while (webServer.connected()) 
     {
-      if (client.available()) 
+      //Serial.println("web server connected");
+      
+      if (webServer.available()) 
       {
-        char c = client.read();
+        char c = webServer.read();
         // if we've gotten to the end of the line (received a newline
         // character) and the line is blank, the http request has ended,
         // so we can send a reply
@@ -90,24 +127,24 @@ void loop()
           Serial.println(messageStr);
           //Serial.println(messageStr.length());
         }
-        
+
         if (c == '\n' && current_line_is_blank) {
           // send a standard http response header
-          client.println("HTTP/1.1 200 OK");
-          client.println("Content-Type: text/html");
-          client.println();
-          
-//          // output the value of each analog input pin
-//          for (int i = 0; i < 6; i++) {
-//            client.print("analog input ");
-//            client.print(i);
-//            client.print(" is ");
-//            client.print(analogRead(i));
-//            client.println("<br />");
-//          }
+          webServer.println("HTTP/1.1 200 OK");
+          webServer.println("Content-Type: text/html");
+          webServer.println();
+
+          //          // output the value of each analog input pin
+          //          for (int i = 0; i < 6; i++) {
+          //            client.print("analog input ");
+          //            client.print(i);
+          //            client.print(" is ");
+          //            client.print(analogRead(i));
+          //            client.println("<br />");
+          //          }
           break;
         }
-        
+
         if (c == '\n') 
         {
           // we're starting a new line
@@ -120,25 +157,30 @@ void loop()
         }
       }
     }
-  
+    
+    if(messageStr == "status")
+    {
+      webServer.println("1");
+    }
+
     // give the web browser time to receive the data
     delay(100);
-    client.stop();
+    webServer.stop();
   }
 
-    //decipher message string
-    if(messageStr == "lightsOn")
-    {
-      lightsOn();
-      Serial.println("on");
-    }
-    else if (messageStr == "lightsOff")
-    {
-      lightsOff();
-            Serial.println("off");
-    }
-      
-    messageStr = "";
+  //decipher message string
+  if(messageStr == "lights_on")
+  {
+    lightsOn();
+    Serial.println("on");
+  }
+  else if (messageStr == "lights_off")
+  {
+    lightsOff();
+    Serial.println("off");
+  }
+
+  messageStr = "";
 }
 
 // turn the lights on
@@ -160,3 +202,7 @@ void lightsOff()
   delay(200);
   digitalWrite(pinOff, LOW);
 }
+
+
+
+
